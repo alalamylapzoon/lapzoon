@@ -18,15 +18,15 @@
     <meta property="og:image" content="https://www.lapzone-store.com/images/logo.png">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ar_AR">
-    <meta property="og:url" content="https://www.lapzone-store.com">
+    <meta property="og:url" content="https://alalamylapzoon.github.io/lapzoon/">
     <meta property="og:site_name" content="Al Alamy Store - LAP ZONE">
 
     <!-- Favicon -->
-    <link rel="icon" href="LAPZONE.png" type="image/png">
-    <link rel="apple-touch-icon" href="LAPZONE.png">
+    <link rel="icon" href="https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044455/LAPZONE_co7np7.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044455/LAPZONE_co7np7.png">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://www.lapzone-store.com">
+    <link rel="canonical" href="https://alalamylapzoon.github.io/lapzoon/">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -5157,19 +5157,19 @@
             }
             
             // Populate product detail
-            productDetail.innerHTML = `
-                <div class="product-detail-container">
-                    <div class="product-detail-images">
-                        <div class="main-image-wrapper">
-                            <img src="${product.image1}" alt="${product.name}" class="main-image">
-                            <button class="image-zoom" onclick="zoomImage('${product.image1}')">
-                                <i class="fas fa-search-plus"></i>
-                            </button>
-                        </div>
-                        <div class="thumbnail-images">
-                            ${thumbnailsHTML}
-                        </div>
-                    </div>
+           productDetail.innerHTML = `
+    <div class="product-detail-container">
+        <div class="product-detail-images">
+            <div class="main-image-wrapper">
+                <img src="${product.image1}" alt="${product.name}" class="main-image">
+                <button class="image-zoom" onclick="zoomImage('${product.image1}')">
+                    <i class="fas fa-search-plus"></i>
+                </button>
+            </div>
+            <div class="thumbnail-images">
+                ${thumbnailsHTML}
+            </div>
+        </div>
                     <div class="product-detail-info">
                         <div class="product-detail-header">
                             <span class="product-detail-category">${categoryName}</span>

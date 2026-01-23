@@ -3359,6 +3359,48 @@
         input, select, textarea {
             font-size: 16px !important; /* Prevents iOS zoom on focus */
         }
+        .developer-link{
+  position: relative;
+  display: inline-block;
+  color: #00e5a8;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 2px 8px;
+  border-radius: 10px;
+  transition: transform .25s ease, color .25s ease, background .25s ease;
+  animation: pulseGlow 1.6s infinite;
+}
+
+/* لمعة/نبض بسيط يخلي الناس تاخد بالها */
+@keyframes pulseGlow{
+  0%   { box-shadow: 0 0 0 rgba(0,229,168,0); }
+  50%  { box-shadow: 0 0 14px rgba(0,229,168,.45); }
+  100% { box-shadow: 0 0 0 rgba(0,229,168,0); }
+}
+
+/* خط متحرك تحت الاسم */
+.developer-link::after{
+  content:"";
+  position:absolute;
+  left: 10%;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width .3s ease;
+  border-radius: 2px;
+}
+
+/* لما الماوس يجي عليه: يكبر سنة ويظهر خط تحته */
+.developer-link:hover{
+  transform: translateY(-2px) scale(1.05);
+  background: rgba(0,229,168,.10);
+  color: #4aa3ff;
+}
+
+.developer-link:hover::after{
+  width: 80%;
+}
     </style>
 </head>
 <body>
@@ -3373,8 +3415,8 @@
             <div class="logo">
                 <img src="https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044455/LAPZONE_co7np7.png" alt="LAP ZONE Logo">
                 <div class="logo-text">
-                    <h1>Al-Alamy Store</h1>
-                    <div class="lapzone-brand">LAP-ZONE</div>
+                    <h1>العالمى ستور</h1>
+                    <div class="lapzone-brand">Developed by Ahmed Sharif</div>
                 </div>
             </div>
             
@@ -3774,7 +3816,7 @@
                     <div class="social-links">
                         <a href="https://www.facebook.com/share/1BzR5QjoZS/?mibextid=wwXIfr" class="social-link" target="_blank"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://instagram.com/lapzone" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/201067250858" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://wa.me/201016805576" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 
@@ -3824,10 +3866,20 @@
         </div>
         
         <div class="footer-bottom">
-            <div class="container">
-                <p>&copy; 2025 <span class="footer-lapzone-brand">Al Alamy Store - LAP ZONE</span>. جميع الحقوق محفوظة. Developed by Eng Ahmed Sharif</p>
-            </div>
-        </div>
+    <div class="container">
+        <p>
+            &copy; 2025 
+            <span class="footer-lapzone-brand">Al Alamy Store - LAP ZONE</span>. 
+            جميع الحقوق محفوظة. 
+            <a href="https://engahmed4620.github.io/portfolio90"
+               target="_blank"
+               class="developer-link">
+               Developed by  Eng.Ahmed Sharif    
+            </a>
+        </p>
+    </div>
+</div>
+
     </footer>
 
     <!-- Policy Page Popup -->
@@ -3891,7 +3943,7 @@
             {
     id: 100,
     name: "  ايربودز لابوبو",
-    description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطاريه تدوم 10 ساعه تشتغيل",
+    description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطارين تدوم 10 ساعه تشتغيل",
     price: 350,
     originalPrice: 400,
     image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768690706/%D8%A7%D9%8A%D8%B1%D8%A8%D9%88%D8%AF%D8%B2_%D9%84%D8%A8%D9%88%D8%A8%D9%88_1_jcym2s.jpg",
@@ -3906,7 +3958,7 @@
  {
     id: 101,
     name: " ايربودز برو 2 تاتش",
-    description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطاريه تدوم 10 ساعه تشتغيل وكمان فيها عازل للضوضاء ",
+    description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطارين تدوم 10 ساعه تشتغيل وكمان فيها عازل للضوضاء ",
     price: 450,
     originalPrice: 600,
     image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768857457/airpods_tatch_1_fdxm33.jpg",
@@ -3921,8 +3973,8 @@
 {
     id: 102,
     name: "ايربودز ultra 3 + airpodes",
-    description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطاريه تدوم 30 ساعه تشتغيل + ساعه سمارت وواتش",
-    price: 650,
+    description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطارين تدوم 30 ساعه تشتغيل + ساعه سمارت وواتش",
+    price: 500,
     originalPrice: 750,
     image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768857437/smart_watch_1_lvdmto.jpg",
     image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768857424/smart_watch_2_aiji70.jpg",
@@ -3997,7 +4049,7 @@
     {
     id: 107,
     name: "   ايربودز برو 2 ",
-    description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطاريه تدوم 30 ساعه تشتغيل",
+    description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطارين تدوم 30 ساعه تشتغيل",
     price: 250,
     originalPrice: 400,
     image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768690708/%D8%A7%D9%8A%D8%B1%D8%A8%D9%88%D8%AF%D8%B2_%D8%A8%D8%B1%D9%88_2_%D8%B1%D9%82%D9%85_1_nb3rap.jpg",
@@ -4012,7 +4064,7 @@
     {
     id: 108,
     name: "   ايربودز برو 3 ",
-    description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطاريه تدوم 30 ساعه تشتغيل",
+    description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطارين تدوم 30 ساعه تشتغيل",
     price: 200,
     originalPrice: 400,
     image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768690706/%D8%A7%D9%8A%D8%A8%D9%88%D8%AF%D8%B2_%D8%A8%D8%B1%D9%88_3_cd3byp.jpg",
@@ -4027,7 +4079,7 @@
      {
     id: 109,
     name: "   ايربودز vancl ",
-    description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطاريه تدوم 50 ساعه تشتغيل",
+    description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطارين تدوم 50 ساعه تشتغيل",
     price: 450,
     originalPrice: 600,
     image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768687703/%D8%B3%D9%85%D8%A7%D8%B9%D9%87_%D9%81%D9%8A%D9%86%D8%B3%D9%84_dxy2mt.jpg",
@@ -5513,9 +5565,9 @@
                     <p>في <strong>Al Alamy Store - LAP ZONE</strong>، نضمن وصول طلباتكم بأعلى درجات الكفاءة والأمان.</p>
                     <h3>مناطق التوصيل</h3>
                     <ul>
-                        <li>القاهرة الكبرى (التوصيل خلال 24-48 ساعة)</li>
-                        <li>المحافظات (التوصيل خلال 2-5 أيام عمل)</li>
-                        <li>التوصيل مجاني للطلبات فوق 5000 جنيه داخل القاهرة</li>
+                        <li>القاهرة الكبرى (التوصيل خلال 24-72 ساعة)</li>
+                        <li>المحافظات (التوصيل خلال 3-5 أيام عمل)</li>
+                        <li>التوصيل مجاني للطلبات فوق 2000 جنيه داخل القاهرة</li>
                         <li>رسوم التوصيل تتراوح بين 50-150 جنيه حسب المنطقة</li>
                     </ul>
                     <h3>طرق الدفع</h3>
@@ -5534,9 +5586,9 @@
                     <h3>فترات الضمان</h3>
                     <ul>
                         <li>اللاب توب الجديد: ضمان من 1-3 سنوات حسب الموديل</li>
-                        <li>اللاب توب المستورد: ضمان 6 أشهر إلى سنة</li>
-                        <li>الهواتف المستعملة: ضمان 3-6 أشهر</li>
-                        <li>قطع الغيار: ضمان 6 أشهر إلى سنة</li>
+                        <li>اللاب توب المستورد: ضمان 1 أشهر إلى 3 اشهر </li>
+                        <li>الهواتف المستعملة: ضمان شهر من المحل </li>
+                        <li>قطع الغيار: ضمان 2 أشهر إلى سنة</li>
                     </ul>
                     <h3>خدمة الصيانة</h3>
                     <ul>
@@ -5597,1095 +5649,1103 @@
             }
         };
 
-        // Shopping cart
-        let cart = [];
-        
-        // Current view state
-        let currentView = 'home';
-        let currentCategory = '';
-        let currentSortOrder = 'default';
-        let currentProduct = null;
-        
-        // Current order details
-        let currentOrder = null;
-        
-        // WhatsApp phone number
-        const whatsappNumber = "201067250858";
-        
-        // Site base URL
-        const siteBaseUrl = window.location.origin + window.location.pathname;
-        
-        // DOM elements
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mainMenu = document.getElementById('main-menu');
-        const mainNav = document.getElementById('main-nav');
-        const breadcrumb = document.getElementById('breadcrumb');
-        const breadcrumbHome = document.getElementById('breadcrumb-home');
-        const breadcrumbCategory = document.getElementById('breadcrumb-category');
-        const breadcrumbCategorySeparator = document.getElementById('breadcrumb-category-separator');
-        const breadcrumbProduct = document.getElementById('breadcrumb-product');
-        const breadcrumbProductSeparator = document.getElementById('breadcrumb-product-separator');
-        const mainContent = document.getElementById('main-content');
-        const homePage = document.getElementById('home-page');
-        const categoryPage = document.getElementById('category-page');
-        const productDetailPage = document.getElementById('product-detail-page');
-        const productHomeBtn = document.getElementById('product-home-btn');
-        const productsGrid = document.getElementById('products-grid');
-        const productDetailContainer = document.getElementById('product-detail-container');
-        const checkoutSection = document.getElementById('checkout-section');
-        const orderConfirmationPopup = document.getElementById('order-confirmation-popup');
-        const floatingCartCount = document.getElementById('floating-cart-count');
-        const shoppingCart = document.getElementById('shopping-cart');
-        const cartItems = document.getElementById('cart-items');
-        const cartEmpty = document.getElementById('cart-empty');
-        const cartFooter = document.getElementById('cart-footer');
-        const cartSubtotal = document.getElementById('cart-subtotal');
-        const summaryItems = document.getElementById('summary-items');
-        const summarySubtotal = document.getElementById('summary-subtotal');
-        const summaryTotal = document.getElementById('summary-total');
-        const orderNumber = document.getElementById('order-number');
-        const orderDate = document.getElementById('order-date');
-        const orderCustomer = document.getElementById('order-customer');
-        const orderPhone = document.getElementById('order-phone');
-        const orderAddress = document.getElementById('order-address');
-        const orderTotal = document.getElementById('order-total');
-        const loadingOverlay = document.getElementById('loading-overlay');
-        const policyPage = document.getElementById('policy-page');
-        const policyTitle = document.getElementById('policy-title');
-        const policyContent = document.getElementById('policy-content');
-        const newsletterForm = document.getElementById('newsletter-form');
-        const newsletterPhoneInput = document.getElementById('newsletter-phone');
-        const newsletterSection = document.getElementById('newsletter-section');
-        const footer = document.getElementById('footer');
-        
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set current date for order confirmation
-            const today = new Date();
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            orderDate.textContent = today.toLocaleDateString('ar-EG', options);
-            
-            // Mobile menu toggle
-            mobileMenuBtn.addEventListener('click', function() {
-                mainNav.classList.toggle('show');
-            });
-            
-            // Newsletter form submission
-            newsletterForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                subscribeToNewsletter();
-            });
-            
-            // Update cart count on page load
-            updateCartCount();
-            
-            // Close menu when clicking on a link
-            document.querySelectorAll('#main-menu a').forEach(link => {
-                link.addEventListener('click', function() {
-                    if (window.innerWidth <= 768) {
-                        mainNav.classList.remove('show');
-                    }
-                });
-            });
-            
-            // Close cart when clicking outside on mobile
-            document.addEventListener('click', function(e) {
-                if (window.innerWidth <= 768) {
-                    if (!shoppingCart.contains(e.target) && !document.querySelector('.floating-buttons').contains(e.target) && shoppingCart.classList.contains('active')) {
-                        toggleCart();
-                    }
-                }
-            });
-            
-            // Initialize routing
-            initRouting();
-            
-            // Handle initial load
-            handleRouting();
+      // Shopping cart
+let cart = [];
+
+// Current view state
+let currentView = 'home';
+let currentCategory = '';
+let currentSortOrder = 'default';
+let currentProduct = null;
+
+// Current order details
+let currentOrder = null;
+
+// WhatsApp phone number - UPDATED
+const whatsappNumber = "201016805576";
+
+// Site base URL
+const siteBaseUrl = window.location.origin + window.location.pathname;
+
+// DOM elements
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mainMenu = document.getElementById('main-menu');
+const mainNav = document.getElementById('main-nav');
+const breadcrumb = document.getElementById('breadcrumb');
+const breadcrumbHome = document.getElementById('breadcrumb-home');
+const breadcrumbCategory = document.getElementById('breadcrumb-category');
+const breadcrumbCategorySeparator = document.getElementById('breadcrumb-category-separator');
+const breadcrumbProduct = document.getElementById('breadcrumb-product');
+const breadcrumbProductSeparator = document.getElementById('breadcrumb-product-separator');
+const mainContent = document.getElementById('main-content');
+const homePage = document.getElementById('home-page');
+const categoryPage = document.getElementById('category-page');
+const productDetailPage = document.getElementById('product-detail-page');
+const productHomeBtn = document.getElementById('product-home-btn');
+const productsGrid = document.getElementById('products-grid');
+const productDetailContainer = document.getElementById('product-detail-container');
+const checkoutSection = document.getElementById('checkout-section');
+const orderConfirmationPopup = document.getElementById('order-confirmation-popup');
+const floatingCartCount = document.getElementById('floating-cart-count');
+const shoppingCart = document.getElementById('shopping-cart');
+const cartItems = document.getElementById('cart-items');
+const cartEmpty = document.getElementById('cart-empty');
+const cartFooter = document.getElementById('cart-footer');
+const cartSubtotal = document.getElementById('cart-subtotal');
+const summaryItems = document.getElementById('summary-items');
+const summarySubtotal = document.getElementById('summary-subtotal');
+const summaryTotal = document.getElementById('summary-total');
+const orderNumber = document.getElementById('order-number');
+const orderDate = document.getElementById('order-date');
+const orderCustomer = document.getElementById('order-customer');
+const orderPhone = document.getElementById('order-phone');
+const orderAddress = document.getElementById('order-address');
+const orderTotal = document.getElementById('order-total');
+const loadingOverlay = document.getElementById('loading-overlay');
+const policyPage = document.getElementById('policy-page');
+const policyTitle = document.getElementById('policy-title');
+const policyContent = document.getElementById('policy-content');
+const newsletterForm = document.getElementById('newsletter-form');
+const newsletterPhoneInput = document.getElementById('newsletter-phone');
+const newsletterSection = document.getElementById('newsletter-section');
+const footer = document.getElementById('footer');
+
+// Initialize the page
+document.addEventListener('DOMContentLoaded', function() {
+    // Set current date for order confirmation
+    const today = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    orderDate.textContent = today.toLocaleDateString('ar-EG', options);
+    
+    // Mobile menu toggle
+    mobileMenuBtn.addEventListener('click', function() {
+        mainNav.classList.toggle('show');
+    });
+    
+    // Newsletter form submission
+    newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        subscribeToNewsletter();
+    });
+    
+    // Update cart count on page load
+    updateCartCount();
+    
+    // Close menu when clicking on a link
+    document.querySelectorAll('#main-menu a').forEach(link => {
+        link.addEventListener('click', function() {
+            if (window.innerWidth <= 768) {
+                mainNav.classList.remove('show');
+            }
         });
-
-        // Initialize routing system
-        function initRouting() {
-            // Listen for hash changes
-            window.addEventListener('hashchange', handleRouting);
-            
-            // Handle browser back/forward buttons
-            window.addEventListener('popstate', handleRouting);
-        }
-
-        // Handle routing based on URL hash - UPDATED FUNCTION
-        function handleRouting() {
-            const hash = window.location.hash || '#/';
-
-            if (hash === '#/' || hash === '') {
-                navigateToHomePage();
-            } 
-            else if (hash.startsWith('#/category/')) {
-                const category = hash.replace('#/category/', '');
-                navigateToCategoryPage(category);
-            } 
-            else if (hash.startsWith('#/product/')) {
-                const path = hash.replace('#/product/', '');
-                const parts = path.split('/');
-
-                if (parts.length >= 2) {
-                    const category = parts[0];
-                    const productId = parseInt(parts[1]);
-                    navigateToProductPage(productId, category);
-                }
-            } 
-            else {
-                navigateToHomePage();
+    });
+    
+    // Close cart when clicking outside on mobile
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+            if (!shoppingCart.contains(e.target) && !document.querySelector('.floating-buttons').contains(e.target) && shoppingCart.classList.contains('active')) {
+                toggleCart();
             }
         }
+    });
+    
+    // Initialize routing
+    initRouting();
+    
+    // Handle initial load
+    handleRouting();
+});
 
-        // Navigate to a specific page - UPDATED FUNCTION
-        function navigateTo(path) {
-            if (path === 'home' || path === '/') {
-                window.location.hash = '#/';
-                navigateToHomePage();
-            } else if (path.startsWith('/')) {
-                window.location.hash = '#' + path;
-                // Trigger the hash change to handle the navigation
-                handleRouting();
-            }
+// Initialize routing system
+function initRouting() {
+    // Listen for hash changes
+    window.addEventListener('hashchange', handleRouting);
+    
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', handleRouting);
+}
+
+// Handle routing based on URL hash
+function handleRouting() {
+    const hash = window.location.hash || '#/';
+
+    if (hash === '#/' || hash === '') {
+        navigateToHomePage();
+    } 
+    else if (hash.startsWith('#/category/')) {
+        const category = hash.replace('#/category/', '');
+        navigateToCategoryPage(category);
+    } 
+    else if (hash.startsWith('#/product/')) {
+        const path = hash.replace('#/product/', '');
+        const parts = path.split('/');
+
+        if (parts.length >= 2) {
+            const category = parts[0];
+            const productId = parseInt(parts[1]);
+            navigateToProductPage(productId, category);
+        }
+    } 
+    else {
+        navigateToHomePage();
+    }
+}
+
+// Navigate to a specific page
+function navigateTo(path) {
+    if (path === 'home' || path === '/') {
+        window.location.hash = '#/';
+        navigateToHomePage();
+    } else if (path.startsWith('/')) {
+        window.location.hash = '#' + path;
+        // Trigger the hash change to handle the navigation
+        handleRouting();
+    }
+}
+
+// عرض الصفحة الرئيسية بشكل صحيح
+function navigateToHomePage() {
+    showLoading();
+
+    currentView = 'home';
+    currentCategory = '';
+    currentProduct = null;
+
+    // إخفاء كل الصفحات
+    homePage.style.display = 'block';
+    categoryPage.style.display = 'none';
+    productDetailPage.style.display = 'none';
+    checkoutSection.style.display = 'none';
+
+    orderConfirmationPopup.classList.remove('active');
+    policyPage.classList.remove('active');
+
+    // إخفاء الـ breadcrumb
+    breadcrumb.style.display = 'none';
+
+    // إظهار الفوتر والنيوزليتر
+    newsletterSection.style.display = 'block';
+    footer.style.display = 'block';
+
+    updateActiveMenuItem('home');
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    setTimeout(hideLoading, 300);
+}
+    
+// Navigate to category page
+function navigateToCategoryPage(category) {
+    showLoading();
+    
+    currentView = 'category';
+    currentCategory = category;
+    
+    // Hide all pages
+    homePage.style.display = 'none';
+    categoryPage.style.display = 'none';
+    productDetailPage.style.display = 'none';
+    checkoutSection.style.display = 'none';
+    orderConfirmationPopup.classList.remove('active');
+    policyPage.classList.remove('active');
+    newsletterSection.style.display = 'none';
+    footer.style.display = 'none';
+    
+    // Show category page
+    categoryPage.style.display = 'block';
+    breadcrumb.style.display = 'block';
+    breadcrumbCategory.style.display = 'block';
+    breadcrumbCategorySeparator.style.display = 'inline-block';
+    breadcrumbProduct.style.display = 'none';
+    breadcrumbProductSeparator.style.display = 'none';
+    
+    // Update breadcrumb
+    const categoryNames = {
+        'offers': 'العروض',
+        'new-laptops': 'لابات جديدة',
+        'imported-laptops': 'لابات استيراد',
+        'used-phones': 'هواتف مستعملة',
+        'parts-accessories': 'قطع غيار'
+    };
+    
+    breadcrumbCategory.innerHTML = `<span class="active">${categoryNames[category]}</span>`;
+    
+    // Reset sort order
+    currentSortOrder = 'default';
+    document.querySelectorAll('.sort-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    document.querySelector('.sort-btn[onclick*="default"]').classList.add('active');
+    
+    // Render products
+    renderProducts(products[category]);
+    
+    // Update active menu item
+    updateActiveMenuItem(category);
+    
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    setTimeout(hideLoading, 300);
+}
+
+// Navigate to product page
+function navigateToProductPage(productId, category) {
+    showLoading();
+    
+    currentView = 'product';
+    currentCategory = category;
+    currentProduct = productId;
+    
+    // Hide all pages
+    homePage.style.display = 'none';
+    categoryPage.style.display = 'none';
+    productDetailPage.style.display = 'none';
+    checkoutSection.style.display = 'none';
+    orderConfirmationPopup.classList.remove('active');
+    policyPage.classList.remove('active');
+    newsletterSection.style.display = 'none';
+    footer.style.display = 'none';
+    
+    // Show product detail page
+    productDetailPage.style.display = 'block';
+    breadcrumb.style.display = 'block';
+    breadcrumbCategory.style.display = 'block';
+    breadcrumbCategorySeparator.style.display = 'inline-block';
+    breadcrumbProduct.style.display = 'block';
+    breadcrumbProductSeparator.style.display = 'inline-block';
+    
+    // Update breadcrumb
+    const categoryNames = {
+        'offers': 'العروض',
+        'new-laptops': 'لابات جديدة',
+        'imported-laptops': 'لابات استيراد',
+        'used-phones': 'هواتف مستعملة',
+        'parts-accessories': 'قطع غيار'
+    };
+    
+    const product = products[category].find(p => p.id === productId);
+    
+    breadcrumbCategory.innerHTML = `<a href="#/category/${category}">${categoryNames[category]}</a>`;
+    breadcrumbProduct.innerHTML = `<span class="active">${product.name}</span>`;
+    
+    // Render product detail
+    renderProductDetail(productId, category);
+    
+    // Update active menu item
+    updateActiveMenuItem(category);
+    
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    setTimeout(hideLoading, 300);
+}
+
+// Function to go back to category from product page
+function goBackToCategory() {
+    if (currentCategory) {
+        navigateTo(`/category/${currentCategory}`);
+    } else {
+        navigateTo('home');
+    }
+}
+
+// Update active menu item
+function updateActiveMenuItem(activeItem) {
+    document.querySelectorAll('#main-menu a').forEach(link => {
+        link.classList.remove('active');
+    });
+
+    if (activeItem === 'home') {
+        const homeLink = document.querySelector('#main-menu a[href="#/"]');
+        if (homeLink) {
+            homeLink.classList.add('active');
         }
 
-        // عرض الصفحة الرئيسية بشكل صحيح - UPDATED FUNCTION
-        function navigateToHomePage() {
-            showLoading();
+        newsletterSection.style.display = 'block';
+        footer.style.display = 'block';
 
-            currentView = 'home';
-            currentCategory = '';
-            currentProduct = null;
-
-            // إخفاء كل الصفحات
-            homePage.style.display = 'block';
-            categoryPage.style.display = 'none';
-            productDetailPage.style.display = 'none';
-            checkoutSection.style.display = 'none';
-
-            orderConfirmationPopup.classList.remove('active');
-            policyPage.classList.remove('active');
-
-            // إخفاء الـ breadcrumb
-            breadcrumb.style.display = 'none';
-
-            // إظهار الفوتر والنيوزليتر
-            newsletterSection.style.display = 'block';
-            footer.style.display = 'block';
-
-            updateActiveMenuItem('home');
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-
-            setTimeout(hideLoading, 300);
-        }
-            
-        // Navigate to category page
-        function navigateToCategoryPage(category) {
-            showLoading();
-            
-            currentView = 'category';
-            currentCategory = category;
-            
-            // Hide all pages
-            homePage.style.display = 'none';
-            categoryPage.style.display = 'none';
-            productDetailPage.style.display = 'none';
-            checkoutSection.style.display = 'none';
-            orderConfirmationPopup.classList.remove('active');
-            policyPage.classList.remove('active');
-            newsletterSection.style.display = 'none';
-            footer.style.display = 'none';
-            
-            // Show category page
-            categoryPage.style.display = 'block';
-            breadcrumb.style.display = 'block';
-            breadcrumbCategory.style.display = 'block';
-            breadcrumbCategorySeparator.style.display = 'inline-block';
-            breadcrumbProduct.style.display = 'none';
-            breadcrumbProductSeparator.style.display = 'none';
-            
-            // Update breadcrumb
-            const categoryNames = {
-                'offers': 'العروض',
-                'new-laptops': 'لابات جديدة',
-                'imported-laptops': 'لابات استيراد',
-                'used-phones': 'هواتف مستعملة',
-                'parts-accessories': 'قطع غيار'
-            };
-            
-            breadcrumbCategory.innerHTML = `<span class="active">${categoryNames[category]}</span>`;
-            
-            // Reset sort order
-            currentSortOrder = 'default';
-            document.querySelectorAll('.sort-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            document.querySelector('.sort-btn[onclick*="default"]').classList.add('active');
-            
-            // Render products
-            renderProducts(products[category]);
-            
-            // Update active menu item
-            updateActiveMenuItem(category);
-            
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            
-            setTimeout(hideLoading, 300);
+    } else {
+        const menuItem = document.querySelector(`#main-menu a[href="#/category/${activeItem}"]`);
+        if (menuItem) {
+            menuItem.classList.add('active');
         }
 
-        // Navigate to product page
-        function navigateToProductPage(productId, category) {
-            showLoading();
-            
-            currentView = 'product';
-            currentCategory = category;
-            currentProduct = productId;
-            
-            // Hide all pages
-            homePage.style.display = 'none';
-            categoryPage.style.display = 'none';
-            productDetailPage.style.display = 'none';
-            checkoutSection.style.display = 'none';
-            orderConfirmationPopup.classList.remove('active');
-            policyPage.classList.remove('active');
-            newsletterSection.style.display = 'none';
-            footer.style.display = 'none';
-            
-            // Show product detail page
-            productDetailPage.style.display = 'block';
-            breadcrumb.style.display = 'block';
-            breadcrumbCategory.style.display = 'block';
-            breadcrumbCategorySeparator.style.display = 'inline-block';
-            breadcrumbProduct.style.display = 'block';
-            breadcrumbProductSeparator.style.display = 'inline-block';
-            
-            // Update breadcrumb
-            const categoryNames = {
-                'offers': 'العروض',
-                'new-laptops': 'لابات جديدة',
-                'imported-laptops': 'لابات استيراد',
-                'used-phones': 'هواتف مستعملة',
-                'parts-accessories': 'قطع غيار'
-            };
-            
-            const product = products[category].find(p => p.id === productId);
-            
-            breadcrumbCategory.innerHTML = `<a href="#/category/${category}">${categoryNames[category]}</a>`;
-            breadcrumbProduct.innerHTML = `<span class="active">${product.name}</span>`;
-            
-            // Render product detail
-            renderProductDetail(productId, category);
-            
-            // Update active menu item
-            updateActiveMenuItem(category);
-            
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            
-            setTimeout(hideLoading, 300);
-        }
+        newsletterSection.style.display = 'none';
+        footer.style.display = 'none';
+    }
+}
 
-        // Function to go back to category from product page - UPDATED FUNCTION
-        function goBackToCategory() {
-            if (currentCategory) {
-                navigateTo(`/category/${currentCategory}`);
-            } else {
-                navigateTo('home');
-            }
-        }
+// Sort products by price
+function sortProducts(order) {
+    currentSortOrder = order;
+    
+    // Update active button
+    document.querySelectorAll('.sort-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    event.target.classList.add('active');
+    
+    // Get current category products
+    const categoryProducts = [...products[currentCategory]];
+    
+    // Sort based on order
+    if (order === 'low-to-high') {
+        categoryProducts.sort((a, b) => a.price - b.price);
+    } else if (order === 'high-to-low') {
+        categoryProducts.sort((a, b) => b.price - a.price);
+    }
+    // For 'default', use original order
+    
+    // Re-render products
+    renderProducts(categoryProducts);
+}
 
-        // Update active menu item - UPDATED FUNCTION
-        function updateActiveMenuItem(activeItem) {
-            document.querySelectorAll('#main-menu a').forEach(link => {
-                link.classList.remove('active');
-            });
+// Render products in grid
+function renderProducts(productsList) {
+    productsGrid.innerHTML = '';
+    
+    if (!productsList || productsList.length === 0) {
+        productsGrid.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                <i class="fas fa-box-open" style="font-size: 3rem; color: #ddd; margin-bottom: 20px;"></i>
+                <h3>لا توجد منتجات في هذا القسم حالياً</h3>
+                <p>سيتم إضافة منتجات جديدة قريباً</p>
+            </div>
+        `;
+        return;
+    }
+    
+    productsList.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+        
+        // Create discount badge if there's an original price
+        const discountBadge = product.originalPrice ? 
+            `<div class="badge badge-primary">${Math.round(100 - (product.price / product.originalPrice * 100))}% خصم</div>` : '';
+        
+        // Create original price display if applicable
+        const originalPriceDisplay = product.originalPrice ? 
+            `<span class="original-price">ج.م${product.originalPrice.toLocaleString('ar-EG')}</span>` : '';
+        
+        productCard.innerHTML = `
+            <div class="product-badges">
+                ${discountBadge}
+            </div>
+            <div class="product-images">
+                <img src="${product.image1}" alt="${product.name}">
+                <img src="${product.image2}" alt="${product.name}">
+                ${product.image3 ? `<img src="${product.image3}" alt="${product.name}">` : ''}
+                ${product.image4 ? `<img src="${product.image4}" alt="${product.name}">` : ''}
+            </div>
+            <div class="product-info">
+                <h3>${product.name}</h3>
+                <p>${product.description}</p>
+                <div class="product-price">
+                    <span class="current-price">ج.م${product.price.toLocaleString('ar-EG')}</span>
+                    ${originalPriceDisplay}
+                </div>
+                <div class="product-actions">
+                    <button class="btn btn-primary" onclick="buyNow(${product.id}, '${currentCategory}')">شراء الآن</button>
+                    <button class="btn btn-outline" onclick="navigateTo('/product/${currentCategory}/${product.id}')">التفاصيل</button>
+                </div>
+                <button class="add-to-cart-btn" onclick="addToCart(${product.id}, '${currentCategory}')">
+                    <i class="fas fa-shopping-cart"></i> أضف إلى السلة
+                </button>
+            </div>
+        `;
+        
+        productsGrid.appendChild(productCard);
+    });
+}
 
-            if (activeItem === 'home') {
-                const homeLink = document.querySelector('#main-menu a[href="#/"]');
-                if (homeLink) {
-                    homeLink.classList.add('active');
-                }
-
-                newsletterSection.style.display = 'block';
-                footer.style.display = 'block';
-
-            } else {
-                const menuItem = document.querySelector(`#main-menu a[href="#/category/${activeItem}"]`);
-                if (menuItem) {
-                    menuItem.classList.add('active');
-                }
-
-                newsletterSection.style.display = 'none';
-                footer.style.display = 'none';
-            }
-        }
-
-        // Sort products by price
-        function sortProducts(order) {
-            currentSortOrder = order;
-            
-            // Update active button
-            document.querySelectorAll('.sort-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            event.target.classList.add('active');
-            
-            // Get current category products
-            const categoryProducts = [...products[currentCategory]];
-            
-            // Sort based on order
-            if (order === 'low-to-high') {
-                categoryProducts.sort((a, b) => a.price - b.price);
-            } else if (order === 'high-to-low') {
-                categoryProducts.sort((a, b) => b.price - a.price);
-            }
-            // For 'default', use original order
-            
-            // Re-render products
-            renderProducts(categoryProducts);
-        }
-
-        // Render products in grid
-        function renderProducts(productsList) {
-            productsGrid.innerHTML = '';
-            
-            if (!productsList || productsList.length === 0) {
-                productsGrid.innerHTML = `
-                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
-                        <i class="fas fa-box-open" style="font-size: 3rem; color: #ddd; margin-bottom: 20px;"></i>
-                        <h3>لا توجد منتجات في هذا القسم حالياً</h3>
-                        <p>سيتم إضافة منتجات جديدة قريباً</p>
+// Render product detail
+function renderProductDetail(productId, category) {
+    // Find the product
+    const product = products[category].find(p => p.id === productId);
+    
+    if (!product) {
+        productDetailContainer.innerHTML = `
+            <div style="text-align: center; padding: 40px;">
+                <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: #f44336; margin-bottom: 20px;"></i>
+                <h3>المنتج غير موجود</h3>
+                <p>عذراً، المنتج الذي تبحث عنه غير متوفر حالياً.</p>
+                <a href="#/category/${category}" class="btn btn-primary" onclick="goBackToCategory(); return false;">العودة إلى القسم</a>
+            </div>
+        `;
+        return;
+    }
+    
+    // Create discount badge if there's an original price
+    const discountBadge = product.originalPrice ? 
+        `<div class="badge badge-primary">${Math.round(100 - (product.price / product.originalPrice * 100))}% خصم</div>` : '';
+    
+    // Create original price display if applicable
+    const originalPriceDisplay = product.originalPrice ? 
+        `<span class="detail-original-price">ج.م${product.originalPrice.toLocaleString('ar-EG')}</span>
+        <span class="detail-discount">${Math.round(100 - (product.price / product.originalPrice * 100))}% خصم</span>` : '';
+    
+    // Create specifications grid
+    let specificationsHTML = '';
+    for (const [key, value] of Object.entries(product.specifications)) {
+        specificationsHTML += `
+            <div class="spec-item">
+                <span class="spec-label">${key}</span>
+                <span class="spec-value">${value}</span>
+            </div>
+        `;
+    }
+    
+    // Create gifts list if available
+    let giftsHTML = '';
+    if (product.gifts && product.gifts.length > 0) {
+        giftsHTML = `
+            <div class="product-gifts">
+                <h3 class="gifts-title">
+                    <i class="fas fa-gift"></i>
+                    هدايا مجانية مع المنتج
+                </h3>
+                <ul class="gifts-list">
+                    ${product.gifts.map(gift => `
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            ${gift}
+                        </li>
+                    `).join('')}
+                </ul>
+            </div>
+        `;
+    }
+    
+    // Get category name in Arabic
+    let categoryName = '';
+    switch(category) {
+        case 'offers': categoryName = '🔥 عرض خاص'; break;
+        case 'new-laptops': categoryName = '💎 لابات جديدة'; break;
+        case 'imported-laptops': categoryName = '⭐ لابات استيراد'; break;
+        case 'used-phones': categoryName = '📱 هواتف مستعملة'; break;
+        case 'parts-accessories': categoryName = '🔧 قطع غيار'; break;
+    }
+    
+    // Create thumbnails for all images
+    let thumbnailsHTML = '';
+    if (product.image1) {
+        thumbnailsHTML += `
+            <div class="thumbnail active" onclick="changeMainImage(this, '${product.image1}')">
+                <img src="${product.image1}" alt="${product.name}">
+            </div>
+        `;
+    }
+    if (product.image2) {
+        thumbnailsHTML += `
+            <div class="thumbnail" onclick="changeMainImage(this, '${product.image2}')">
+                <img src="${product.image2}" alt="${product.name}">
+            </div>
+        `;
+    }
+    if (product.image3) {
+        thumbnailsHTML += `
+            <div class="thumbnail" onclick="changeMainImage(this, '${product.image3}')">
+                <img src="${product.image3}" alt="${product.name}">
+            </div>
+        `;
+    }
+    if (product.image4) {
+        thumbnailsHTML += `
+            <div class="thumbnail" onclick="changeMainImage(this, '${product.image4}')">
+                <img src="${product.image4}" alt="${product.name}">
+            </div>
+        `;
+    }
+    
+    // Generate product share URL
+    const shareUrl = `${siteBaseUrl}#/product/${category}/${productId}`;
+    
+    // Populate product detail
+    productDetailContainer.innerHTML = `
+        <div class="product-detail-wrapper">
+            <div class="product-detail-images">
+                <div class="main-image-wrapper">
+                    <img src="${product.image1}" alt="${product.name}" class="main-image" id="main-product-image">
+                    <button class="image-zoom" onclick="zoomImage('${product.image1}')">
+                        <i class="fas fa-search-plus"></i>
+                    </button>
+                </div>
+                <div class="thumbnail-images">
+                    ${thumbnailsHTML}
+                </div>
+            </div>
+            <div class="product-detail-info">
+                <div class="product-detail-header">
+                    <span class="product-detail-category">${categoryName}</span>
+                    <h2 class="product-detail-title">${product.name}</h2>
+                    <div class="product-detail-meta">
+                        <span><i class="fas fa-box"></i> متوفر في المخزن</span>
+                        <span><i class="fas fa-shipping-fast"></i> شحن سريع خلال 24-48 ساعة</span>
+                        <span><i class="fas fa-shield-alt"></i> ضمان شامل</span>
                     </div>
-                `;
-                return;
-            }
-            
-            productsList.forEach(product => {
-                const productCard = document.createElement('div');
-                productCard.className = 'product-card';
+                </div>
                 
-                // Create discount badge if there's an original price
-                const discountBadge = product.originalPrice ? 
-                    `<div class="badge badge-primary">${Math.round(100 - (product.price / product.originalPrice * 100))}% خصم</div>` : '';
-                
-                // Create original price display if applicable
-                const originalPriceDisplay = product.originalPrice ? 
-                    `<span class="original-price">ج.م${product.originalPrice.toLocaleString('ar-EG')}</span>` : '';
-                
-                productCard.innerHTML = `
-                    <div class="product-badges">
-                        ${discountBadge}
+                <div class="product-detail-price-container">
+                    <div class="product-detail-price">
+                        <span class="detail-current-price">ج.م${product.price.toLocaleString('ar-EG')}</span>
+                        ${originalPriceDisplay}
                     </div>
-                    <div class="product-images">
-                        <img src="${product.image1}" alt="${product.name}">
-                        <img src="${product.image2}" alt="${product.name}">
-                        ${product.image3 ? `<img src="${product.image3}" alt="${product.name}">` : ''}
-                        ${product.image4 ? `<img src="${product.image4}" alt="${product.name}">` : ''}
-                    </div>
-                    <div class="product-info">
-                        <h3>${product.name}</h3>
-                        <p>${product.description}</p>
-                        <div class="product-price">
-                            <span class="current-price">ج.م${product.price.toLocaleString('ar-EG')}</span>
-                            ${originalPriceDisplay}
-                        </div>
-                        <div class="product-actions">
-                            <button class="btn btn-primary" onclick="buyNow(${product.id}, '${currentCategory}')">شراء الآن</button>
-                            <button class="btn btn-outline" onclick="navigateTo('/product/${currentCategory}/${product.id}')">التفاصيل</button>
-                        </div>
-                        <button class="add-to-cart-btn" onclick="addToCart(${product.id}, '${currentCategory}')">
-                            <i class="fas fa-shopping-cart"></i> أضف إلى السلة
+                    ${discountBadge}
+                </div>
+                
+                <!-- Share Buttons -->
+                <div class="share-buttons-container">
+                    <span class="share-label">مشاركة:</span>
+                    <div class="share-buttons">
+                        <button class="share-btn share-whatsapp" onclick="shareProductViaWhatsApp('${product.name}', '${shareUrl}')">
+                            <i class="fab fa-whatsapp"></i> واتساب
+                        </button>
+                        <button class="share-btn share-copy" onclick="copyProductLink('${shareUrl}')">
+                            <i class="fas fa-copy"></i> نسخ الرابط
                         </button>
                     </div>
-                `;
+                </div>
                 
-                productsGrid.appendChild(productCard);
-            });
-        }
-
-        // Render product detail
-        function renderProductDetail(productId, category) {
-            // Find the product
-            const product = products[category].find(p => p.id === productId);
-            
-            if (!product) {
-                productDetailContainer.innerHTML = `
-                    <div style="text-align: center; padding: 40px;">
-                        <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: #f44336; margin-bottom: 20px;"></i>
-                        <h3>المنتج غير موجود</h3>
-                        <p>عذراً، المنتج الذي تبحث عنه غير متوفر حالياً.</p>
-                        <a href="#/category/${category}" class="btn btn-primary" onclick="goBackToCategory(); return false;">العودة إلى القسم</a>
-                    </div>
-                `;
-                return;
-            }
-            
-            // Create discount badge if there's an original price
-            const discountBadge = product.originalPrice ? 
-                `<div class="badge badge-primary">${Math.round(100 - (product.price / product.originalPrice * 100))}% خصم</div>` : '';
-            
-            // Create original price display if applicable
-            const originalPriceDisplay = product.originalPrice ? 
-                `<span class="detail-original-price">ج.م${product.originalPrice.toLocaleString('ar-EG')}</span>
-                <span class="detail-discount">${Math.round(100 - (product.price / product.originalPrice * 100))}% خصم</span>` : '';
-            
-            // Create specifications grid
-            let specificationsHTML = '';
-            for (const [key, value] of Object.entries(product.specifications)) {
-                specificationsHTML += `
-                    <div class="spec-item">
-                        <span class="spec-label">${key}</span>
-                        <span class="spec-value">${value}</span>
-                    </div>
-                `;
-            }
-            
-            // Create gifts list if available
-            let giftsHTML = '';
-            if (product.gifts && product.gifts.length > 0) {
-                giftsHTML = `
-                    <div class="product-gifts">
-                        <h3 class="gifts-title">
-                            <i class="fas fa-gift"></i>
-                            هدايا مجانية مع المنتج
-                        </h3>
-                        <ul class="gifts-list">
-                            ${product.gifts.map(gift => `
-                                <li>
-                                    <i class="fas fa-check-circle"></i>
-                                    ${gift}
-                                </li>
-                            `).join('')}
-                        </ul>
-                    </div>
-                `;
-            }
-            
-            // Get category name in Arabic
-            let categoryName = '';
-            switch(category) {
-                case 'offers': categoryName = '🔥 عرض خاص'; break;
-                case 'new-laptops': categoryName = '💎 لابات جديدة'; break;
-                case 'imported-laptops': categoryName = '⭐ لابات استيراد'; break;
-                case 'used-phones': categoryName = '📱 هواتف مستعملة'; break;
-                case 'parts-accessories': categoryName = '🔧 قطع غيار'; break;
-            }
-            
-            // Create thumbnails for all images
-            let thumbnailsHTML = '';
-            if (product.image1) {
-                thumbnailsHTML += `
-                    <div class="thumbnail active" onclick="changeMainImage(this, '${product.image1}')">
-                        <img src="${product.image1}" alt="${product.name}">
-                    </div>
-                `;
-            }
-            if (product.image2) {
-                thumbnailsHTML += `
-                    <div class="thumbnail" onclick="changeMainImage(this, '${product.image2}')">
-                        <img src="${product.image2}" alt="${product.name}">
-                    </div>
-                `;
-            }
-            if (product.image3) {
-                thumbnailsHTML += `
-                    <div class="thumbnail" onclick="changeMainImage(this, '${product.image3}')">
-                        <img src="${product.image3}" alt="${product.name}">
-                    </div>
-                `;
-            }
-            if (product.image4) {
-                thumbnailsHTML += `
-                    <div class="thumbnail" onclick="changeMainImage(this, '${product.image4}')">
-                        <img src="${product.image4}" alt="${product.name}">
-                    </div>
-                `;
-            }
-            
-            // Generate product share URL
-            const shareUrl = `${siteBaseUrl}#/product/${category}/${productId}`;
-            
-            // Populate product detail
-            productDetailContainer.innerHTML = `
-                <div class="product-detail-wrapper">
-                    <div class="product-detail-images">
-                        <div class="main-image-wrapper">
-                            <img src="${product.image1}" alt="${product.name}" class="main-image" id="main-product-image">
-                            <button class="image-zoom" onclick="zoomImage('${product.image1}')">
-                                <i class="fas fa-search-plus"></i>
-                            </button>
-                        </div>
-                        <div class="thumbnail-images">
-                            ${thumbnailsHTML}
-                        </div>
-                    </div>
-                    <div class="product-detail-info">
-                        <div class="product-detail-header">
-                            <span class="product-detail-category">${categoryName}</span>
-                            <h2 class="product-detail-title">${product.name}</h2>
-                            <div class="product-detail-meta">
-                                <span><i class="fas fa-box"></i> متوفر في المخزن</span>
-                                <span><i class="fas fa-shipping-fast"></i> شحن سريع خلال 24-48 ساعة</span>
-                                <span><i class="fas fa-shield-alt"></i> ضمان شامل</span>
-                            </div>
-                        </div>
-                        
-                        <div class="product-detail-price-container">
-                            <div class="product-detail-price">
-                                <span class="detail-current-price">ج.م${product.price.toLocaleString('ar-EG')}</span>
-                                ${originalPriceDisplay}
-                            </div>
-                            ${discountBadge}
-                        </div>
-                        
-                        <!-- Share Buttons -->
-                        <div class="share-buttons-container">
-                            <span class="share-label">مشاركة:</span>
-                            <div class="share-buttons">
-                                <button class="share-btn share-whatsapp" onclick="shareProductViaWhatsApp('${product.name}', '${shareUrl}')">
-                                    <i class="fab fa-whatsapp"></i> واتساب
-                                </button>
-                                <button class="share-btn share-copy" onclick="copyProductLink('${shareUrl}')">
-                                    <i class="fas fa-copy"></i> نسخ الرابط
-                                </button>
-                            </div>
-                        </div>
-                        
-                        ${giftsHTML}
-                        
-                        <p class="product-detail-description">${product.details}</p>
-                        
-                        <div class="product-detail-specs">
-                            <h3 class="specs-title">
-                                <i class="fas fa-cogs"></i>
-                                المواصفات الفنية
-                            </h3>
-                            <div class="specs-grid">
-                                ${specificationsHTML}
-                            </div>
-                        </div>
-                        
-                        <div class="product-detail-actions-container">
-                            <div class="quantity-selector-wrapper">
-                                <span class="quantity-label">الكمية:</span>
-                                <div class="quantity-selector">
-                                    <button class="quantity-btn" onclick="updateQuantity(this, -1)">-</button>
-                                    <input type="number" class="quantity-input" value="1" min="1" max="10">
-                                    <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
-                                </div>
-                            </div>
-                            
-                            <div class="action-buttons">
-                                <button class="btn btn-primary" onclick="addToCart(${product.id}, '${category}', parseInt(document.querySelector('.quantity-input').value))">
-                                    <i class="fas fa-shopping-cart"></i> أضف إلى السلة
-                                </button>
-                                <button class="btn btn-accent" onclick="buyNow(${product.id}, '${category}')">
-                                    <i class="fas fa-bolt"></i> شراء الآن
-                                </button>
-                                <button class="wishlist-btn" onclick="toggleWishlist(${product.id})">
-                                    <i class="far fa-heart"></i>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- WhatsApp Inquiry Section -->
-                        <div class="whatsapp-inquiry">
-                            <i class="fab fa-whatsapp"></i>
-                            <div class="whatsapp-inquiry-content">
-                                <h4>للاستفسار عن المنتج</h4>
-                                <p>لديك استفسار عن هذا المنتج؟ تواصل معنا على واتساب للرد على جميع أسئلتك.</p>
-                            </div>
-                            <button class="whatsapp-inquiry-btn" onclick="openWhatsApp('استفسار عن منتج', '${product.name}')">
-                                <i class="fab fa-whatsapp"></i> تواصل معنا
-                            </button>
-                        </div>
+                ${giftsHTML}
+                
+                <p class="product-detail-description">${product.details}</p>
+                
+                <div class="product-detail-specs">
+                    <h3 class="specs-title">
+                        <i class="fas fa-cogs"></i>
+                        المواصفات الفنية
+                    </h3>
+                    <div class="specs-grid">
+                        ${specificationsHTML}
                     </div>
                 </div>
-            `;
-        }
-
-        // Change main image in product detail
-        function changeMainImage(thumbnail, imageSrc) {
-            const mainImage = document.getElementById('main-product-image');
-            if (mainImage) {
-                mainImage.src = imageSrc;
-            }
-            
-            // Update active thumbnail
-            document.querySelectorAll('.thumbnail').forEach(thumb => {
-                thumb.classList.remove('active');
-            });
-            thumbnail.classList.add('active');
-        }
-
-        // Share product via WhatsApp
-        function shareProductViaWhatsApp(productName, productUrl) {
-            const message = `*${productName}*\n\n${productUrl}\n\n🔗 شارك هذا المنتج من Al Alamy Store - LAP ZONE`;
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappURL = `https://wa.me/?text=${encodedMessage}`;
-            window.open(whatsappURL, '_blank');
-        }
-
-        // Copy product link to clipboard
-        function copyProductLink(url) {
-            navigator.clipboard.writeText(url).then(() => {
-                showNotification('تم نسخ رابط المنتج إلى الحافظة', 'success');
-            }).catch(err => {
-                showNotification('تعذر نسخ الرابط', 'error');
-            });
-        }
-
-        // Zoom image
-        function zoomImage(imageSrc) {
-            const zoomWindow = window.open(imageSrc, '_blank', 'width=800,height=600');
-            if (zoomWindow) {
-                zoomWindow.document.write(`
-                    <html>
-                    <head>
-                        <title>تكبير الصورة</title>
-                        <style>
-                            body { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background: rgba(0,0,0,0.9); }
-                            img { max-width: 100%; max-height: 100%; }
-                        </style>
-                    </head>
-                    <body>
-                        <img src="${imageSrc}" alt="صورة مكبرة">
-                    </body>
-                    </html>
-                `);
-            }
-        }
-
-        // Show loading overlay
-        function showLoading() {
-            loadingOverlay.classList.add('active');
-        }
-
-        // Hide loading overlay
-        function hideLoading() {
-            loadingOverlay.classList.remove('active');
-        }
-
-        // Open WhatsApp with a message
-        function openWhatsApp(messageType = 'استفسار عام', productName = '') {
-            let message = '';
-            
-            if (messageType === 'استفسار عن منتج' && productName) {
-                message = `*استفسار عن منتج - Al Alamy Store - LAP ZONE*\n\nأرغب في الاستفسار عن المنتج التالي:\n${productName}\n\nمن فضلك تواصل معي للمزيد من المعلومات.`;
-            } else if (messageType === 'استفسار عام') {
-                message = `*استفسار عام - Al Alamy Store - LAP ZONE*\n\nأرغب في الاستفسار عن المنتجات والخدمات المتوفرة.\n\nمن فضلك تواصل معي.`;
-            }
-            
-            // Encode message for URL
-            const encodedMessage = encodeURIComponent(message);
-            
-            // Create WhatsApp URL
-            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-            
-            // Open WhatsApp in new tab
-            window.open(whatsappURL, '_blank');
-        }
-
-        // Subscribe to newsletter via WhatsApp
-        function subscribeToNewsletter() {
-            const phone = newsletterPhoneInput.value.trim();
-            
-            if (!phone || phone.length < 10) {
-                showNotification('يرجى إدخال رقم هاتف صحيح (10 أرقام على الأقل)', 'error');
-                return;
-            }
-            
-            // Create WhatsApp message
-            const message = `*طلب اشتراك في النشرة الإخبارية - Al Alamy Store - LAP ZONE*\n\nأرغب في الاشتراك في النشرة الإخبارية لتلقي العروض والتخفيضات.\n\nرقم الهاتف: ${phone}\n\nشكراً لكم!`;
-            
-            // Encode message for URL
-            const encodedMessage = encodeURIComponent(message);
-            
-            // Create WhatsApp URL
-            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-            
-            // Open WhatsApp in new tab
-            window.open(whatsappURL, '_blank');
-            
-            // Show success notification
-            showNotification('تم تحويلك إلى واتساب لإرسال طلب الاشتراك', 'success');
-            
-            // Clear input
-            newsletterPhoneInput.value = '';
-        }
-
-        // Show notification
-        function showNotification(message, type = 'success') {
-            const notification = document.createElement('div');
-            notification.className = 'notification';
-            notification.innerHTML = `
-                <div class="notification-content">
-                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
-                    <span>${message}</span>
-                </div>
-            `;
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.classList.add('show');
-            }, 10);
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        }
-
-        // Update quantity in product detail
-        function updateQuantity(btn, change) {
-            const quantityInput = btn.parentElement.querySelector('.quantity-input');
-            let newQuantity = parseInt(quantityInput.value) + change;
-            
-            if (newQuantity < 1) newQuantity = 1;
-            if (newQuantity > 10) newQuantity = 10;
-            quantityInput.value = newQuantity;
-        }
-
-        // Toggle wishlist
-        function toggleWishlist(productId) {
-            const wishlistBtn = document.querySelector('.wishlist-btn i');
-            if (wishlistBtn.classList.contains('far')) {
-                wishlistBtn.classList.remove('far');
-                wishlistBtn.classList.add('fas');
-                wishlistBtn.style.color = '#f44336';
-                showNotification('تمت إضافة المنتج إلى قائمة المفضلة');
-            } else {
-                wishlistBtn.classList.remove('fas');
-                wishlistBtn.classList.add('far');
-                wishlistBtn.style.color = '';
-                showNotification('تمت إزالة المنتج من قائمة المفضلة');
-            }
-        }
-
-        // Add to cart
-        function addToCart(productId, category, quantity = 1) {
-            const product = products[category].find(p => p.id === productId);
-            const existingItem = cart.find(item => item.id === product.id && item.category === category);
-            
-            if (existingItem) {
-                existingItem.quantity += quantity;
-            } else {
-                cart.push({
-                    ...product,
-                    category,
-                    quantity: quantity
-                });
-            }
-            
-            updateCartCount();
-            showNotification(`تمت إضافة ${product.name} إلى سلة التسوق الخاصة بك!`);
-        }
-
-        // Update cart count and display
-        function updateCartCount() {
-            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-            floatingCartCount.textContent = totalItems;
-            
-            // Update cart items list
-            cartItems.innerHTML = '';
-            
-            if (cart.length === 0) {
-                cartEmpty.style.display = 'flex';
-                cartFooter.style.display = 'none';
-                return;
-            }
-            
-            cartEmpty.style.display = 'none';
-            cartFooter.style.display = 'block';
-            
-            let subtotal = 0;
-            
-            cart.forEach(item => {
-                const cartItem = document.createElement('div');
-                cartItem.className = 'cart-item';
                 
-                const itemTotal = item.price * item.quantity;
-                subtotal += itemTotal;
-                
-                cartItem.innerHTML = `
-                    <div class="cart-item-img">
-                        <img src="${item.image1}" alt="${item.name}">
-                    </div>
-                    <div class="cart-item-details">
-                        <h4 class="cart-item-title">${item.name}</h4>
-                        <p class="cart-item-category">${getCategoryName(item.category)}</p>
-                        <div class="cart-item-price">ج.م${itemTotal.toLocaleString('ar-EG')}</div>
-                        <div class="cart-item-actions">
-                            <div class="cart-item-quantity">
-                                <button class="quantity-change" onclick="updateCartItem(${item.id}, '${item.category}', ${item.quantity - 1})">-</button>
-                                <span class="quantity-display">${item.quantity}</span>
-                                <button class="quantity-change" onclick="updateCartItem(${item.id}, '${item.category}', ${item.quantity + 1})">+</button>
-                            </div>
-                            <button class="cart-item-remove" onclick="removeFromCart(${item.id}, '${item.category}')">
-                                <i class="fas fa-trash"></i> إزالة
-                            </button>
+                <div class="product-detail-actions-container">
+                    <div class="quantity-selector-wrapper">
+                        <span class="quantity-label">الكمية:</span>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="updateQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" max="10">
+                            <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
                         </div>
                     </div>
-                `;
-                
-                cartItems.appendChild(cartItem);
-            });
-            
-            // Update cart totals
-            const shipping = 0;
-            const total = subtotal;
-            
-            cartSubtotal.textContent = subtotal.toLocaleString('ar-EG');
-            
-            // Update summary in checkout
-            summaryItems.innerHTML = '';
-            
-            cart.forEach(item => {
-                const summaryItem = document.createElement('div');
-                summaryItem.className = 'summary-item';
-                
-                summaryItem.innerHTML = `
-                    <div class="summary-item-img">
-                        <img src="${item.image1}" alt="${item.name}">
+                    
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" onclick="addToCart(${product.id}, '${category}', parseInt(document.querySelector('.quantity-input').value))">
+                            <i class="fas fa-shopping-cart"></i> أضف إلى السلة
+                        </button>
+                        <button class="btn btn-accent" onclick="buyNow(${product.id}, '${category}')">
+                            <i class="fas fa-bolt"></i> شراء الآن
+                        </button>
+                        <button class="wishlist-btn" onclick="toggleWishlist(${product.id})">
+                            <i class="far fa-heart"></i>
+                        </button>
                     </div>
-                    <div class="summary-item-details">
-                        <h4>${item.name}</h4>
-                        <div class="summary-item-price">ج.م${item.price.toLocaleString('ar-EG')}</div>
-                        <div class="summary-item-quantity">الكمية: ${item.quantity}</div>
+                </div>
+                
+                <!-- WhatsApp Inquiry Section -->
+                <div class="whatsapp-inquiry">
+                    <i class="fab fa-whatsapp"></i>
+                    <div class="whatsapp-inquiry-content">
+                        <h4>للاستفسار عن المنتج</h4>
+                        <p>لديك استفسار عن هذا المنتج؟ تواصل معنا على واتساب للرد على جميع أسئلتك.</p>
                     </div>
-                `;
-                
-                summaryItems.appendChild(summaryItem);
-            });
-            
-            summarySubtotal.textContent = subtotal.toLocaleString('ar-EG');
-            summaryTotal.textContent = subtotal.toLocaleString('ar-EG');
-            orderTotal.textContent = subtotal.toLocaleString('ar-EG');
-        }
+                    <button class="whatsapp-inquiry-btn" onclick="openWhatsApp('استفسار عن منتج', '${product.name}')">
+                        <i class="fab fa-whatsapp"></i> تواصل معنا
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+}
 
-        // Get category name in Arabic
-        function getCategoryName(category) {
-            switch(category) {
-                case 'new-laptops': return 'لابات جديدة';
-                case 'imported-laptops': return 'لابات استيراد';
-                case 'offers': return 'العروض';
-                case 'used-phones': return 'هواتف مستعملة';
-                case 'parts-accessories': return 'قطع غيار';
-                default: return category;
-            }
-        }
+// Change main image in product detail
+function changeMainImage(thumbnail, imageSrc) {
+    const mainImage = document.getElementById('main-product-image');
+    if (mainImage) {
+        mainImage.src = imageSrc;
+    }
+    
+    // Update active thumbnail
+    document.querySelectorAll('.thumbnail').forEach(thumb => {
+        thumb.classList.remove('active');
+    });
+    thumbnail.classList.add('active');
+}
 
-        // Update cart item quantity
-        function updateCartItem(productId, category, newQuantity) {
-            if (newQuantity < 1) {
-                removeFromCart(productId, category);
-                return;
-            }
-            
-            const item = cart.find(item => item.id === productId && item.category === category);
-            if (item) {
-                item.quantity = newQuantity;
-                updateCartCount();
-            }
-        }
+// Share product via WhatsApp
+function shareProductViaWhatsApp(productName, productUrl) {
+    const message = `*${productName}*\n\n${productUrl}\n\n🔗 شارك هذا المنتج من Al Alamy Store - LAP ZONE`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/?text=${encodedMessage}`;
+    window.open(whatsappURL, '_blank');
+}
 
-        // Remove from cart
-        function removeFromCart(productId, category) {
-            cart = cart.filter(item => !(item.id === productId && item.category === category));
-            updateCartCount();
-        }
+// Copy product link to clipboard
+function copyProductLink(url) {
+    navigator.clipboard.writeText(url).then(() => {
+        showNotification('تم نسخ رابط المنتج إلى الحافظة', 'success');
+    }).catch(err => {
+        showNotification('تعذر نسخ الرابط', 'error');
+    });
+}
 
-        // Toggle cart visibility
-        function toggleCart() {
-            shoppingCart.classList.toggle('active');
-        }
+// Zoom image
+function zoomImage(imageSrc) {
+    const zoomWindow = window.open(imageSrc, '_blank', 'width=800,height=600');
+    if (zoomWindow) {
+        zoomWindow.document.write(`
+            <html>
+            <head>
+                <title>تكبير الصورة</title>
+                <style>
+                    body { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background: rgba(0,0,0,0.9); }
+                    img { max-width: 100%; max-height: 100%; }
+                </style>
+            </head>
+            <body>
+                <img src="${imageSrc}" alt="صورة مكبرة">
+            </body>
+            </html>
+        `);
+    }
+}
 
-        // Buy now
-        function buyNow(productId, category) {
-            // Clear cart and add just this product
-            cart = [{
-                ...products[category].find(p => p.id === productId),
-                category,
-                quantity: 1
-            }];
-            
-            updateCartCount();
-            checkoutFromCart();
-        }
+// Show loading overlay
+function showLoading() {
+    loadingOverlay.classList.add('active');
+}
 
-        // Checkout from cart
-        function checkoutFromCart() {
-            if (cart.length === 0) {
-                showNotification('سلة التسوق الخاصة بك فارغة. يرجى إضافة بعض المنتجات أولاً.', 'error');
-                return;
-            }
-            
-            // Hide all pages and show checkout
-            homePage.style.display = 'none';
-            categoryPage.style.display = 'none';
-            productDetailPage.style.display = 'none';
-            checkoutSection.style.display = 'block';
-            orderConfirmationPopup.classList.remove('active');
-            policyPage.classList.remove('active');
-            newsletterSection.style.display = 'none';
-            footer.style.display = 'none';
-            breadcrumb.style.display = 'none';
-            
-            // Close cart if open
-            shoppingCart.classList.remove('active');
-            
-            // Scroll to checkout
-            setTimeout(() => {
-                window.scrollTo({
-                    top: checkoutSection.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }, 100);
-        }
+// Hide loading overlay
+function hideLoading() {
+    loadingOverlay.classList.remove('active');
+}
 
-        // Submit order and send to WhatsApp
-        function submitOrder() {
-            const firstName = document.getElementById('first-name').value.trim();
-            const lastName = document.getElementById('last-name').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const address = document.getElementById('address').value.trim();
-            const city = document.getElementById('city').value.trim();
-            const area = document.getElementById('area').value.trim();
-            const notes = document.getElementById('notes').value.trim();
-            
-            if (!firstName || !lastName || !phone || !address || !city) {
-                showNotification('يرجى ملء جميع الحقول المطلوبة', 'error');
-                return;
-            }
-            
-            if (phone.length < 10) {
-                showNotification('يرجى إدخال رقم هاتف صحيح (10 أرقام على الأقل)', 'error');
-                return;
-            }
-            
-            showLoading();
+// Open WhatsApp with a message
+function openWhatsApp(messageType = 'استفسار عام', productName = '') {
+    let message = '';
+    
+    if (messageType === 'استفسار عن منتج' && productName) {
+        message = `*استفسار عن منتج - Al Alamy Store - LAP ZONE*\n\nأرغب في الاستفسار عن المنتج التالي:\n${productName}\n\nمن فضلك تواصل معي للمزيد من المعلومات.`;
+    } else if (messageType === 'استفسار عام') {
+        message = `*استفسار عام - Al Alamy Store - LAP ZONE*\n\nأرغب في الاستفسار عن المنتجات والخدمات المتوفرة.\n\nمن فضلك تواصل معي.`;
+    }
+    
+    // Encode message for URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Create WhatsApp URL
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    // Open WhatsApp in new tab
+    window.open(whatsappURL, '_blank');
+}
 
-            
-            // Calculate order total
-            const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-            const shipping = 0;
-            const total = subtotal + shipping;
-            
-            // Generate random order number
-            const orderNum = 'LAP-' + Math.floor(100000 + Math.random() * 900000);
-            
-            // Save order details
-            currentOrder = {
-                orderNumber: orderNum,
-                customerName: `${firstName} ${lastName}`,
-                customerPhone: phone,
-                customerAddress: `${address}, ${area ? area + ', ' : ''}${city}`,
-                notes: notes,
-                items: cart.map(item => ({
-                    name: item.name,
-                    quantity: item.quantity,
-                    price: item.price,
-                    total: item.price * item.quantity
-                })),
-                subtotal: subtotal,
-                shipping: shipping,
-                total: total,
-                date: new Date().toLocaleDateString('ar-EG')
-            };
-            
-            // Hide checkout section
-            checkoutSection.style.display = 'none';
-            
-            // Display order confirmation popup
-            orderNumber.textContent = orderNum;
-            orderCustomer.textContent = `${firstName} ${lastName}`;
-            orderPhone.textContent = phone;
-            orderAddress.textContent = `${address}, ${area ? area + ', ' : ''}${city}`;
-            orderTotal.textContent = total.toLocaleString('ar-EG');
-            
-            // Clear cart
-            cart = [];
-            updateCartCount();
-            
-            // Reset form
-            document.getElementById('order-form').reset();
-            
-            setTimeout(() => {
-                hideLoading();
-                orderConfirmationPopup.classList.add('active');
-                
-                // Automatically send to WhatsApp after 3 seconds
-                setTimeout(sendToWhatsApp, 3000);
-            }, 500);
-        }
+// Subscribe to newsletter via WhatsApp
+function subscribeToNewsletter() {
+    const phone = newsletterPhoneInput.value.trim();
+    
+    if (!phone || phone.length < 10) {
+        showNotification('يرجى إدخال رقم هاتف صحيح (10 أرقام على الأقل)', 'error');
+        return;
+    }
+    
+    // Create WhatsApp message
+    const message = `*طلب اشتراك في النشرة الإخبارية - Al Alamy Store - LAP ZONE*\n\nأرغب في الاشتراك في النشرة الإخبارية لتلقي العروض والتخفيضات.\n\nرقم الهاتف: ${phone}\n\nشكراً لكم!`;
+    
+    // Encode message for URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Create WhatsApp URL
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    // Open WhatsApp in new tab
+    window.open(whatsappURL, '_blank');
+    
+    // Show success notification
+    showNotification('تم تحويلك إلى واتساب لإرسال طلب الاشتراك', 'success');
+    
+    // Clear input
+    newsletterPhoneInput.value = '';
+}
 
-        // Close order confirmation popup
-        function closeOrderConfirmation() {
-            orderConfirmationPopup.classList.remove('active');
-            navigateTo('/');
-        }
+// Show notification
+function showNotification(message, type = 'success') {
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.innerHTML = `
+        <div class="notification-content">
+            <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+            <span>${message}</span>
+        </div>
+    `;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 10);
+    
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 300);
+    }, 3000);
+}
 
-        // Send order to WhatsApp
-        function sendToWhatsApp() {
-            if (!currentOrder) return;
-            
-            // Create order summary message
-            let orderMessage = `*طلب جديد - Al Alamy Store - LAP ZONE*\n\n`;
-            orderMessage += `*رقم الطلب:* ${currentOrder.orderNumber}\n`;
-            orderMessage += `*التاريخ:* ${currentOrder.date}\n`;
-            orderMessage += `*اسم العميل:* ${currentOrder.customerName}\n`;
-            orderMessage += `*رقم الهاتف:* ${currentOrder.customerPhone}\n`;
-            orderMessage += `*العنوان:* ${currentOrder.customerAddress}\n`;
-            
-            if (currentOrder.notes) {
-                orderMessage += `*ملاحظات:* ${currentOrder.notes}\n`;
-            }
-            
-            orderMessage += `\n*تفاصيل الطلب:*\n`;
-            currentOrder.items.forEach((item, index) => {
-                orderMessage += `${index + 1}. ${item.name} × ${item.quantity} = ج.م${item.total.toLocaleString('ar-EG')}\n`;
-            });
-            
-            orderMessage += `\n*المجموع الفرعي:* ج.م${currentOrder.subtotal.toLocaleString('ar-EG')}\n`;
-            orderMessage += `*الشحن:* سيتم تحديد تكلفة الشحن عند التأكيد\n`;
-            orderMessage += `*المجموع الكلي:* ج.م${currentOrder.total.toLocaleString('ar-EG')}\n`;
-            
-            // Encode message for URL
-            const encodedMessage = encodeURIComponent(orderMessage);
-            
-            // Create WhatsApp URL
-            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-            
-            // Open WhatsApp in new tab
-            window.open(whatsappURL, '_blank');
-        }
+// Update quantity in product detail
+function updateQuantity(btn, change) {
+    const quantityInput = btn.parentElement.querySelector('.quantity-input');
+    let newQuantity = parseInt(quantityInput.value) + change;
+    
+    if (newQuantity < 1) newQuantity = 1;
+    if (newQuantity > 10) newQuantity = 10;
+    quantityInput.value = newQuantity;
+}
 
-        // Open policy in new window (popup)
-        function openPolicyInNewWindow(policyType) {
-            const policy = policies[policyType];
-            policyTitle.textContent = policy.title;
-            policyContent.innerHTML = policy.content;
-            policyPage.classList.add('active');
-        }
+// Toggle wishlist
+function toggleWishlist(productId) {
+    const wishlistBtn = document.querySelector('.wishlist-btn i');
+    if (wishlistBtn.classList.contains('far')) {
+        wishlistBtn.classList.remove('far');
+        wishlistBtn.classList.add('fas');
+        wishlistBtn.style.color = '#f44336';
+        showNotification('تمت إضافة المنتج إلى قائمة المفضلة');
+    } else {
+        wishlistBtn.classList.remove('fas');
+        wishlistBtn.classList.add('far');
+        wishlistBtn.style.color = '';
+        showNotification('تمت إزالة المنتج من قائمة المفضلة');
+    }
+}
 
-        // Close policy popup
-        function closePolicy() {
-            policyPage.classList.remove('active');
-        }
+// Add to cart
+function addToCart(productId, category, quantity = 1) {
+    const product = products[category].find(p => p.id === productId);
+    const existingItem = cart.find(item => item.id === product.id && item.category === category);
+    
+    if (existingItem) {
+        existingItem.quantity += quantity;
+    } else {
+        cart.push({
+            ...product,
+            category,
+            quantity: quantity
+        });
+    }
+    
+    updateCartCount();
+    showNotification(`تمت إضافة ${product.name} إلى سلة التسوق الخاصة بك!`);
+}
 
-        // Continue shopping
-        function continueShopping() {
-            closeOrderConfirmation();
-        }
+// Update cart count and display
+function updateCartCount() {
+    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+    floatingCartCount.textContent = totalItems;
+    
+    // Update cart items list
+    cartItems.innerHTML = '';
+    
+    if (cart.length === 0) {
+        cartEmpty.style.display = 'flex';
+        cartFooter.style.display = 'none';
+        return;
+    }
+    
+    cartEmpty.style.display = 'none';
+    cartFooter.style.display = 'block';
+    
+    let subtotal = 0;
+    
+    cart.forEach(item => {
+        const cartItem = document.createElement('div');
+        cartItem.className = 'cart-item';
+        
+        const itemTotal = item.price * item.quantity;
+        subtotal += itemTotal;
+        
+        cartItem.innerHTML = `
+            <div class="cart-item-img">
+                <img src="${item.image1}" alt="${item.name}">
+            </div>
+            <div class="cart-item-details">
+                <h4 class="cart-item-title">${item.name}</h4>
+                <p class="cart-item-category">${getCategoryName(item.category)}</p>
+                <div class="cart-item-price">ج.م${itemTotal.toLocaleString('ar-EG')}</div>
+                <div class="cart-item-actions">
+                    <div class="cart-item-quantity">
+                        <button class="quantity-change" onclick="updateCartItem(${item.id}, '${item.category}', ${item.quantity - 1})">-</button>
+                        <span class="quantity-display">${item.quantity}</span>
+                        <button class="quantity-change" onclick="updateCartItem(${item.id}, '${item.category}', ${item.quantity + 1})">+</button>
+                    </div>
+                    <button class="cart-item-remove" onclick="removeFromCart(${item.id}, '${item.category}')">
+                        <i class="fas fa-trash"></i> إزالة
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        cartItems.appendChild(cartItem);
+    });
+    
+    // Update cart totals
+    const shipping = 0;
+    const total = subtotal;
+    
+    cartSubtotal.textContent = subtotal.toLocaleString('ar-EG');
+    
+    // Update summary in checkout
+    summaryItems.innerHTML = '';
+    
+    cart.forEach(item => {
+        const summaryItem = document.createElement('div');
+        summaryItem.className = 'summary-item';
+        
+        summaryItem.innerHTML = `
+            <div class="summary-item-img">
+                <img src="${item.image1}" alt="${item.name}">
+            </div>
+            <div class="summary-item-details">
+                <h4>${item.name}</h4>
+                <div class="summary-item-price">ج.م${item.price.toLocaleString('ar-EG')}</div>
+                <div class="summary-item-quantity">الكمية: ${item.quantity}</div>
+            </div>
+        `;
+        
+        summaryItems.appendChild(summaryItem);
+    });
+    
+    summarySubtotal.textContent = subtotal.toLocaleString('ar-EG');
+    summaryTotal.textContent = subtotal.toLocaleString('ar-EG');
+    orderTotal.textContent = subtotal.toLocaleString('ar-EG');
+}
+
+// Get category name in Arabic
+function getCategoryName(category) {
+    switch(category) {
+        case 'new-laptops': return 'لابات جديدة';
+        case 'imported-laptops': return 'لابات استيراد';
+        case 'offers': return 'العروض';
+        case 'used-phones': return 'هواتف مستعملة';
+        case 'parts-accessories': return 'قطع غيار';
+        default: return category;
+    }
+}
+
+// Update cart item quantity
+function updateCartItem(productId, category, newQuantity) {
+    if (newQuantity < 1) {
+        removeFromCart(productId, category);
+        return;
+    }
+    
+    const item = cart.find(item => item.id === productId && item.category === category);
+    if (item) {
+        item.quantity = newQuantity;
+        updateCartCount();
+    }
+}
+
+// Remove from cart
+function removeFromCart(productId, category) {
+    cart = cart.filter(item => !(item.id === productId && item.category === category));
+    updateCartCount();
+}
+
+// Toggle cart visibility
+function toggleCart() {
+    shoppingCart.classList.toggle('active');
+}
+
+// Buy now
+function buyNow(productId, category) {
+    // Clear cart and add just this product
+    cart = [{
+        ...products[category].find(p => p.id === productId),
+        category,
+        quantity: 1
+    }];
+    
+    updateCartCount();
+    checkoutFromCart();
+}
+
+// Checkout from cart
+function checkoutFromCart() {
+    if (cart.length === 0) {
+        showNotification('سلة التسوق الخاصة بك فارغة. يرجى إضافة بعض المنتجات أولاً.', 'error');
+        return;
+    }
+    
+    // Hide all pages and show checkout
+    homePage.style.display = 'none';
+    categoryPage.style.display = 'none';
+    productDetailPage.style.display = 'none';
+    checkoutSection.style.display = 'block';
+    orderConfirmationPopup.classList.remove('active');
+    policyPage.classList.remove('active');
+    newsletterSection.style.display = 'none';
+    footer.style.display = 'none';
+    breadcrumb.style.display = 'none';
+    
+    // Close cart if open
+    shoppingCart.classList.remove('active');
+    
+    // Scroll to checkout
+    setTimeout(() => {
+        window.scrollTo({
+            top: checkoutSection.offsetTop - 80,
+            behavior: 'smooth'
+        });
+    }, 100);
+}
+
+// Submit order and send to WhatsApp - UPDATED FUNCTION
+function submitOrder() {
+    // ✅ افتح نافذة واتساب فور الضغط (عشان المتصفح ما يمنعهاش)
+    const waWindow = window.open('', '_blank');
+
+    const firstName = document.getElementById('first-name').value.trim();
+    const lastName = document.getElementById('last-name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const address = document.getElementById('address').value.trim();
+    const city = document.getElementById('city').value.trim();
+    const area = document.getElementById('area').value.trim();
+    const notes = document.getElementById('notes').value.trim();
+    
+    if (!firstName || !lastName || !phone || !address || !city) {
+        showNotification('يرجى ملء جميع الحقول المطلوبة', 'error');
+        if (waWindow) waWindow.close();
+        return;
+    }
+    
+    if (phone.length < 10) {
+        showNotification('يرجى إدخال رقم هاتف صحيح (10 أرقام على الأقل)', 'error');
+        if (waWindow) waWindow.close();
+        return;
+    }
+    
+    showLoading();
+    
+    // Calculate order total
+    const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+    const shipping = 0;
+    const total = subtotal + shipping;
+    
+    // Generate random order number
+    const orderNum = 'LAP-' + Math.floor(100000 + Math.random() * 900000);
+    
+    // Save order details
+    currentOrder = {
+        orderNumber: orderNum,
+        customerName: `${firstName} ${lastName}`,
+        customerPhone: phone,
+        customerAddress: `${address}, ${area ? area + ', ' : ''}${city}`,
+        notes: notes,
+        items: cart.map(item => ({
+            name: item.name,
+            quantity: item.quantity,
+            price: item.price,
+            total: item.price * item.quantity
+        })),
+        subtotal: subtotal,
+        shipping: shipping,
+        total: total,
+        date: new Date().toLocaleDateString('ar-EG')
+    };
+    
+    // Hide checkout section
+    checkoutSection.style.display = 'none';
+    
+    // Display order confirmation popup
+    orderNumber.textContent = orderNum;
+    orderCustomer.textContent = `${firstName} ${lastName}`;
+    orderPhone.textContent = phone;
+    orderAddress.textContent = `${address}, ${area ? area + ', ' : ''}${city}`;
+    orderTotal.textContent = total.toLocaleString('ar-EG');
+    
+    // Clear cart
+    cart = [];
+    updateCartCount();
+    
+    // Reset form
+    document.getElementById('order-form').reset();
+    
+    setTimeout(() => {
+        hideLoading();
+        orderConfirmationPopup.classList.add('active');
+        
+        // ✅ إرسال تلقائي بعد إظهار رسالة التأكيد (بدون تدخل العميل)
+        setTimeout(() => sendToWhatsApp(waWindow), 600);
+    }, 500);
+}
+
+// Close order confirmation popup
+function closeOrderConfirmation() {
+    orderConfirmationPopup.classList.remove('active');
+    navigateTo('/');
+}
+
+// Send order to WhatsApp - UPDATED FUNCTION
+function sendToWhatsApp(waWindow) {
+    if (!currentOrder) return;
+    
+    // Create order summary message
+    let orderMessage = `*طلب جديد - Al Alamy Store - LAP ZONE*\n\n`;
+    orderMessage += `*رقم الطلب:* ${currentOrder.orderNumber}\n`;
+    orderMessage += `*التاريخ:* ${currentOrder.date}\n`;
+    orderMessage += `*اسم العميل:* ${currentOrder.customerName}\n`;
+    orderMessage += `*رقم الهاتف:* ${currentOrder.customerPhone}\n`;
+    orderMessage += `*العنوان:* ${currentOrder.customerAddress}\n`;
+    
+    if (currentOrder.notes) {
+        orderMessage += `*ملاحظات:* ${currentOrder.notes}\n`;
+    }
+    
+    orderMessage += `\n*تفاصيل الطلب:*\n`;
+    currentOrder.items.forEach((item, index) => {
+        orderMessage += `${index + 1}. ${item.name} × ${item.quantity} = ج.م${item.total.toLocaleString('ar-EG')}\n`;
+    });
+    
+    orderMessage += `\n*المجموع الفرعي:* ج.م${currentOrder.subtotal.toLocaleString('ar-EG')}\n`;
+    orderMessage += `*الشحن:* سيتم تحديد تكلفة الشحن عند التأكيد\n`;
+    orderMessage += `*المجموع الكلي:* ج.م${currentOrder.total.toLocaleString('ar-EG')}\n`;
+    
+    // Encode message for URL
+    const encodedMessage = encodeURIComponent(orderMessage);
+    
+    // Create WhatsApp URL
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    // ✅ الأفضل: توجيه نافذة واتساب المفتوحة مسبقًا (منع الـ Popup Block)
+    if (waWindow && !waWindow.closed) {
+        waWindow.location.href = whatsappURL;
+        waWindow.focus();
+    } else {
+        // احتياطي لو النافذة اتقفلت
+        window.location.href = whatsappURL;
+    }
+}
+
+// Open policy in new window (popup)
+function openPolicyInNewWindow(policyType) {
+    const policy = policies[policyType];
+    policyTitle.textContent = policy.title;
+    policyContent.innerHTML = policy.content;
+    policyPage.classList.add('active');
+}
+
+// Close policy popup
+function closePolicy() {
+    policyPage.classList.remove('active');
+}
+
+// Continue shopping
+function continueShopping() {
+    closeOrderConfirmation();
+}
 </script>
 </body>
 </html>
-
-

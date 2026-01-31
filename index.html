@@ -3675,49 +3675,6 @@ img {
         transform: translateY(0);
     }
 }
-/* تحسين وضوح جميع الصور في الموقع */
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-/* تحسين وضوح صور المنتجات */
-.product-images img {
-    image-rendering: auto;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-}
-
-/* تحسين وضوح صور الفئات */
-.category-img img {
-    filter: brightness(1.05) contrast(1.05);
-}
-
-/* تحسين صورة الهيدر الرئيسية */
-.hero-content {
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-}
-
-/* تحسين صورة البطاقات */
-.card-image {
-    position: relative;
-    overflow: hidden;
-}
-
-.card-image img {
-    transition: transform 0.5s ease;
-    will-change: transform;
-}
-
-.card-image:hover img {
-    transform: scale(1.05);
-}
-
 /* ===== النهاية ===== */
     </style>
 </head>

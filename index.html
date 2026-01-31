@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -3488,6 +3488,157 @@ img {
 .indicator-dot.active {
   background: #fff;
   transform: scale(1.25);
+}
+/* ==== تحسين قسم النشرة الإخبارية ==== */
+.newsletter {
+    background: linear-gradient(135deg, var(--primary-700) 0%, var(--primary-900) 100%);
+    padding: 4rem 0;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.newsletter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://res.cloudinary.com/dqfnkwp8d/image/upload/w_800,h_400,c_fill,o_20/v1767044455/LAPZONE_co7np7.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    z-index: 0;
+}
+
+.newsletter-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.newsletter-image {
+    margin-bottom: 2rem;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-2xl);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.newsletter-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: var(--transition-normal);
+    filter: brightness(1.1) contrast(1.1);
+    image-rendering: crisp-edges;
+}
+
+.newsletter-image:hover img {
+    transform: scale(1.05);
+}
+
+.newsletter-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.newsletter-description {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    color: white;
+    line-height: 1.6;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.newsletter-form .form-group {
+    display: flex;
+    gap: 0.5rem;
+    max-width: 500px;
+    margin: 0 auto 2rem;
+}
+
+@media (max-width: 576px) {
+    .newsletter-form .form-group {
+        flex-direction: column;
+    }
+}
+
+.newsletter-input {
+    flex: 1;
+    padding: 0.875rem 1rem;
+    border: 2px solid transparent;
+    border-radius: var(--radius-lg);
+    font-size: 1rem;
+    color: var(--neutral-900);
+    background: white;
+    font-family: 'Tajawal', sans-serif;
+    transition: var(--transition-normal);
+}
+
+.newsletter-input:focus {
+    outline: none;
+    border-color: var(--secondary-500);
+    box-shadow: 0 0 0 4px rgba(255, 193, 7, 0.2);
+}
+
+.newsletter-btn {
+    padding: 0.875rem 2rem;
+    background: var(--gradient-secondary);
+    color: var(--neutral-900);
+    border: none;
+    border-radius: var(--radius-lg);
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.newsletter-btn:hover {
+    background: var(--secondary-800);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.newsletter-benefits {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-full);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.benefit-item i {
+    color: var(--secondary-300);
+    font-size: 1.1rem;
+}
+
+.benefit-item span {
+    font-size: 0.9rem;
+    opacity: 0.9;
 }
 /* ===== النهاية ===== */
     </style>

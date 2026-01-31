@@ -3675,6 +3675,111 @@ img {
         transform: translateY(0);
     }
 }
+/* ==== إصلاح صور المنتجات للهاتف ==== */
+.product-images {
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.product-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-slow);
+}
+
+/* عرض الصورة الأولى فقط بشكل افتراضي */
+.product-images img:first-child {
+    position: relative;
+    opacity: 1;
+    display: block;
+}
+
+/* إخفاء الصور الأخرى بشكل افتراضي */
+.product-images img:not(:first-child) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    display: none; /* إخفاء على الهاتف أولاً */
+}
+
+/* تأثير عند مرور الماوس على سطح المكتب */
+@media (hover: hover) and (pointer: fine) {
+    .product-images img:not(:first-child) {
+        display: block; /* إظهار الصور على الكمبيوتر */
+    }
+    
+    .product-card:hover .product-images img:first-child {
+        opacity: 0;
+        transform: scale(1.05);
+    }
+    
+    .product-card:hover .product-images img:nth-child(2) {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    
+    /* يمكنك إضافة المزيد للصور الأخرى إذا أردت */
+}
+
+/* ==== تصحيح العرض على الهاتف ==== */
+@media (max-width: 768px) {
+    .product-images {
+        height: 200px; /* تقليل الارتفاع على الهاتف */
+    }
+    
+    .product-images img:not(:first-child) {
+        display: none !important; /* التأكد من إخفاء الصور الأخرى */
+    }
+    
+    /* عرض الصورة الأولى فقط على الهاتف */
+    .product-images img:first-child {
+        opacity: 1 !important;
+        transform: none !important;
+        position: relative !important;
+    }
+    
+    /* إزالة أي تأثيرات على الهاتف */
+    .product-card:hover .product-images img {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+/* ==== بديل أبسط وأكثر أماناً ==== */
+/* استخدم هذا إذا كان الكود السابق لا يعمل */
+
+.product-images-simple {
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.product-images-simple img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* تأثير تكبسير بسيط عند اللمس */
+@media (max-width: 768px) {
+    .product-card:active .product-images-simple img {
+        transform: scale(1.03);
+        transition: transform 0.2s ease;
+    }
+}
+
+/* تأثير عند مرور الماوس على سطح المكتب */
+@media (min-width: 769px) {
+    .product-card:hover .product-images-simple img {
+        transform: scale(1.05);
+    }
+}
 /* ===== النهاية ===== */
     </style>
 </head>

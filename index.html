@@ -3780,6 +3780,204 @@ img {
         transform: scale(1.05);
     }
 }
+/* ===== تأثير تغيير الصور عند الضغط على المنتج في الهاتف ===== */
+@media (max-width: 768px) {
+    /* تصميم حاوية الصور الأساسي */
+    .product-images {
+        height: 220px;
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent; /* إزالة اللون الأزرق عند الضغط */
+        touch-action: manipulation; /* تحسين تجربة اللمس */
+    }
+    
+    /* جميع الصور في الحاوية */
+    .product-images img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    
+    /* الصورة الأولى: تظهر بشكل افتراضي */
+    .product-images img:first-child {
+        opacity: 1;
+        z-index: 1;
+        transform: scale(1);
+    }
+    
+    /* الصورة الثانية: مخفية افتراضياً */
+    .product-images img:nth-child(2) {
+        opacity: 0;
+        z-index: 0;
+        transform: scale(1);
+    }
+    
+    /* الصورة الثالثة: مخفية افتراضياً */
+    .product-images img:nth-child(3) {
+        opacity: 0;
+        z-index: 0;
+        transform: scale(1);
+    }
+    
+    /* الصورة الرابعة: مخفية افتراضياً */
+    .product-images img:nth-child(4) {
+        opacity: 0;
+        z-index: 0;
+        transform: scale(1);
+    }
+    
+    /* حالة الضغط - الطبقة الشفافة */
+    .product-card:active .product-images {
+        background-color: rgba(0, 0, 0, 0.02);
+    }
+    
+    /* عند الضغط: إخفاء الصورة الأولى وإظهار الثانية */
+    .product-card:active .product-images img:first-child {
+        opacity: 0 !important;
+        transform: scale(0.98) !important;
+    }
+    
+    .product-card:active .product-images img:nth-child(2) {
+        opacity: 1 !important;
+        transform: scale(1) !important;
+        z-index: 2 !important;
+    }
+    
+    /* تأثير إرجاع بعد الضغط */
+    .product-images img {
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    
+    /* منع الضغط المتكرر السريع */
+    .product-images {
+        -webkit-user-select: none;
+        user-select: none;
+    }
+}
+
+/* ===== بديل: تأثير عند النقر (click) بدلاً من الضغط (active) ===== */
+/* استخدم هذا إذا كان الـ active لا يعمل بشكل جيد */
+
+@media (max-width: 768px) {
+    /* حالة النقر (تم التفعيل) */
+    .product-card.tap-active .product-images img:first-child {
+        opacity: 0 !important;
+        transform: scale(0.98) !important;
+        z-index: 1 !important;
+    }
+    
+    .product-card.tap-active .product-images img:nth-child(2) {
+        opacity: 1 !important;
+        transform: scale(1) !important;
+        z-index: 2 !important;
+    }
+    
+    /* التأثير التالي (إذا كان هناك أكثر من صورتين) */
+    .product-card.tap-active.second-tap .product-images img:nth-child(2) {
+        opacity: 0 !important;
+        transform: scale(0.98) !important;
+        z-index: 1 !important;
+    }
+    
+    .product-card.tap-active.second-tap .product-images img:nth-child(3) {
+        opacity: 1 !important;
+        transform: scale(1) !important;
+        z-index: 2 !important;
+    }
+    
+    /* تأثير الإرجاع */
+    .tap-active {
+        transition: all 0.3s ease;
+    }
+}
+
+/* ===== تحسين العرض للأجهزة المختلفة ===== */
+@media (max-width: 480px) {
+    .product-images {
+        height: 200px;
+    }
+}
+
+@media (max-width: 360px) {
+    .product-images {
+        height: 180px;
+    }
+}
+
+/* ===== حل شامل مع JavaScript ===== */
+/* أضف هذه الأنماط مع JavaScript أدناه */
+
+/* حالة الصورة المعروضة حالياً */
+.product-images .current-image {
+    opacity: 1 !important;
+    z-index: 3 !important;
+    transform: scale(1) !important;
+    animation: fadeIn 0.3s ease;
+}
+
+/* حالة الصور المخفية */
+.product-images .hidden-image {
+    opacity: 0 !important;
+    z-index: 1 !important;
+    transform: scale(0.98) !important;
+}
+
+/* تأثير عند اللمس */
+.product-card.touch-effect .product-images {
+    transform: scale(0.99);
+    transition: transform 0.2s ease;
+}
+
+/* مؤشر تغيير الصور */
+.image-indicator {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 10;
+    display: flex;
+    gap: 4px;
+}
+
+.indicator-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+}
+
+.indicator-dot.active {
+    background: white;
+    transform: scale(1.2);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+}
 /* ===== النهاية ===== */
     </style>
 </head>
@@ -4408,7 +4606,7 @@ img {
     },
 },
   {
-    id: 100,
+    id: 101,
     name: "Air podes FDY",
     description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطارين تدوم 50 ساعه تشتغيل",
     price: 600,
@@ -4424,7 +4622,7 @@ img {
     },
 },
  {
-    id: 101,
+    id: 102,
     name: "ايربودز برو 2 اسود",
     description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطارين تدوم 10 ساعه تشتغيل",
     price: 350,
@@ -4432,7 +4630,6 @@ img {
     image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769876562/airpods_pro_2_3_djqcpb.jpg",
     image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769876559/airpods_pro2_1_ptipws.jpg",
     image3: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769876561/airpods_pro2_2_idszhb.jpg",
-    image4: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769876561/airpods_pro_2_4_yv3uwk.jpg",
     details: "تحكم بصمه في السماعه في الرد علي المكالمات - شكل انيق - وفيها عازل للصوت والضوضاء الخارجيه -",
     specifications: {
         "البطارية": "10  ساعات ",
@@ -4440,7 +4637,7 @@ img {
     },
 },
  {
-    id: 102,
+    id: 103,
     name: " ايربودز a9  تاتش ابيض",
     description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطارين تدوم 10 ساعه تشتغيل وكمان فيها عازل للضوضاء لون ابيض ",
     price: 450,
@@ -4455,7 +4652,7 @@ img {
     },
 },
  {
-    id: 103,
+    id: 104,
     name: "ايبودز soundcore K20i",
     description: " ايربودز من افضل السماعات البلوتوث الاصليه ",
     price: 350,
@@ -4470,7 +4667,7 @@ img {
     },
 },
 {
-    id: 104,
+    id: 105,
     name: "   ايربودز vancl ",
     description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطارين تدوم 50 ساعه تشتغيل",
     price: 450,
@@ -4486,7 +4683,7 @@ img {
     },
     },
  {
-    id: 105,
+    id: 106,
     name: "smart watch CONNECTME",
     description: " سمارت ووتش لها برنامج خاص وبتتحكم من خلالها تحكم كامل في التلفون",
     price: 525,
@@ -4503,7 +4700,7 @@ img {
 },
  
  {
-    id: 101,
+    id: 107,
     name: " ايربودز a9 pro  تاتش",
     description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطارين تدوم 10 ساعه تشتغيل وكمان فيها عازل للضوضاء لون اسود ",
     price: 450,
@@ -4518,7 +4715,7 @@ img {
     },
 },
 {
-    id: 102,
+    id: 108,
     name: "ايربودز ultra 3 + airpodes",
     description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطارين تدوم 30 ساعه تشتغيل + ساعه سمارت وواتش",
     price: 500,
@@ -4534,7 +4731,7 @@ img {
     },
 
            {
-    id: 103,
+    id: 109,
     name: "تلفون نوكيا 105 - عرض خاص",
     description: "جهاز نوكيا 105 ينفع معاك في كل حاجه في الجيش والاستعمال الشخصي لو تلفونك عليه ضريبه تقدر تستخدمهمع تلفونك ",
     price: 400,
@@ -4549,7 +4746,7 @@ img {
     },
     },
     {
-    id: 104,
+    id: 110,
     name: "   ايربودز - smart watch wisme ",
     description: "ساعه اندرويد تنفع معاك في الشغل والدراسه وتقدر تربطها بالتلفون وتستقبل وتعمل مكالماتك من خلالها بأرخص سعر في مصر معاه ضمان سنه ضدد عيوب الصناعه وضدد المايه ",
     price: 950,
@@ -4564,7 +4761,7 @@ img {
     },
     },
    { 
-    id: 105,
+    id: 111,
     name: "   ايربودز - smart watch wisme ",
     description: "ساعه اندرويد تنفع معاك في الشغل والدراسه وتقدر تربطها بالتلفون وتستقبل وتعمل مكالماتك من خلالها بأرخص سعر في مصر معاه ضمان سنه ضدد عيوب الصناعه وضدد المايه ",
     price: 950,
@@ -4579,7 +4776,7 @@ img {
     },
     },
     { 
-    id: 106,
+    id: 112,
     name: "   حريمي-smart watch modio  ",
     description: "ساعه اندرويد تنفع معاك في الشغل والدراسه وتقدر تربطها بالتلفون وتستقبل وتعمل مكالماتك من خلالها بأرخص سعر في مصر معاه ضمان سنه ضدد عيوب الصناعه وضدد المايه ",
     price: 750,
@@ -4587,7 +4784,6 @@ img {
     image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769878766/MODIO_1_isxhip.jpg",
     image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769878767/MODIO_2_ud9wb5.jpg",
     image3: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768690709/%D8%A7%D9%8A%D8%B1%D8%A8%D9%88%D8%AF%D8%B2_%D8%AD%D8%B1%D9%8A%D9%85%D9%8A_1_nzp23q.jpg",
-    image4: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768690711/%D8%A7%D9%8A%D8%B1%D8%A8%D9%88%D8%AF%D8%B2_%D8%AD%D8%B1%D9%8A%D9%85%D9%8A_2_xyl8sd.jpg",
     details: "تقدر من خلال الساعه تربطها بالتلفون ومن خلال البرنامج الخاص بالساعه تقدر تشوف كل تقارير الصحه وقياس الضغط وضربات القلب وغيره",
     specifications: {
         "البطارية": "تدوم حتى 72 ساعات",
@@ -4596,7 +4792,7 @@ img {
     },
     },
     {
-    id: 107,
+    id: 113,
     name: "   ايربودز برو 2 ",
     description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطارين تدوم 30 ساعه تشتغيل",
     price: 250,
@@ -4611,7 +4807,7 @@ img {
     },
     },
     {
-    id: 108,
+    id: 114,
     name: "   ايربودز برو 3 ",
     description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطارين تدوم 30 ساعه تشتغيل",
     price: 200,
@@ -4626,7 +4822,7 @@ img {
     },
     },
     {
-    id: 109,
+    id: 115,
     name: "  مكنة حلاقه سوكاني - عرض خاص",
     description: "مكنة حلاقه تنفع لتدريج الدقن والشعر ومناسبه لجميع الاعمار",
     price: 250,
@@ -4640,7 +4836,7 @@ img {
     },
     },
     {
-    id: 110,
+    id: 116,
     name: " مكنة حلاقه كيميل - عرض خاص",
     description: "مكنة حلاقه تنفع لتدريج الدقن والشعر ومناسبه لجميع الاعمار",
     price: 200,
@@ -4654,7 +4850,7 @@ img {
     },
     },
     {
-    id: 111,
+    id: 117,
     name: "  smart watch t800 - عرض خاص",
     description: "ساعه اندرويد تنفع معاك في الشغل والدراسه وتقدر تربطها بالتلفون وتستقبل وتعمل مكالماتك من خلالها بأرخص سعر في مصر",
     price: 250,
@@ -4670,7 +4866,7 @@ img {
     },
 
                {
-    id: 112,
+    id: 118,
     name: "HP ProBook 745 G5 - عرض خاص",
     description: "لاب توب HP ProBook 745 G5 بشاشة 14 بوصة، معالج AMD Ryzen، 8GB RAM، 256GB SSD",
     price: 9600,
@@ -4698,7 +4894,7 @@ img {
     ]
                 },
                 {
-    id: 113,
+    id: 119,
     name: "HP ProBook 640 G2 - عرض خاص",
     description: "لاب توب HP ProBook 640 G2 بشاشة 14 بوصة، معالج Intel Core i5، 8GB RAM، 256GB SSD",
     price: 6900,
@@ -4726,7 +4922,7 @@ img {
     ]
     },
                 {
-    id: 114,
+    id: 120,
     name: "DELL Latitude 5580 - عرض خاص",
     description: "لابتوب DELL Latitude 5580 بشاشة 15.6 بوصة، معالج Intel Core i5، 8GB RAM، 256GB SSD",
     price: 15000,
@@ -4754,7 +4950,7 @@ img {
     ]
                 },
                 {
-    id: 115,
+    id: 121,
     name: "DELL Latitude 5540 - عرض خاص",
     description: "لابتوب DELL Latitude 5540 بشاشة 15.6 بوصة، معالج Intel Core i5، 8GB RAM، 512GB SSD",
     price: 7000,
@@ -4782,7 +4978,7 @@ img {
     ]
                 },
                 {
-    id: 116,
+    id: 122,
     name: "DELL Latitude E6420 - عرض خاص",
     description: "لابتوب DELL Latitude E6420 بشاشة 14 بوصة، معالج Intel Core i5، 8GB RAM، 256GB SSD",
     price: 4500,

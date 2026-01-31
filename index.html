@@ -3384,599 +3384,110 @@ img {
 
 .w-full { width: 100% !important; }
 .h-full { height: 100% !important; }
-/* ==== إضافة تأثير تغيير الصور ==== */
+/* ===== Product Images (Clean & Correct) ===== */
 .product-images {
-    height: 250px;
-    position: relative;
-    overflow: hidden;
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  height: 250px;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
 .product-images img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: var(--transition-slow);
-    position: absolute;
-    top: 0;
-    right: 0;
-    opacity: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  opacity: 0;
+  transform: scale(1);
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
+/* الافتراضي: الصورة الأولى ظاهرة */
 .product-images img:first-child {
-    position: relative;
-    opacity: 1;
+  opacity: 1;
+  position: absolute;
 }
 
-/* تأثير عند مرور الماوس على سطح المكتب */
+/* ===== Desktop Hover: show 2nd image if exists ===== */
 @media (hover: hover) and (pointer: fine) {
-    .product-card:hover .product-images img:first-child {
-        opacity: 0;
-        transform: scale(1.05);
-    }
-    
-    .product-card:hover .product-images img:nth-child(2) {
-        opacity: 1;
-        transform: scale(1.05);
-    }
-    
-    .product-card:hover .product-images img:nth-child(3) {
-        opacity: 0;
-    }
-    
-    .product-card:hover .product-images img:nth-child(4) {
-        opacity: 0;
-    }
-}
-
-/* تأثير عند الضغط على الهاتف */
-@media (hover: none) and (pointer: coarse) {
-    .product-images img.touch-active {
-        opacity: 1 !important;
-        transform: scale(1.05);
-        z-index: 2;
-    }
-    
-    .product-images img:not(.touch-active) {
-        opacity: 0;
-    }
-}
-
-/* تحسين ظهور الصور بالتتابع عند المرور بالماوس */
-.product-images img:nth-child(1) {
-    transition-delay: 0s;
-}
-
-.product-images img:nth-child(2) {
-    transition-delay: 0.1s;
-}
-
-.product-images img:nth-child(3) {
-    transition-delay: 0.2s;
-}
-
-.product-images img:nth-child(4) {
-    transition-delay: 0.3s;
-}
-
-/* تحسين تأثير البطاقة */
-.product-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-2xl);
-    border-color: var(--primary-500);
-}
-/* ==== تحسين قسم النشرة الإخبارية ==== */
-.newsletter {
-    background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-800) 100%);
-    padding: 2.5rem 0;
-    color: white;
-    position: relative;
-    overflow: hidden;
-}
-
-.newsletter::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('https://res.cloudinary.com/dqfnkwp8d/image/upload/w_800,h_200,c_fill,o_15/v1767044455/LAPZONE_co7np7.png');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.1;
-    z-index: 0;
-}
-
-.newsletter-container {
-    max-width: 500px;
-    margin: 0 auto;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-    padding: 0 1rem;
-}
-
-.newsletter-image {
-    margin-bottom: 1.5rem;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    box-shadow: var(--shadow-lg);
-    border: 2px solid rgba(255, 255, 255, 0.15);
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.newsletter-image img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    transition: var(--transition-normal);
-    filter: brightness(1.05) contrast(1.05);
-}
-
-.newsletter-image:hover img {
-    transform: scale(1.03);
-}
-
-.newsletter-title {
-    font-size: 1.8rem;
-    font-weight: 800;
-    margin-bottom: 0.75rem;
-    color: white;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-}
-
-.newsletter-description {
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-    opacity: 0.9;
-    color: white;
-    line-height: 1.5;
-    max-width: 450px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.newsletter-form .form-group {
-    display: flex;
-    gap: 0.5rem;
-    max-width: 450px;
-    margin: 0 auto 1.5rem;
-}
-
-@media (max-width: 576px) {
-    .newsletter-form .form-group {
-        flex-direction: column;
-    }
-    
-    .newsletter-image {
-        max-width: 90%;
-        margin-bottom: 1rem;
-    }
-    
-    .newsletter-image img {
-        height: 120px;
-    }
-    
-    .newsletter-title {
-        font-size: 1.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .newsletter {
-        padding: 2rem 0;
-    }
-    
-    .newsletter-image img {
-        height: 100px;
-    }
-    
-    .newsletter-title {
-        font-size: 1.3rem;
-    }
-}
-
-.newsletter-input {
-    flex: 1;
-    padding: 0.75rem 1rem;
-    border: 2px solid transparent;
-    border-radius: var(--radius-md);
-    font-size: 0.95rem;
-    color: var(--neutral-900);
-    background: white;
-    font-family: 'Tajawal', sans-serif;
-    transition: var(--transition-normal);
-}
-
-.newsletter-input:focus {
-    outline: none;
-    border-color: var(--secondary-400);
-    box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.15);
-}
-
-.newsletter-btn {
-    padding: 0.75rem 1.5rem;
-    background: var(--gradient-secondary);
-    color: var(--neutral-900);
-    border: none;
-    border-radius: var(--radius-md);
-    font-weight: 600;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: var(--transition-normal);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    min-width: 120px;
-}
-
-.newsletter-btn:hover {
-    background: var(--secondary-700);
-    color: white;
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
-}
-
-.newsletter-benefits {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1.5rem;
-    flex-wrap: wrap;
-}
-
-.benefit-item {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    background: rgba(255, 255, 255, 0.08);
-    padding: 0.5rem 1rem;
-    border-radius: var(--radius-full);
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 0.85rem;
-}
-
-.benefit-item i {
-    color: var(--secondary-300);
-    font-size: 0.9rem;
-}
-
-.benefit-item span {
-    font-size: 0.85rem;
-    opacity: 0.9;
-}
-
-/* حاشية صغيرة أسفل النشرة */
-.newsletter-note {
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.7);
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* تأثير بسيط للإطار */
-.newsletter-container {
-    animation: fadeInUp 0.6s ease-out;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-/* ==== إصلاح صور المنتجات للهاتف ==== */
-.product-images {
-    height: 250px;
-    position: relative;
-    overflow: hidden;
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-}
-
-.product-images img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: var(--transition-slow);
-}
-
-/* عرض الصورة الأولى فقط بشكل افتراضي */
-.product-images img:first-child {
-    position: relative;
-    opacity: 1;
-    display: block;
-}
-
-/* إخفاء الصور الأخرى بشكل افتراضي */
-.product-images img:not(:first-child) {
-    position: absolute;
-    top: 0;
-    right: 0;
+  .product-card:hover .product-images img:first-child {
     opacity: 0;
-    display: none; /* إخفاء على الهاتف أولاً */
+    transform: scale(1.04);
+  }
+
+  .product-card:hover .product-images img:nth-child(2) {
+    opacity: 1;
+    transform: scale(1.04);
+  }
 }
 
-/* تأثير عند مرور الماوس على سطح المكتب */
-@media (hover: hover) and (pointer: fine) {
-    .product-images img:not(:first-child) {
-        display: block; /* إظهار الصور على الكمبيوتر */
-    }
-    
-    .product-card:hover .product-images img:first-child {
-        opacity: 0;
-        transform: scale(1.05);
-    }
-    
-    .product-card:hover .product-images img:nth-child(2) {
-        opacity: 1;
-        transform: scale(1.05);
-    }
-    
-    /* يمكنك إضافة المزيد للصور الأخرى إذا أردت */
-}
-
-/* ==== تصحيح العرض على الهاتف ==== */
+/* ===== Mobile sizing ===== */
 @media (max-width: 768px) {
-    .product-images {
-        height: 200px; /* تقليل الارتفاع على الهاتف */
-    }
-    
-    .product-images img:not(:first-child) {
-        display: none !important; /* التأكد من إخفاء الصور الأخرى */
-    }
-    
-    /* عرض الصورة الأولى فقط على الهاتف */
-    .product-images img:first-child {
-        opacity: 1 !important;
-        transform: none !important;
-        position: relative !important;
-    }
-    
-    /* إزالة أي تأثيرات على الهاتف */
-    .product-card:hover .product-images img {
-        opacity: 1 !important;
-        transform: none !important;
-    }
+  .product-images {
+    height: 220px;
+  }
 }
-
-/* ==== بديل أبسط وأكثر أماناً ==== */
-/* استخدم هذا إذا كان الكود السابق لا يعمل */
-
-.product-images-simple {
-    height: 250px;
-    position: relative;
-    overflow: hidden;
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-}
-
-.product-images-simple img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-/* تأثير تكبسير بسيط عند اللمس */
-@media (max-width: 768px) {
-    .product-card:active .product-images-simple img {
-        transform: scale(1.03);
-        transition: transform 0.2s ease;
-    }
-}
-
-/* تأثير عند مرور الماوس على سطح المكتب */
-@media (min-width: 769px) {
-    .product-card:hover .product-images-simple img {
-        transform: scale(1.05);
-    }
-}
-/* ===== تأثير تغيير الصور عند الضغط على المنتج في الهاتف ===== */
-@media (max-width: 768px) {
-    /* تصميم حاوية الصور الأساسي */
-    .product-images {
-        height: 220px;
-        position: relative;
-        overflow: hidden;
-        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-        cursor: pointer;
-        -webkit-tap-highlight-color: transparent; /* إزالة اللون الأزرق عند الضغط */
-        touch-action: manipulation; /* تحسين تجربة اللمس */
-    }
-    
-    /* جميع الصور في الحاوية */
-    .product-images img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        position: absolute;
-        top: 0;
-        right: 0;
-        transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-    
-    /* الصورة الأولى: تظهر بشكل افتراضي */
-    .product-images img:first-child {
-        opacity: 1;
-        z-index: 1;
-        transform: scale(1);
-    }
-    
-    /* الصورة الثانية: مخفية افتراضياً */
-    .product-images img:nth-child(2) {
-        opacity: 0;
-        z-index: 0;
-        transform: scale(1);
-    }
-    
-    /* الصورة الثالثة: مخفية افتراضياً */
-    .product-images img:nth-child(3) {
-        opacity: 0;
-        z-index: 0;
-        transform: scale(1);
-    }
-    
-    /* الصورة الرابعة: مخفية افتراضياً */
-    .product-images img:nth-child(4) {
-        opacity: 0;
-        z-index: 0;
-        transform: scale(1);
-    }
-    
-    /* حالة الضغط - الطبقة الشفافة */
-    .product-card:active .product-images {
-        background-color: rgba(0, 0, 0, 0.02);
-    }
-    
-    /* عند الضغط: إخفاء الصورة الأولى وإظهار الثانية */
-    .product-card:active .product-images img:first-child {
-        opacity: 0 !important;
-        transform: scale(0.98) !important;
-    }
-    
-    .product-card:active .product-images img:nth-child(2) {
-        opacity: 1 !important;
-        transform: scale(1) !important;
-        z-index: 2 !important;
-    }
-    
-    /* تأثير إرجاع بعد الضغط */
-    .product-images img {
-        transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    
-    /* منع الضغط المتكرر السريع */
-    .product-images {
-        -webkit-user-select: none;
-        user-select: none;
-    }
-}
-
-/* ===== بديل: تأثير عند النقر (click) بدلاً من الضغط (active) ===== */
-/* استخدم هذا إذا كان الـ active لا يعمل بشكل جيد */
-
-@media (max-width: 768px) {
-    /* حالة النقر (تم التفعيل) */
-    .product-card.tap-active .product-images img:first-child {
-        opacity: 0 !important;
-        transform: scale(0.98) !important;
-        z-index: 1 !important;
-    }
-    
-    .product-card.tap-active .product-images img:nth-child(2) {
-        opacity: 1 !important;
-        transform: scale(1) !important;
-        z-index: 2 !important;
-    }
-    
-    /* التأثير التالي (إذا كان هناك أكثر من صورتين) */
-    .product-card.tap-active.second-tap .product-images img:nth-child(2) {
-        opacity: 0 !important;
-        transform: scale(0.98) !important;
-        z-index: 1 !important;
-    }
-    
-    .product-card.tap-active.second-tap .product-images img:nth-child(3) {
-        opacity: 1 !important;
-        transform: scale(1) !important;
-        z-index: 2 !important;
-    }
-    
-    /* تأثير الإرجاع */
-    .tap-active {
-        transition: all 0.3s ease;
-    }
-}
-
-/* ===== تحسين العرض للأجهزة المختلفة ===== */
 @media (max-width: 480px) {
-    .product-images {
-        height: 200px;
-    }
+  .product-images {
+    height: 200px;
+  }
 }
-
 @media (max-width: 360px) {
-    .product-images {
-        height: 180px;
-    }
+  .product-images {
+    height: 180px;
+  }
 }
 
-/* ===== حل شامل مع JavaScript ===== */
-/* أضف هذه الأنماط مع JavaScript أدناه */
-
-/* حالة الصورة المعروضة حالياً */
+/* ===== Classes controlled by JS ===== */
 .product-images .current-image {
-    opacity: 1 !important;
-    z-index: 3 !important;
-    transform: scale(1) !important;
-    animation: fadeIn 0.3s ease;
+  opacity: 1 !important;
+  z-index: 3 !important;
+  transform: scale(1) !important;
 }
 
-/* حالة الصور المخفية */
 .product-images .hidden-image {
-    opacity: 0 !important;
-    z-index: 1 !important;
-    transform: scale(0.98) !important;
+  opacity: 0 !important;
+  z-index: 1 !important;
+  transform: scale(0.99) !important;
 }
 
-/* تأثير عند اللمس */
-.product-card.touch-effect .product-images {
-    transform: scale(0.99);
-    transition: transform 0.2s ease;
+/* Touch feedback on card */
+.product-card.touch-effect {
+  transform: translateY(-2px);
 }
 
-/* مؤشر تغيير الصور */
+/* ===== Indicator dots (optional) ===== */
 .image-indicator {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    z-index: 10;
-    display: flex;
-    gap: 4px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 10;
+  display: flex;
+  gap: 5px;
+  padding: 6px 8px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
 }
 
 .indicator-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    transition: all 0.3s ease;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .indicator-dot.active {
-    background: white;
-    transform: scale(1.2);
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.98);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-        transform: scale(1);
-    }
-    to {
-        opacity: 0;
-        transform: scale(0.98);
-    }
+  background: #fff;
+  transform: scale(1.25);
 }
 /* ===== النهاية ===== */
     </style>
@@ -4705,8 +4216,8 @@ img {
     description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطارين تدوم 10 ساعه تشتغيل وكمان فيها عازل للضوضاء لون اسود ",
     price: 450,
     originalPrice: 600,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768857457/airpods_tatch_1_fdxm33.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768857448/airpods_tatch_2_wwscth.jpg",
+    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768857448/airpods_tatch_2_wwscth.jpg",
+    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768857457/airpods_tatch_1_fdxm33.jpg",
     details: "تحكم بصمه في السماعه في الرد علي المكالمات - شكل انيق - وفيها عازل للصوت والضوضاء الخارجيه - بتقدر تتحكم من خلالها في التلفون وكانك معاك ساعه سمارات وساعه في نفس الوقت ",
     specifications: {
         "البطارية": "تدوم حتى 10 ساعات",
@@ -4720,8 +4231,9 @@ img {
     description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطارين تدوم 30 ساعه تشتغيل + ساعه سمارت وواتش",
     price: 500,
     originalPrice: 750,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768857437/smart_watch_1_lvdmto.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768857424/smart_watch_2_aiji70.jpg",
+    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769901094/ultra_1_fvehre.jpg",
+    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769901094/ultra_2_nxxkla.jpg",
+    hmage3: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769901094/ultra_3_e8kpqm.jpg",
     details: "تحكم بصمه في السماعه في الرد علي المكالمات - شكل انيق - وفيها عازل للصوت والضوضاء الخارجيه - كمان معاه سمارت وواتش يعني مش ناقصك حاجه في الشياكه",
     specifications: {
         "البطارية": "تدوم حتى 30 ساعات",
@@ -4751,8 +4263,9 @@ img {
     description: "ساعه اندرويد تنفع معاك في الشغل والدراسه وتقدر تربطها بالتلفون وتستقبل وتعمل مكالماتك من خلالها بأرخص سعر في مصر معاه ضمان سنه ضدد عيوب الصناعه وضدد المايه ",
     price: 950,
     originalPrice: 1200,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768687701/%D8%B3%D8%A7%D8%B9%D9%87_%D9%88%D9%8A%D8%B3%D9%85%D9%8A_1_ufox9h.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768687701/%D8%B3%D8%A7%D8%B9%D9%87_%D9%88%D9%8A%D8%B3%D9%85%D9%8A_2_faytye.jpg",
+    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769901231/wisme_1_k8chqc.jpg",
+    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769901231/wisme_2_n1pfai.jpg",
+    image3: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768687701/%D8%B3%D8%A7%D8%B9%D9%87_%D9%88%D9%8A%D8%B3%D9%85%D9%8A_1_ufox9h.jpg",
     details: "تقدر من خلال الساعه تربطها بالتلفون ومن خلال البرنامج الخاص بالساعه تقدر تشوف كل تقارير الصحه وقياس الضغط وضربات القلب وغيره وكمان معاه ايربودز يعني مش محتاج حاجه تانيه ",
     specifications: {
         "البطارية": "تدوم حتى 72 ساعات",
@@ -4854,157 +4367,17 @@ img {
     name: "  smart watch t800 - عرض خاص",
     description: "ساعه اندرويد تنفع معاك في الشغل والدراسه وتقدر تربطها بالتلفون وتستقبل وتعمل مكالماتك من خلالها بأرخص سعر في مصر",
     price: 250,
-    originalPrice: 500,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768687701/%D8%B3%D8%A7%D8%B9%D9%87_%D8%AA%D9%8A_800_%D8%B1%D9%82%D9%85_2_icwd9u.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768687703/%D8%B3%D8%A7%D8%B9%D9%87_%D8%AA%D9%8A_800_%D8%B1%D9%82%D9%85_1_pvppxh.jpg",
+    originalPrice: 400,
+    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769900932/w1_gjhf8y.jpg",
+    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769900933/w2_vyxepl.jpg",
+    image3: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769900932/w3_w8qhpn.jpg",
     details: "العرض لفتره محدوده اطلب دلوقتي ",
     specifications: {
         "البطارية": "تدوم حتى 48 ساعات",
         "الوزن": "0.3 كجم",
         "الاتصال": " Bluetooth"
     },
-    },
-
-               {
-    id: 118,
-    name: "HP ProBook 745 G5 - عرض خاص",
-    description: "لاب توب HP ProBook 745 G5 بشاشة 14 بوصة، معالج AMD Ryzen، 8GB RAM، 256GB SSD",
-    price: 9600,
-    originalPrice: 11500,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044431/id101.1_zgtfkg.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044431/id101.2_bx8x2v.jpg",
-    details: "لاب توب HP ProBook 745 G5 استيراد، بشاشة 14 بوصة بدقة FHD، معالج AMD Ryzen 5 Pro، ذاكرة RAM 8GB، تخزين 256GB SSD، كارت شاشة AMD Radeon Vega، نظام Windows 10 أو 11، مناسب للشغل والدراسة.",
-    specifications: {
-        "الشاشة": "14 بوصة، FHD (1920x1080)",
-        "المعالج": "AMD Ryzen 5 Pro 2500U",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "AMD Radeon Vega 8",
-        "نظام التشغيل": "Windows 10 / 11",
-        "البطارية": "تدوم حتى 7 ساعات",
-        "الأبعاد": "33.5 × 23.4 × 1.9 سم",
-        "الوزن": "1.6 كجم",
-        "الاتصال": "Wi-Fi، Bluetooth"
-    },
-    gifts: [
-        "شنطة لاب توب هدية",
-        "ماوس هدية",
-        "اسكرينة حماية . استيكر عربي انجليزي",
-        "تثبيت الويندوز والتعريفات مجاناً"
-    ]
-                },
-                {
-    id: 119,
-    name: "HP ProBook 640 G2 - عرض خاص",
-    description: "لاب توب HP ProBook 640 G2 بشاشة 14 بوصة، معالج Intel Core i5، 8GB RAM، 256GB SSD",
-    price: 6900,
-    originalPrice: 8900,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044447/id111.1_v5bh5c.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044447/id111.2_suo5ni.jpg",
-    details: "لاب توب HP ProBook 640 G2 استيراد، بشاشة 14 بوصة، معالج Intel Core i5 من الجيل السادس، ذاكرة RAM 8GB، تخزين 256GB SSD، كارت شاشة Intel HD Graphics، مناسب للشغل المكتبي والدراسة والاستخدام اليومي.",
-    specifications: {
-        "الشاشة": "14 بوصة، HD (1366x768)",
-        "المعالج": "Intel Core i5-6300U",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "Intel HD Graphics 520",
-        "نظام التشغيل": "Windows 10",
-        "البطارية": "تدوم حتى 6 ساعات تقريباً",
-        "الأبعاد": "34 × 23.7 × 2.7 سم",
-        "الوزن": "حوالي 1.95 كجم",
-        "الاتصال": "Wi-Fi، Bluetooth، LAN"
-    },
-    gifts: [
-        "شنطة لاب توب هدية",
-        "ماوس هدية",
-        "تنظيف وصيانة الجهاز مجاناً",
-        "تثبيت الويندوز والتعريفات مجاناً"
-    ]
-    },
-                {
-    id: 120,
-    name: "DELL Latitude 5580 - عرض خاص",
-    description: "لابتوب DELL Latitude 5580 بشاشة 15.6 بوصة، معالج Intel Core i5، 8GB RAM، 256GB SSD",
-    price: 15000,
-    originalPrice: 16999,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044432/id102.1_puex2o.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044432/id102.2_kdzqcu.jpg",
-    details: "لابتوب DELL Latitude 5580، بشاشة 15.6 بوصة بدقة FHD، معالج Intel Core i5 من الجيل السابع، ذاكرة RAM 8GB، تخزين 256GB SSD، كارت شاشة Intel HD، نظام التشغيل Windows 10 Pro، بطارية تدوم حتى 7 ساعات، مناسب للشغل والدراسة.",
-    specifications: {
-        "الشاشة": "15.6 بوصة، FHD (1920x1080)",
-        "المعالج": "Intel Core i5-7300U",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "Intel HD Graphics 620",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 7 ساعات",
-        "الأبعاد": "37.9 × 25.7 × 1.9 سم",
-        "الوزن": "1.85 كجم",
-        "الاتصال": "Wi-Fi 802.11ac، Bluetooth"
-    },
-    gifts: [
-        "حقيبة لابتوب مجانية",
-        "ماوس لاسلكي مجاني",
-        "اسكرينة حماية . استيكر عربي انجليزي",
-        "تثبيت نظام التشغيل مجاناً"
-    ]
-                },
-                {
-    id: 121,
-    name: "DELL Latitude 5540 - عرض خاص",
-    description: "لابتوب DELL Latitude 5540 بشاشة 15.6 بوصة، معالج Intel Core i5، 8GB RAM، 512GB SSD",
-    price: 7000,
-    originalPrice: 8000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044432/id103.1_dwboag.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044447/id103.2_qtfg0v.jpg",
-    details: "لاب توب DELL Latitude 5540 بنسخة قوية للشغل والدراسة، بشاشة 15.6 بوصة FHD، معالج Intel Core i5-1335U من الجيل 13، ذاكرة RAM 8GB، تخزين 512GB SSD، كارت شاشة Intel Iris Xe Graphics، نظام التشغيل Windows 10/11 (أو DOS حسب النسخة)، بطارية تدوم لساعات، ومنافذ Thunderbolt 4 وUSB وHDMI ومقبس Ethernet.",
-    specifications: {
-        "الشاشة": "15.6 بوصة، FHD (1920x1080)",
-        "المعالج": "Intel Core i5-1335U (الجيل 13)",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "512GB SSD",
-        "كارت الشاشة": "Intel Iris Xe Graphics",
-        "نظام التشغيل": "Windows 10/11 أو DOS",
-        "البطارية": "3 خلايا 54Wh مع دعم ExpressCharge",
-        "الأبعاد": "357.8 × 233.3 × 22.8 مم",
-        "الوزن": "حوالي 1.61 كجم",
-        "الاتصال": "Wi-Fi 6E، Bluetooth 5.x, Ethernet RJ-45"
-    },
-    gifts: [
-        "حقيبة لابتوب مجانية",
-        "ماوس لاسلكي مجاني",
-        "اسكرينة حماية . استيكر عربي انجليزي",
-        "تثبيت نظام التشغيل مجاناً"
-    ]
-                },
-                {
-    id: 122,
-    name: "DELL Latitude E6420 - عرض خاص",
-    description: "لابتوب DELL Latitude E6420 بشاشة 14 بوصة، معالج Intel Core i5، 8GB RAM، 256GB SSD",
-    price: 4500,
-    originalPrice: 5500,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044446/id104.1_js2fhl.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044447/id104.2_tduz7n.jpg",
-    details: "لاب توب DELL Latitude E6420 بشاشة 14 بوصة بدقة HD أو FHD اختياري حسب النسخة، معالج Intel Core i5 من الجيل الثاني، ذاكرة RAM 8GB، تخزين 256GB SSD، كارت شاشة Intel HD Graphics 3000، نظام التشغيل Windows 10، بطارية تدوم حتى 5 ساعات تقريباً، مناسب للشغل المكتبي والاستخدام اليومي الخفيف.",
-    specifications: {
-        "الشاشة": "14 بوصة، HD / FHD",
-        "المعالج": "Intel Core i5-2520M (الجيل 2)",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "Intel HD Graphics 3000",
-        "نظام التشغيل": "Windows 10",
-        "البطارية": "تدوم حتى ~5 ساعات",
-        "الأبعاد": "339 × 232 × 32 مم",
-        "الوزن": "حوالي 2.1 كجم",
-        "الاتصال": "Wi-Fi، Bluetooth"
-    },
-    gifts: [
-        "حقيبة لابتوب مجانية",
-        "ماوس لاسلكي مجاني",
-        "تنظيف الجهاز مجاناً",
-        "تثبيت نظام التشغيل مجاناً"
-    ]
-                }
+    } 
             ],
            'new-laptops': [
                 {
@@ -5990,8 +5363,148 @@ img {
         "البطارية": "تدوم حتى 12 ساعة"
     }
                 },
-                {
+                 {
     id: 47,
+    name: "HP ProBook 745 G5 - عرض خاص",
+    description: "لاب توب HP ProBook 745 G5 بشاشة 14 بوصة، معالج AMD Ryzen، 8GB RAM، 256GB SSD",
+    price: 9600,
+    originalPrice: 11500,
+    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044431/id101.1_zgtfkg.jpg",
+    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044431/id101.2_bx8x2v.jpg",
+    details: "لاب توب HP ProBook 745 G5 استيراد، بشاشة 14 بوصة بدقة FHD، معالج AMD Ryzen 5 Pro، ذاكرة RAM 8GB، تخزين 256GB SSD، كارت شاشة AMD Radeon Vega، نظام Windows 10 أو 11، مناسب للشغل والدراسة.",
+    specifications: {
+        "الشاشة": "14 بوصة، FHD (1920x1080)",
+        "المعالج": "AMD Ryzen 5 Pro 2500U",
+        "الذاكرة": "8GB RAM",
+        "التخزين": "256GB SSD",
+        "كارت الشاشة": "AMD Radeon Vega 8",
+        "نظام التشغيل": "Windows 10 / 11",
+        "البطارية": "تدوم حتى 7 ساعات",
+        "الأبعاد": "33.5 × 23.4 × 1.9 سم",
+        "الوزن": "1.6 كجم",
+        "الاتصال": "Wi-Fi، Bluetooth"
+    },
+    gifts: [
+        "شنطة لاب توب هدية",
+        "ماوس هدية",
+        "اسكرينة حماية . استيكر عربي انجليزي",
+        "تثبيت الويندوز والتعريفات مجاناً"
+    ]
+                },
+                {
+    id: 48,
+    name: "HP ProBook 640 G2 - عرض خاص",
+    description: "لاب توب HP ProBook 640 G2 بشاشة 14 بوصة، معالج Intel Core i5، 8GB RAM، 256GB SSD",
+    price: 6900,
+    originalPrice: 8900,
+    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044447/id111.1_v5bh5c.jpg",
+    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044447/id111.2_suo5ni.jpg",
+    details: "لاب توب HP ProBook 640 G2 استيراد، بشاشة 14 بوصة، معالج Intel Core i5 من الجيل السادس، ذاكرة RAM 8GB، تخزين 256GB SSD، كارت شاشة Intel HD Graphics، مناسب للشغل المكتبي والدراسة والاستخدام اليومي.",
+    specifications: {
+        "الشاشة": "14 بوصة، HD (1366x768)",
+        "المعالج": "Intel Core i5-6300U",
+        "الذاكرة": "8GB RAM",
+        "التخزين": "256GB SSD",
+        "كارت الشاشة": "Intel HD Graphics 520",
+        "نظام التشغيل": "Windows 10",
+        "البطارية": "تدوم حتى 6 ساعات تقريباً",
+        "الأبعاد": "34 × 23.7 × 2.7 سم",
+        "الوزن": "حوالي 1.95 كجم",
+        "الاتصال": "Wi-Fi، Bluetooth، LAN"
+    },
+    gifts: [
+        "شنطة لاب توب هدية",
+        "ماوس هدية",
+        "تنظيف وصيانة الجهاز مجاناً",
+        "تثبيت الويندوز والتعريفات مجاناً"
+    ]
+    },
+                {
+    id: 49,
+    name: "DELL Latitude 5580 - عرض خاص",
+    description: "لابتوب DELL Latitude 5580 بشاشة 15.6 بوصة، معالج Intel Core i5، 8GB RAM، 256GB SSD",
+    price: 15000,
+    originalPrice: 16999,
+    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044432/id102.1_puex2o.jpg",
+    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044432/id102.2_kdzqcu.jpg",
+    details: "لابتوب DELL Latitude 5580، بشاشة 15.6 بوصة بدقة FHD، معالج Intel Core i5 من الجيل السابع، ذاكرة RAM 8GB، تخزين 256GB SSD، كارت شاشة Intel HD، نظام التشغيل Windows 10 Pro، بطارية تدوم حتى 7 ساعات، مناسب للشغل والدراسة.",
+    specifications: {
+        "الشاشة": "15.6 بوصة، FHD (1920x1080)",
+        "المعالج": "Intel Core i5-7300U",
+        "الذاكرة": "8GB RAM",
+        "التخزين": "256GB SSD",
+        "كارت الشاشة": "Intel HD Graphics 620",
+        "نظام التشغيل": "Windows 10 Pro",
+        "البطارية": "تدوم حتى 7 ساعات",
+        "الأبعاد": "37.9 × 25.7 × 1.9 سم",
+        "الوزن": "1.85 كجم",
+        "الاتصال": "Wi-Fi 802.11ac، Bluetooth"
+    },
+    gifts: [
+        "حقيبة لابتوب مجانية",
+        "ماوس لاسلكي مجاني",
+        "اسكرينة حماية . استيكر عربي انجليزي",
+        "تثبيت نظام التشغيل مجاناً"
+    ]
+                },
+                {
+    id: 50,
+    name: "DELL Latitude 5540 - عرض خاص",
+    description: "لابتوب DELL Latitude 5540 بشاشة 15.6 بوصة، معالج Intel Core i5، 8GB RAM، 512GB SSD",
+    price: 7000,
+    originalPrice: 8000,
+    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044432/id103.1_dwboag.jpg",
+    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044447/id103.2_qtfg0v.jpg",
+    details: "لاب توب DELL Latitude 5540 بنسخة قوية للشغل والدراسة، بشاشة 15.6 بوصة FHD، معالج Intel Core i5-1335U من الجيل 13، ذاكرة RAM 8GB، تخزين 512GB SSD، كارت شاشة Intel Iris Xe Graphics، نظام التشغيل Windows 10/11 (أو DOS حسب النسخة)، بطارية تدوم لساعات، ومنافذ Thunderbolt 4 وUSB وHDMI ومقبس Ethernet.",
+    specifications: {
+        "الشاشة": "15.6 بوصة، FHD (1920x1080)",
+        "المعالج": "Intel Core i5-1335U (الجيل 13)",
+        "الذاكرة": "8GB RAM",
+        "التخزين": "512GB SSD",
+        "كارت الشاشة": "Intel Iris Xe Graphics",
+        "نظام التشغيل": "Windows 10/11 أو DOS",
+        "البطارية": "3 خلايا 54Wh مع دعم ExpressCharge",
+        "الأبعاد": "357.8 × 233.3 × 22.8 مم",
+        "الوزن": "حوالي 1.61 كجم",
+        "الاتصال": "Wi-Fi 6E، Bluetooth 5.x, Ethernet RJ-45"
+    },
+    gifts: [
+        "حقيبة لابتوب مجانية",
+        "ماوس لاسلكي مجاني",
+        "اسكرينة حماية . استيكر عربي انجليزي",
+        "تثبيت نظام التشغيل مجاناً"
+    ]
+                },
+                {
+    id: 51,
+    name: "DELL Latitude E6420 - عرض خاص",
+    description: "لابتوب DELL Latitude E6420 بشاشة 14 بوصة، معالج Intel Core i5، 8GB RAM، 256GB SSD",
+    price: 4500,
+    originalPrice: 5500,
+    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044446/id104.1_js2fhl.jpg",
+    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044447/id104.2_tduz7n.jpg",
+    details: "لاب توب DELL Latitude E6420 بشاشة 14 بوصة بدقة HD أو FHD اختياري حسب النسخة، معالج Intel Core i5 من الجيل الثاني، ذاكرة RAM 8GB، تخزين 256GB SSD، كارت شاشة Intel HD Graphics 3000، نظام التشغيل Windows 10، بطارية تدوم حتى 5 ساعات تقريباً، مناسب للشغل المكتبي والاستخدام اليومي الخفيف.",
+    specifications: {
+        "الشاشة": "14 بوصة، HD / FHD",
+        "المعالج": "Intel Core i5-2520M (الجيل 2)",
+        "الذاكرة": "8GB RAM",
+        "التخزين": "256GB SSD",
+        "كارت الشاشة": "Intel HD Graphics 3000",
+        "نظام التشغيل": "Windows 10",
+        "البطارية": "تدوم حتى ~5 ساعات",
+        "الأبعاد": "339 × 232 × 32 مم",
+        "الوزن": "حوالي 2.1 كجم",
+        "الاتصال": "Wi-Fi، Bluetooth"
+    },
+    gifts: [
+        "حقيبة لابتوب مجانية",
+        "ماوس لاسلكي مجاني",
+        "تنظيف الجهاز مجاناً",
+        "تثبيت نظام التشغيل مجاناً"
+    ]
+                },
+                {
+    id: 52,
     name: "HP ZBook Fury 15 G7",
     description: "محطة عمل إتش بي زد بوك فيوري قوية جداً، معالج Intel Core i7-10850H، ذاكرة 32GB، قرص SSD 512GB، كارت شاشة NVIDIA.",
     price: 27500,
@@ -6012,7 +5525,7 @@ img {
             ],
             'used-phones': [
                 {
-    id: 22,
+    id: 500,
     name: "ريلمي C71 - مستعمل",
     description: "هاتف ريلمي C71 مستعمل لمدة شهر، 128GB، 6GB RAM، مع الكرتونة والشاحن الأصلي، حالة ممتازة",
     price: 6000,
@@ -6040,7 +5553,7 @@ img {
     ]
                 },
                 {
-    id: 23,
+    id: 501,
     name: "سامسونج Galaxy A05s - مستعمل",
     description: "هاتف سامسونج Galaxy A05s مستعمل بحالة جيدة، 128GB، 6GB RAM، مع الكرتونة ووصلة الشحن",
     price: 4850,
@@ -6069,7 +5582,7 @@ img {
             ],
             'parts-accessories': [
     {
-        id: 16,
+        id: 1000,
         name: "بطارية لاب توب ديل أصلية",
         description: "بطارية أصلية لديل، سعة 60Wh، تناسب موديلات متعددة",
         price: 1299,
@@ -6087,7 +5600,7 @@ img {
         }
     },
     {
-        id: 17,
+        id: 1001,
         name: "شاحن لاب توب 65 وات",
         description: "شاحن عالمي 65 وات، متوافق مع معظم اللابات",
         price: 500,
@@ -6105,7 +5618,7 @@ img {
         }
     },
     {
-        id: 18,
+        id: 1002,
         name: "بطارية آيفون أصلية",
         description: "بطارية أصلية للآيفون، تناسب موديلات متعددة",
         price: 799,
@@ -6123,7 +5636,7 @@ img {
         }
     },
     {
-        id: 19,
+        id: 1003,
         name: "بطارية لابتوب اتش بي أصلية",
         description: "بطارية أصلية لاتش بي، سعة 51Wh، تناسب موديلات متعددة",
         price: 900,
@@ -6143,7 +5656,7 @@ img {
         }
     },
     {
-        id: 20,
+        id: 1004,
         name: "بطارية لابتوب اتش بي CS03XL",
         description: "بطارية أصلية لاتش بي، تناسب EliteBook 745 G3/755",
         price: 900,
@@ -6197,7 +5710,7 @@ img {
         }
     },
     {
-        id: 23,
+        id: 1005,
         name: "بطارية لاب توب بي او دبليو اي بوي",
         description: "بطارية متوافقة من بي او دبليو اي بوي لـ Dell",
         price: 750,
@@ -6214,7 +5727,7 @@ img {
         }
     },
     {
-        id: 24,
+        id: 1006,
         name: "بطارية لاب توب اتش بي 740715-001",
         description: "بطارية HP 4 خلايا لـ 250 G3/G2 و255 G3/G2",
         price: 950,
@@ -6232,7 +5745,7 @@ img {
         }
     },
     {
-        id: 25,
+        id: 1007,
         name: "بطارية لاب توب اسونسيل لتوشيبا",
         description: "بطارية اسونسيل لـ Toshiba Satellite C50/C55",
         price: 1100,
@@ -6248,7 +5761,7 @@ img {
         }
     },
     {
-        id: 26,
+        id: 1008,
         name: "بطارية لابتوب ويجو CC06XL لـ HP",
         description: "بطارية ويجو 10.8V لسلسلة HP EliteBook",
         price: 1250,
@@ -6266,7 +5779,7 @@ img {
         }
     },
     {
-        id: 27,
+        id: 1009,
         name: "بطارية لابتوب ويجو لتوشيبا",
         description: "بطارية ويجو 6 خلايا لـ Toshiba Satellite",
         price: 1050,

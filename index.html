@@ -4249,7 +4249,7 @@ img {
     </div>
 
     <script>
-       // Sample product data for LAP ZONE store
+            // Sample product data for LAP ZONE store
         const products = {
            'offers': [
             {
@@ -4586,6 +4586,46 @@ img {
         "الاتصال": "Bluetooth",
         "اللون": "فضي",
         "الاستخدام": "رياضة – لياقة – تتبع نشاط يومي"
+    },
+},
+{
+    id: 121,
+    name: "سماعات Anker Soundcore R50i NC لاسلكية - أسود",
+    description: "سماعات أذن لاسلكية من أنكر ساوندكور R50i NC بمحركات صوت داخلية 10 ملم لصوت باس قوي، مع بلوتوث 5.3، وبطارية تدوم حتى 45 ساعة تشغيل. مزودة بخاصية إلغاء الضوضاء النشط (NC) ومكالمات واضحة بالذكاء الاصطناعي عبر 4 ميكروفونات، ومقاومة للماء والغبار بمعيار IP54.",
+    price: 1299,
+    originalPrice: 1599,
+    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770236354/61nwtLta29L._AC_SL1500__yf5fpr.jpg",
+    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770236369/41AYDkp2jIL._AC__lnkuto.jpg",
+    image3: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770236386/61VCrwOjn3L._AC_SX522__f5tcsl.jpg",
+    details: "محركات صوت 10 ملم لصوت باس قوي وواضح – بلوتوث 5.3 لاتصال ثابت وسريع – بطارية تصل إلى 45 ساعة تشغيل مع العلبة – إلغاء ضوضاء نشط (NC) لتجربة استماع أنقى – مكالمات واضحة بالذكاء الاصطناعي عبر 4 ميكروفونات – مقاومة للماء والغبار بمعيار IP54 – أكثر من 22 إعداد صوتي عبر تطبيق Soundcore – تصميم مريح للاستخدام اليومي والتمارين",
+    specifications: {
+        "المحركات الصوتية": "10 ملم",
+        "الاتصال": "Bluetooth 5.3",
+        "عمر البطارية": "حتى 45 ساعة تشغيل",
+        "إلغاء الضوضاء": "NC (إلغاء ضوضاء نشط)",
+        "الميكروفونات": "4 ميكروفونات مع ذكاء اصطناعي للمكالمات",
+        "المقاومة": "IP54 (مقاومة للماء والغبار)",
+        "الإعدادات الصوتية": "22 إعداد عبر تطبيق Soundcore",
+        "اللون": "أسود"
+    },
+},
+{
+    id: 122,
+    name: "سماعات JBL Wave Beam True Wireless - أسود (JBLWBEAMBLK)",
+    description: "سماعات أذن لاسلكية من جيه بي إل Wave Beam بصوت جهوري عميق وتقنية JBL Deep Bass، تصميم مريح داخل الأذن للاستخدام اليومي، وبطارية تدوم حتى 32 ساعة تشغيل. مزودة بميزات المحيط الذكي (Smart Ambient) وTalkThru للتواصل بدون خلع السماعات، مع مكالمات واضحة بدون استخدام اليدين ودعم المساعد الصوتي. مقاومة للماء والغبار للاستخدام أثناء التمارين.",
+    price: 2399,
+    originalPrice: 2499,
+    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770236532/71f6jGRpGcL._AC_SL1500__bhbpyc.jpg",
+    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770236543/81l77kwo09L._AC_SL1500__xbut2l.jpg",
+    details: "صوت JBL Deep Bass جهوري وعميق – تصميم مريح داخل الأذن – بطارية حتى 32 ساعة تشغيل مع العلبة – تقنيات Smart Ambient وTalkThru لسماع ما حولك والتحدث بدون خلع السماعات – مكالمات واضحة بدون استخدام اليدين + دعم المساعد الصوتي – مقاومة للماء والغبار – مناسبة للرياضة والتنقل اليومي",
+    specifications: {
+        "الصوت": "JBL Deep Bass",
+        "عمر البطارية": "حتى 32 ساعة تشغيل",
+        "الميزات الذكية": "Smart Ambient – TalkThru",
+        "المكالمات": "Hands-free + دعم المساعد الصوتي",
+        "المقاومة": "مقاومة للماء والغبار",
+        "اللون": "أسود",
+        "الموديل": "JBLWBEAMBLK"
     },
 },
 
@@ -6217,7 +6257,7 @@ img {
             }
         };
 
-      // Shopping cart
+     // Shopping cart
 let cart = [];
 
 // Current view state
@@ -6229,9 +6269,26 @@ let currentProduct = null;
 // Current order details
 let currentOrder = null;
 
-// WhatsApp phone number - UPDATED
-const whatsappNumber = "201016805576";
+// WhatsApp phone numbers - UPDATED
+const whatsappNumbers = {
+  offersAndPhones: "201016805576", // العروض + الهواتف المستعملة
+  laptopsAndParts: "201067250858"  // رقم اللابات + قطع الغيار 
+};
 
+// Function to determine WhatsApp number based on order items
+function getWhatsAppNumberForOrder(order) {
+  // Check if order contains any laptops or parts
+  const hasLaptopsOrParts = order.items.some(item =>
+    item.category === 'new-laptops' ||
+    item.category === 'imported-laptops' ||
+    item.category === 'parts-accessories'
+  );
+
+  // Return appropriate number
+  return hasLaptopsOrParts
+    ? whatsappNumbers.laptopsAndParts
+    : whatsappNumbers.offersAndPhones;
+}
 // Shipping costs
 const shippingCosts = {
     'القاهرة': 50,
@@ -6884,7 +6941,8 @@ function changeMainImage(thumbnail, imageSrc) {
 function shareProductViaWhatsApp(productName, productUrl) {
     const message = `*${productName}*\n\n${productUrl}\n\n🔗 شارك هذا المنتج من Al Alamy Store - LAP ZONE`;
     const encodedMessage = encodeURIComponent(message);
-    const whatsappURL = `https://wa.me/?text=${encodedMessage}`;
+    // Use default number for sharing
+    const whatsappURL = `https://wa.me/${whatsappNumbers.offersAndPhones}?text=${encodedMessage}`;
     window.open(whatsappURL, '_blank');
 }
 
@@ -6963,8 +7021,8 @@ function openWhatsApp(messageType = 'استفسار عام', productName = '') {
     // Encode message for URL
     const encodedMessage = encodeURIComponent(message);
     
-    // Create WhatsApp URL
-    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    // Use default number for inquiries
+    const whatsappURL = `https://wa.me/${whatsappNumbers.offersAndPhones}?text=${encodedMessage}`;
     
     // Open WhatsApp in new tab
     window.open(whatsappURL, '_blank');
@@ -6985,8 +7043,8 @@ function subscribeToNewsletter() {
     // Encode message for URL
     const encodedMessage = encodeURIComponent(message);
     
-    // Create WhatsApp URL
-    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    // Use default number for newsletter
+    const whatsappURL = `https://wa.me/${whatsappNumbers.offersAndPhones}?text=${encodedMessage}`;
     
     // Open WhatsApp in new tab
     window.open(whatsappURL, '_blank');
@@ -7275,7 +7333,7 @@ function submitOrder() {
     // Generate random order number
     const orderNum = 'LAP-' + Math.floor(100000 + Math.random() * 900000);
     
-    // Save order details
+    // Save order details with category information
     currentOrder = {
         orderNumber: orderNum,
         customerName: `${firstName} ${lastName}`,
@@ -7290,7 +7348,8 @@ function submitOrder() {
             name: item.name,
             quantity: item.quantity,
             price: item.price,
-            total: item.price * item.quantity
+            total: item.price * item.quantity,
+            category: item.category // حفظ category لكل منتج
         })),
         subtotal: subtotal,
         shipping: shipping,
@@ -7336,6 +7395,9 @@ function closeOrderConfirmation() {
 function sendToWhatsApp() {
     if (!currentOrder) return;
     
+    // تحديد رقم الواتساب المناسب بناءً على نوع المنتجات
+    const targetNumber = getWhatsAppNumberForOrder(currentOrder);
+    
     // Create order summary message
     let orderMessage = `*طلب جديد - Al Alamy Store - LAP ZONE*\n\n`;
     orderMessage += `*📋 رقم الطلب:* ${currentOrder.orderNumber}\n`;
@@ -7357,20 +7419,28 @@ function sendToWhatsApp() {
     
     orderMessage += `\n*🛒 تفاصيل الطلب:*\n`;
     currentOrder.items.forEach((item, index) => {
-        orderMessage += `${index + 1}. ${item.name} × ${item.quantity} = ج.م${item.total.toLocaleString('ar-EG')}\n`;
+        orderMessage += `${index + 1}. ${item.name} (${getCategoryName(item.category)}) × ${item.quantity} = ج.م${item.total.toLocaleString('ar-EG')}\n`;
     });
     
     orderMessage += `\n*💰 المجموع الفرعي:* ج.م${currentOrder.subtotal.toLocaleString('ar-EG')}\n`;
     orderMessage += `*🚚 تكلفة الشحن:* ج.م${currentOrder.shippingCost.toLocaleString('ar-EG')}\n`;
     orderMessage += `*💵 المجموع الكلي:* ج.م${currentOrder.total.toLocaleString('ar-EG')}\n`;
     
+    // إضافة ملاحظة حول نوع الطلب
+    const isLaptopOrder = getWhatsAppNumberForOrder(currentOrder) === whatsappNumbers.laptopsAndParts;
+    if (isLaptopOrder) {
+        orderMessage += `\n*📞 نوع الطلب:* لابات/قطع غيار`;
+    } else {
+        orderMessage += `\n*📞 نوع الطلب:* عروض/هواتف مستعملة`;
+    }
+    
     // Encode message for URL
     const encodedMessage = encodeURIComponent(orderMessage);
     
-    // Create WhatsApp URL
-    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    // Create WhatsApp URL مع الرقم المناسب
+    const whatsappURL = `https://wa.me/${targetNumber}?text=${encodedMessage}`;
     
-    // ✅ الأفضل: توجيه نافذة واتساب المفتوحة مسبقًا (منع الـ Popup Block)
+    // ✅ فتح رابط الواتساب في نافذة جديدة
     window.open(whatsappURL, '_blank');
 }
 
@@ -7394,4 +7464,3 @@ function continueShopping() {
 </script>
 </body>
 </html>  
-

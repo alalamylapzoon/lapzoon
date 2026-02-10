@@ -4269,6 +4269,100 @@ img {
     border-color: rgba(46,125,50,0.35);
   }
 }
+/* Fix: Shopping Cart transparency on mobile */
+@media (max-width: 991px) {
+  .shopping-cart {
+    background-color: #ffffff !important; /* خليها بيضاء واضحة */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    opacity: 1 !important;
+  }
+
+  .cart-header,
+  .cart-body,
+  .cart-footer {
+    background-color: #ffffff !important;
+  }
+}
+@media (max-width: 991px) {
+  body,
+  main,
+  .container {
+    backdrop-filter: none !important;
+  }
+}
+@media (max-width: 991px) {
+  .shopping-cart {
+    box-shadow: 0 -10px 30px rgba(0,0,0,.25);
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+  }
+}
+/* Fix: Text color inside shopping cart (empty state) */
+.shopping-cart,
+.shopping-cart * {
+  color: #212121; /* لون داكن للنص */
+}
+
+/* تأكيد ألوان العناصر المهمة */
+.shopping-cart .cart-title,
+.shopping-cart .cart-empty h3,
+.shopping-cart .cart-empty p {
+  color: #212121 !important;
+}
+
+/* أيقونة السلة الفارغة */
+.shopping-cart .cart-empty i {
+  color: #9e9e9e !important;
+}
+
+/* زر مواصلة التسوق */
+.shopping-cart .cart-empty .btn {
+  color: #ffffff; /* لو الزر Primary */
+}
+/* ===== Fix Shopping Cart Background & Text (Desktop + Mobile) ===== */
+
+/* الوضع الطبيعي (Desktop) */
+.shopping-cart {
+  background-color: #ffffff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  opacity: 1 !important;
+}
+
+/* نصوص السلة */
+.shopping-cart,
+.shopping-cart * {
+  color: #212121 !important;
+}
+
+.shopping-cart .cart-header {
+  background-color: var(--primary-color) !important;
+  color: #ffffff !important;
+}
+
+.shopping-cart .cart-empty h3,
+.shopping-cart .cart-empty p {
+  color: #212121 !important;
+}
+
+.shopping-cart .cart-empty i {
+  color: #9e9e9e !important;
+}
+
+/* ===== تأكيد على الموبايل فقط ===== */
+@media (max-width: 991px) {
+  .shopping-cart {
+    background-color: #ffffff !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    opacity: 1 !important;
+  }
+}
+.shopping-cart {
+  box-shadow: 0 0 30px rgba(0,0,0,.25) !important;
+  border-right: 1px solid #eee;
+}
 
 
     </style>

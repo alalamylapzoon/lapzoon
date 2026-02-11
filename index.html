@@ -57,17 +57,16 @@
         "https://www.instagram.com/lapzone"
       ]
     }
-    </script>
-    
-     <style>
-/* =========================================================
-   Al Alamy Store - LAP ZONE | Premium CSS UI Kit
-   - RTL First
-   - Not Minified
-   - High-end E-commerce feel
-   ========================================================= */
 
-/* =========================
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL = "https://ojqlwvducojhpypfbwev.supabase.co";
+  const SUPABASE_ANON_KEY = "sb_publishable_ZwJx3a8WsH6xiFZPm4oycA_nnoiKIYb";
+   window.sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+</script>
+<style>
+    /* =========================
    01) Root Variables
    ========================= */
 :root{
@@ -4364,8 +4363,8 @@ img {
   border-right: 1px solid #eee;
 }
 
+</style>
 
-    </style>
 </head>
 <body>
     <!-- Loading Overlay -->
@@ -4802,12 +4801,12 @@ img {
                                 
                                 <div class="whatsapp-note" id="whatsapp-note">
                                     <i class="fab fa-whatsapp"></i>
-                                    بعد تأكيد الطلب، سيتم تحويلك تلقائياً إلى واتساب لإرسال تفاصيل طلبك.
+                                   اذا اردت تفاصيل عن طلبك اضغط للتواصل واتساب مع فريقنا
                                 </div>
                                 
                                 <div class="form-footer">
                                     <a href="#" class="back-to-cart" onclick="event.preventDefault(); toggleCart();"><i class="fas fa-arrow-left"></i> العودة للسلة</a>
-                                    <button type="button" class="btn btn-primary submit-order-btn" onclick="submitOrder()">تأكيد الطلب وإرساله على واتساب</button>
+                                    <button type="button" class="btn btn-primary submit-order-btn" onclick="submitOrder()">اذا اردت الاستفسار عن طلبك اضغط هنا</button>
                                 </div>
                             </form>
                         </div>
@@ -5077,15 +5076,18 @@ img {
         </div>
     </div>
 
-    <script>
+<script>
         // ===== CONFIG =====
         const CONFIG = {
             AUTO_PLAY_MS: 8000,
             SHOW_LATEST_COUNT: 8
         };
 
-                    // Sample product data for LAP ZONE store
-        const products = {
+        // ✅ الهيكل الأساسي للمنتجات (يتم تحديثه من Supabase أو النسخة المحلية)
+        let products = {};
+
+        // ✅ النسخة المحلية الاحتياطية (Fallback)
+        const LOCAL_PRODUCTS_BACKUP = {
            'offers': [
             {
     id: 100,
@@ -5101,390 +5103,6 @@ img {
         "الاتصال": " Bluetooth"
     },
 },
-  {
-    id: 101,
-    name: "Air podes FDY",
-    description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطارين تدوم 50 ساعه تشتغيل",
-    price: 600,
-    originalPrice: 800,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769880437/fdy_1_wzdswa.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769880417/fdy_2_snwaoq.jpg",
-    image3: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769880442/fdy_3_bjue9d.jpg",
-    details: "تحكم بصمه في السماعه في الرد علي المكالمات - شكل انيق - وفيها عازل للصوت والضوضاء الخارجيه -",
-    specifications: {
-        "البطارية": "تدوم حتى 50 ساعات",
-        "الوزن": "0.2 كجم",
-        "الاتصال": " Bluetooth"
-    },
-},
- {
-    id: 102,
-    name: "ايربودز برو 2 اسود",
-    description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطارين تدوم 10 ساعه تشتغيل",
-    price: 350,
-    originalPrice: 400,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769876562/airpods_pro_2_3_djqcpb.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769876559/airpods_pro2_1_ptipws.jpg",
-    image3: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769876561/airpods_pro2_2_idszhb.jpg",
-    details: "تحكم بصمه في السماعه في الرد علي المكالمات - شكل انيق - وفيها عازل للصوت والضوضاء الخارجيه -",
-    specifications: {
-        "البطارية": "10  ساعات ",
-        "الاتصال": "بلوتوث"
-    },
-},
- {
-    id: 103,
-    name: " ايربودز a9  تاتش ابيض",
-    description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطارين تدوم 10 ساعه تشتغيل وكمان فيها عازل للضوضاء لون ابيض ",
-    price: 450,
-    originalPrice: 600,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769879942/9_3_cyptl9.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769879933/a9_2_k6u4f9.jpg",
-    image3: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769877188/airpods_a9_2_jwheaa.jpg",
-    details: "تحكم بصمه في السماعه في الرد علي المكالمات - شكل انيق - وفيها عازل للصوت والضوضاء الخارجيه -",
-    specifications: {
-        "البطارية": "20 ساعه",
-        "الاتصال": "بلوتوث"
-    },
-},
- {
-    id: 104,
-    name: "ايبودز soundcore K20i",
-    description: " ايربودز من افضل السماعات البلوتوث الاصليه ",
-    price: 350,
-    originalPrice: 500,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769877699/sound_3_hb56hc.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769877485/sound_2_xgltwn.jpg",
-    image3: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769877484/sound_1_mnfkn2.jpg",
-    details: " ايربودز انكر اصليه كويسه جدا في المكالمات والبطاريه تقدر تشتغل معاك يوم كامل والعلبه تشحنها 5 مرات ",
-    specifications: {
-        "البطارية": "20  ساعه",
-        "الاتصال": " بلوتوث "
-    },
-},
-{
-    id: 105,
-    name: "   ايربودز vancl ",
-    description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطارين تدوم 50 ساعه تشتغيل",
-    price: 450,
-    originalPrice: 600,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769877981/vancl_1_q1jrqn.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769877982/vancl_3_w9ujmk.jpg",
-    image3: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769877980/vancl_2_onxoyw.jpg",
-    details: "تحكم بصمه في السماعه في الرد علي المكالمات - شكل انيق - وفيها عازل للصوت والضوضاء الخارجيه - ضمان محلي",
-    specifications: {
-        "البطارية": "تدوم حتى 50 ساعات",
-        "الوزن": "0.2 كجم",
-        "الاتصال": " Bluetooth"
-    },
-    },
- {
-    id: 106,
-    name: "smart watch CONNECTME",
-    description: " سمارت ووتش لها برنامج خاص وبتتحكم من خلالها تحكم كامل في التلفون",
-    price: 525,
-    originalPrice: 600,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769878202/watch_1_basmrv.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769878202/smart_2_eesued.jpg",
-    image3: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769878202/smart_2_eesued.jpg",
-    details: "ساعه سمارت ووتش من افضل الساعات اللي تقدر من خلالها ترد علي مكالماتك وتقيس من خلالها الضغط وضرابات القلب وتقيس سعراتك الحراريه وغير كدا واكتر من خلال التطبيق الخاص بها",
-    specifications: {
-        "البطارية": " يومين ",
-        "الاتصال": "بلوتوث",
-        "التحكم": "ابلكيشن خاص"
-    },
-},
- 
- {
-    id: 107,
-    name: " ايربودز a9 pro  تاتش",
-    description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطارين تدوم 10 ساعه تشتغيل وكمان فيها عازل للضوضاء لون اسود ",
-    price: 450,
-    originalPrice: 600,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768857448/airpods_tatch_2_wwscth.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768857457/airpods_tatch_1_fdxm33.jpg",
-    details: "تحكم بصمه في السماعه في الرد علي المكالمات - شكل انيق - وفيها عازل للصوت والضوضاء الخارجيه - بتقدر تتحكم من خلالها في التلفون وكانك معاك ساعه سمارات وساعه في نفس الوقت ",
-    specifications: {
-        "البطارية": "تدوم حتى 10 ساعات",
-        "الوزن": "0.2 كجم",
-        "الاتصال": " Bluetooth"
-    },
-},
-{
-    id: 108,
-    name: "ايربودز ultra 3 + airpodes",
-    description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطارين تدوم 30 ساعه تشتغيل + ساعه سمارت وواتش",
-    price: 500,
-    originalPrice: 750,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769901094/ultra_1_fvehre.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769901094/ultra_2_nxxkla.jpg",
-    hmage3: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769901094/ultra_3_e8kpqm.jpg",
-    details: "تحكم بصمه في السماعه في الرد علي المكالمات - شكل انيق - وفيها عازل للصوت والضوضاء الخارجيه - كمان معاه سمارت وواتش يعني مش ناقصك حاجه في الشياكه",
-    specifications: {
-        "البطارية": "تدوم حتى 30 ساعات",
-        "الوزن": "0.2 كجم",
-        "الاتصال": " Bluetooth"
-    },
-    },
-
-           {
-    id: 109,
-    name: "تلفون نوكيا 105 - عرض خاص",
-    description: "جهاز نوكيا 105 ينفع معاك في كل حاجه في الجيش والاستعمال الشخصي لو تلفونك عليه ضريبه تقدر تستخدمهمع تلفونك ",
-    price: 400,
-    originalPrice: 650,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768687705/%D8%AA%D9%84%D9%81%D9%88%D9%86_%D9%86%D9%88%D9%83%D9%8A%D8%A7_1_kwzcyu.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768687703/%D8%AA%D9%84%D9%81%D9%88%D9%86_%D9%86%D9%88%D9%83%D9%8A%D8%A7_2_bqbjrs.jpg",
-    details: "مناسب بطريقه كبيره للشغل او بديل للهواتف اللي عليها ضريبه بأرخص سعر في السوق ",
-    specifications: {
-        "البطارية": "تدوم حتى 20 ساعات",
-        "الوزن": "0.3 كجم",
-        "الاتصال": "اتصال خطين، Bluetooth"
-    },
-    },
-    {
-    id: 110,
-    name: "   ايربودز - smart watch wisme ",
-    description: "ساعه اندرويد تنفع معاك في الشغل والدراسه وتقدر تربطها بالتلفون وتستقبل وتعمل مكالماتك من خلالها بأرخص سعر في مصر معاه ضمان سنه ضدد عيوب الصناعه وضدد المايه ",
-    price: 950,
-    originalPrice: 1200,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769901231/wisme_1_k8chqc.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769901231/wisme_2_n1pfai.jpg",
-    image3: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768687701/%D8%B3%D8%A7%D8%B9%D9%87_%D9%88%D9%8A%D8%B3%D9%85%D9%8A_1_ufox9h.jpg",
-    details: "تقدر من خلال الساعه تربطها بالتلفون ومن خلال البرنامج الخاص بالساعه تقدر تشوف كل تقارير الصحه وقياس الضغط وضربات القلب وغيره وكمان معاه ايربودز يعني مش محتاج حاجه تانيه ",
-    specifications: {
-        "البطارية": "تدوم حتى 72 ساعات",
-        "الوزن": "0.3 كجم",
-        "الاتصال": " Bluetooth"
-    },
-    },
-   { 
-    id: 111,
-    name: "   ايربودز - smart watch wisme ",
-    description: "ساعه اندرويد تنفع معاك في الشغل والدراسه وتقدر تربطها بالتلفون وتستقبل وتعمل مكالماتك من خلالها بأرخص سعر في مصر معاه ضمان سنه ضدد عيوب الصناعه وضدد المايه ",
-    price: 950,
-    originalPrice: 1200,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768687705/%D8%B3%D8%A7%D8%B9%D9%87_%D8%A7%D9%84%D8%AA%D8%B1%D8%A7_1_s17bwb.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768687705/%D8%B3%D8%A7%D8%B9%D9%87_%D8%A7%D9%84%D8%AA%D8%B1%D8%A7_%D8%B1%D9%82%D9%85_2_fx1bg4.jpg",
-    details: "تقدر من خلال الساعه تربطها بالتلفون ومن خلال البرنامج الخاص بالساعه تقدر تشوف كل تقارير الصحه وقياس الضغط وضربات القلب وغيره وكمان معاه ايربودز يعني مش محتاج حاجه تانيه ",
-    specifications: {
-        "البطارية": "تدوم حتى 72 ساعات",
-        "الوزن": "0.3 كجم",
-        "الاتصال": " Bluetooth"
-    },
-    },
-    { 
-    id: 112,
-    name: "   حريمي-smart watch modio  ",
-    description: "ساعه اندرويد تنفع معاك في الشغل والدراسه وتقدر تربطها بالتلفون وتستقبل وتعمل مكالماتك من خلالها بأرخص سعر في مصر معاه ضمان سنه ضدد عيوب الصناعه وضدد المايه ",
-    price: 750,
-    originalPrice: 1000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769878766/MODIO_1_isxhip.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769878767/MODIO_2_ud9wb5.jpg",
-    image3: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768690709/%D8%A7%D9%8A%D8%B1%D8%A8%D9%88%D8%AF%D8%B2_%D8%AD%D8%B1%D9%8A%D9%85%D9%8A_1_nzp23q.jpg",
-    details: "تقدر من خلال الساعه تربطها بالتلفون ومن خلال البرنامج الخاص بالساعه تقدر تشوف كل تقارير الصحه وقياس الضغط وضربات القلب وغيره",
-    specifications: {
-        "البطارية": "تدوم حتى 72 ساعات",
-        "الوزن": "0.3 كجم",
-        "الاتصال": " Bluetooth"
-    },
-    },
-    {
-    id: 113,
-    name: "   ايربودز برو 2 ",
-    description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطارين تدوم 30 ساعه تشتغيل",
-    price: 250,
-    originalPrice: 400,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768690708/%D8%A7%D9%8A%D8%B1%D8%A8%D9%88%D8%AF%D8%B2_%D8%A8%D8%B1%D9%88_2_%D8%B1%D9%82%D9%85_1_nb3rap.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768690708/%D8%A7%D9%8A%D8%B1%D8%A8%D9%88%D8%AF%D8%B2_%D8%A8%D8%B1%D9%88_2_%D8%B1%D9%82%D9%85_2_mpkzbo.jpg",
-    details: "تحكم بصمه في السماعه في الرد علي المكالمات - شكل انيق - وفيها عازل للصوت والضوضاء الخارجيه -",
-    specifications: {
-        "البطارية": "تدوم حتى 30 ساعات",
-        "الوزن": "0.2 كجم",
-        "الاتصال": " Bluetooth"
-    },
-    },
-    {
-    id: 114,
-    name: "   ايربودز برو 3 ",
-    description: "سماعه ايربودز من افضل السماعات اللي ليها سيريال وضمان وبطارين تدوم 30 ساعه تشتغيل",
-    price: 200,
-    originalPrice: 400,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768690706/%D8%A7%D9%8A%D8%A8%D9%88%D8%AF%D8%B2_%D8%A8%D8%B1%D9%88_3_cd3byp.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768690708/%D8%A7%D9%8A%D8%B1%D8%A8%D9%88%D8%AF%D8%B2_%D8%A8%D8%B1%D9%88_2_%D8%B1%D9%82%D9%85_2_mpkzbo.jpg",
-    details: "تحكم بصمه في السماعه في الرد علي المكالمات - شكل انيق - وفيها عازل للصوت والضوضاء الخارجيه -",
-    specifications: {
-        "البطارية": "تدوم حتى 30 ساعات",
-        "الوزن": "0.2 كجم",
-        "الاتصال": " Bluetooth"
-    },
-    },
-    {
-    id: 115,
-    name: "  مكنة حلاقه سوكاني - عرض خاص",
-    description: "مكنة حلاقه تنفع لتدريج الدقن والشعر ومناسبه لجميع الاعمار",
-    price: 250,
-    originalPrice: 300,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768687704/%D9%85%D9%83%D9%86%D8%A9_%D8%AD%D9%84%D8%A7%D9%82%D9%87_%D8%B3%D9%88%D9%83%D8%A7%D9%86%D9%8A_p5hhla.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768687704/%D9%85%D9%83%D9%86%D8%A9_%D8%AD%D9%84%D8%A7%D9%82%D9%87_%D8%B3%D9%88%D9%83%D8%A7%D9%86%D9%8A_p5hhla.jpg",
-    details: "مكنة حلاقة هتنفع في جميع الاوقات ولجميع الاعمار بطاريتها بتدوم لاكتر من ساعتين تشغيل وكمان ضدد المايه تنفع لجميع الاعمار",
-    specifications: {
-        "البطارية": "تدوم حتى 1 ساعات",
-        "الوزن": "0.4 كجم",
-    },
-    },
-    {
-    id: 116,
-    name: " مكنة حلاقه كيميل - عرض خاص",
-    description: "مكنة حلاقه تنفع لتدريج الدقن والشعر ومناسبه لجميع الاعمار",
-    price: 200,
-    originalPrice: 300,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768687704/%D9%85%D9%83%D9%86%D8%A9_%D8%AD%D9%84%D8%A7%D9%82%D9%87_%D9%83%D9%8A%D9%85%D9%84_sqk1ue.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1768687704/%D9%85%D9%83%D9%86%D8%A9_%D8%AD%D9%84%D8%A7%D9%82%D9%87_%D9%83%D9%8A%D9%85%D9%84_sqk1ue.jpg",
-    details: "مكنة حلاقة هتنفع في جميع الاوقات ولجميع الاعمار بطاريتها بتدوم لاكتر من ساعتين تشغيل وكمان ضدد المايه تنفع لجميع الاعمار",
-    specifications: {
-        "البطارية": "تدوم حتى 20 ساعات",
-        "الوزن": "0.3 كجم",
-    },
-    },
-    {
-    id: 117,
-    name: "  smart watch t800 - عرض خاص",
-    description: "ساعه اندرويد تنفع معاك في الشغل والدراسه وتقدر تربطها بالتلفون وتستقبل وتعمل مكالماتك من خلالها بأرخص سعر في مصر",
-    price: 250,
-    originalPrice: 400,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769900932/w1_gjhf8y.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769900933/w2_vyxepl.jpg",
-    image3: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1769900932/w3_w8qhpn.jpg",
-    details: "العرض لفتره محدوده اطلب دلوقتي ",
-    specifications: {
-        "البطارية": "تدوم حتى 48 ساعات",
-        "الوزن": "0.3 كجم",
-        "الاتصال": " Bluetooth"
-    },
-    },
-    {
-    id: 118,
-    name: "ساعة Infinix X Watch 3 Plus الذكية",
-    description: "ساعة ذكية من انفينيكس بشاشة اموليد منحنية كبيرة، مقاومة للماء بمعيار IP68، بطارية قوية تدوم لحد 7 أيام، ودعم كامل للمكالمات عبر البلوتوث مع مميزات صحية ورياضية متقدمة.",
-    price: 1800,
-    originalPrice: 1900,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770226141/41jEts3hW3L._AC__fxfcv0.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770226165/41KPUksJDiL._AC__ll2esq.jpg",
-    image3: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770226183/71b80fONK_L._AC_SX679__ezu6fw.jpg",
-    details: "شاشة اموليد منحنية 2.13 بوصة – دعم المكالمات عبر البلوتوث – مقاومة للماء والغبار IP68 – أكتر من 200 واجهة ساعة – أوضاع رياضية متعددة – مراقبة معدل ضربات القلب والنوم والأكسجين في الدم – تصميم أنيق ومناسب للاستخدام اليومي",
-    specifications: {
-        "الشاشة": "2.13 بوصة AMOLED منحنية",
-        "مقاومة الماء": "IP68",
-        "البطارية": "تدوم حتى 7 أيام",
-        "المكالمات": "دعم المكالمات عبر البلوتوث",
-        "الواجهات": "أكثر من 200 واجهة ساعة",
-        "الأوضاع الرياضية": "متعددة",
-        "مراقبة الصحة": "نبض القلب – النوم – SpO2",
-        "الاتصال": "Bluetooth"
-    },
-},
-{
-    id: 119,
-    name: "ساعة Redmi Watch 5 Active الذكية - أسود",
-    description: "ساعة ذكية من شاومي بشاشة كبيرة 2.0 بوصة LCD، بطارية قوية جدًا تدوم لحد 18 يوم، أكتر من 140 وضع رياضي، مع تتبع الصحة واللياقة ودعم المكالمات عبر البلوتوث، ومقاومة للماء حتى 50 متر.",
-    price: 1800,
-    originalPrice: 2000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770226348/71LUqGSz5PL._AC_SX679__r7dxpr.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770226317/61iOQG77hxL._AC_SL1500__npwmsz.jpg",
-    image3: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770226385/71XYNPq8y6L._AC_SL1500__tzgoah.jpg",
-    details: "شاشة LCD مقاس 2.0 بوصة – بطارية تدوم حتى 18 يوم – أكثر من 140 وضع رياضي – دعم المكالمات عبر البلوتوث – تتبع نبضات القلب واللياقة البدنية وتشبع الأكسجين في الدم (SpO2) – مقاومة للماء حتى 50 متر – تصميم أنيق ومناسب للاستخدام اليومي",
-    specifications: {
-        "الشاشة": "2.0 بوصة LCD",
-        "البطارية": "تدوم حتى 18 يوم",
-        "الأوضاع الرياضية": "أكثر من 140 وضع رياضي",
-        "مقاومة الماء": "حتى 50 متر (5ATM)",
-        "المكالمات": "دعم المكالمات عبر البلوتوث",
-        "مراقبة الصحة": "نبضات القلب – اللياقة البدنية – تشبع الأكسجين (SpO2)",
-        "اللون": "أسود",
-        "الاتصال": "Bluetooth"
-    },
-},
-{
-    id: 120,
-    name: "ساعه Samsung Galaxy Fit 3 الذكي - فضي (40 ملم)",
-    description: "سوار ذكي من سامسونج لتتبع التمارين والنشاط اليومي والنوم، مع ميزة اكتشاف السقوط وتنبيهات الطوارئ، ودعم الاتصال عبر البلوتوث. تصميم خفيف ومريح للاستخدام اليومي مع شاشة واضحة ومقاومة للماء للاستخدام أثناء التمرين.",
-    price: 2100,
-    originalPrice: 2399,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770228493/51SwuTXmYDL._AC_SL1162__izmfcr.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770228505/51ZpJfHqg3L._AC_SL1348__todzrj.jpg",
-    details: "تتبع التمارين اليومية وعدة أوضاع رياضية – تتبع النوم ومراقبة النشاط – ميزة اكتشاف السقوط وتنبيهات الطوارئ – اتصال بلوتوث مع الهاتف – تصميم خفيف ومريح – شاشة كبيرة واضحة – مقاومة للماء للاستخدام أثناء التمرين – لون فضي أنيق",
-    specifications: {
-        "المقاس": "40 ملم",
-        "الوظائف الصحية": "تتبع التمارين – تتبع النوم – اكتشاف السقوط",
-        "الاتصال": "Bluetooth",
-        "اللون": "فضي",
-        "الاستخدام": "رياضة – لياقة – تتبع نشاط يومي"
-    },
-},
-{
-    id: 121,
-    name: "سماعات Anker Soundcore R50i NC لاسلكية - أسود",
-    description: "سماعات أذن لاسلكية من أنكر ساوندكور R50i NC بمحركات صوت داخلية 10 ملم لصوت باس قوي، مع بلوتوث 5.3، وبطارية تدوم حتى 45 ساعة تشغيل. مزودة بخاصية إلغاء الضوضاء النشط (NC) ومكالمات واضحة بالذكاء الاصطناعي عبر 4 ميكروفونات، ومقاومة للماء والغبار بمعيار IP54.",
-    price: 1299,
-    originalPrice: 1599,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770236354/61nwtLta29L._AC_SL1500__yf5fpr.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770236369/41AYDkp2jIL._AC__lnkuto.jpg",
-    image3: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770236386/61VCrwOjn3L._AC_SX522__f5tcsl.jpg",
-    details: "محركات صوت 10 ملم لصوت باس قوي وواضح – بلوتوث 5.3 لاتصال ثابت وسريع – بطارية تصل إلى 45 ساعة تشغيل مع العلبة – إلغاء ضوضاء نشط (NC) لتجربة استماع أنقى – مكالمات واضحة بالذكاء الاصطناعي عبر 4 ميكروفونات – مقاومة للماء والغبار بمعيار IP54 – أكثر من 22 إعداد صوتي عبر تطبيق Soundcore – تصميم مريح للاستخدام اليومي والتمارين",
-    specifications: {
-        "المحركات الصوتية": "10 ملم",
-        "الاتصال": "Bluetooth 5.3",
-        "عمر البطارية": "حتى 45 ساعة تشغيل",
-        "إلغاء الضوضاء": "NC (إلغاء ضوضاء نشط)",
-        "الميكروفونات": "4 ميكروفونات مع ذكاء اصطناعي للمكالمات",
-        "المقاومة": "IP54 (مقاومة للماء والغبار)",
-        "الإعدادات الصوتية": "22 إعداد عبر تطبيق Soundcore",
-        "اللون": "أسود"
-    },
-},
-{
-    id: 122,
-    name: "سماعات JBL Wave Beam True Wireless - أسود (JBLWBEAMBLK)",
-    description: "سماعات أذن لاسلكية من جيه بي إل Wave Beam بصوت جهوري عميق وتقنية JBL Deep Bass، تصميم مريح داخل الأذن للاستخدام اليومي، وبطارية تدوم حتى 32 ساعة تشغيل. مزودة بميزات المحيط الذكي (Smart Ambient) وTalkThru للتواصل بدون خلع السماعات، مع مكالمات واضحة بدون استخدام اليدين ودعم المساعد الصوتي. مقاومة للماء والغبار للاستخدام أثناء التمارين.",
-    price: 2399,
-    originalPrice: 2499,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770236532/71f6jGRpGcL._AC_SL1500__bhbpyc.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770236543/81l77kwo09L._AC_SL1500__xbut2l.jpg",
-    details: "صوت JBL Deep Bass جهوري وعميق – تصميم مريح داخل الأذن – بطارية حتى 32 ساعة تشغيل مع العلبة – تقنيات Smart Ambient وTalkThru لسماع ما حولك والتحدث بدون خلع السماعات – مكالمات واضحة بدون استخدام اليدين + دعم المساعد الصوتي – مقاومة للماء والغبار – مناسبة للرياضة والتنقل اليومي",
-    specifications: {
-        "الصوت": "JBL Deep Bass",
-        "عمر البطارية": "حتى 32 ساعة تشغيل",
-        "الميزات الذكية": "Smart Ambient – TalkThru",
-        "المكالمات": "Hands-free + دعم المساعد الصوتي",
-        "المقاومة": "مقاومة للماء والغبار",
-        "اللون": "أسود",
-        "الموديل": "JBLWBEAMBLK"
-    },
-},
-{
-    id: 123,
-    name: "ساعة Oppo Free AMOLED 1.64 بوصة - أسود",
-    description: "ساعة ذكية من OPPO بشاشة AMOLED مقاس 1.64 بوصة بدقة عالية وألوان واضحة، تصميم أنيق وخفيف مناسب للاستخدام اليومي، تدعم تتبع النشاط البدني والتمارين المختلفة مع مراقبة معدل ضربات القلب والنوم. بطارية بعمر طويل للاستخدام المستمر، مع دعم الإشعارات من الهاتف والتحكم في الموسيقى، ومقاومة للماء للاستخدام أثناء التمارين والأنشطة اليومية.",
-    price: 2400,
-    originalPrice: 2800,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770386198/71JiYO9RQHL._AC_SL1500__ky9xku.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770386243/71CNX-3w1WL._AC_SL1500__k0jw9m.jpg",
-    image3: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770386254/71N9ClzWEeL._AC_SL1500__xb4zqi.jpg",
-    details: "شاشة AMOLED مقاس 1.64 بوصة – تصميم خفيف ومريح – تتبع النشاط والتمارين – قياس معدل ضربات القلب والنوم – استقبال إشعارات الهاتف والتحكم في الموسيقى – بطارية بعمر طويل – مقاومة للماء – مناسبة للاستخدام اليومي والرياضي",
-    specifications: {
-        "الشاشة": "AMOLED 1.64 بوصة",
-        "الذاكرة": "128 جيجابايت",
-        "تتبع الصحة": "معدل ضربات القلب + تتبع النوم",
-        "الميزات": "إشعارات الهاتف – التحكم في الموسيقى",
-        "المقاومة": "مقاومة للماء",
-        "المقاس": "صغير",
-        "اللون": "أسود",
-        "الموديل": "6206219"
-    },
-},
-
-
             ],
            'new-laptops': [
                 {
@@ -5508,195 +5126,8 @@ img {
         "الوزن": "حوالي 1.7 – 1.9 كجم"
     }
                 },
-               {
-    id: 2,
-    name: "Lenovo Gaming Laptop - Intel Core i5",
-    description: "لابتوب لينوفو بشاشة 15.6 بوصة، معالج Intel Core i5، كارت RTX 2050، رام 16GB، SSD 512GB",
-    price: 41000,
-    originalPrice: 45000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044457/new2.1_jwfamw.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044457/new2.2_jn9vau.jpg",
-    details: "لابتوب لينوفو مخصص للأداء العالي والألعاب، بشاشة 15.6 بوصة FHD IPS بمعدل تحديث 144Hz، يعمل بمعالج Intel Core i5-12450HX بعدد 8 أنوية (4P + 4E) و12 خيطًا، مع كارت شاشة NVIDIA GeForce RTX 2050 بسعة 4GB GDDR6، مناسب للألعاب، التصميم، والمونتاج.",
-    specifications: {
-        "الشاشة": "15.6 بوصة FHD (1920×1080) IPS، 144Hz، 300nits، Anti-Glare، 100% sRGB",
-        "المعالج": "Intel Core i5-12450HX (8 أنوية / 12 خيطًا)",
-        "التردد": "حتى 4.4GHz لأنوية الأداء و3.1GHz لأنوية الكفاءة",
-        "الذاكرة المؤقتة": "12MB Cache",
-        "كارت الشاشة": "NVIDIA GeForce RTX 2050 4GB GDDR6 (65W)",
-        "الذاكرة": "16GB DDR5 4800MHz",
-        "التخزين": "512GB SSD M.2 2242 PCIe 4.0×4",
-        "نظام التشغيل": "Windows 11",
-        "الاستخدام": "Gaming – تصميم – مونتاج – برمجة"
-    }
-                },
-                {
-    id: 3,
-    name: "HP Victus Gaming Laptop",
-    description: "لابتوب اتش بي للألعاب بشاشة 15.6 بوصة، معالج Intel Core i5، كارت RTX 3050، رام 8GB، SSD 512GB",
-    price: 38000,
-    originalPrice: 40000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044459/new3.1_xyoif8.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044457/new3.2_eqxch2.jpg",
-    details: "لاب توب HP Victus Gaming للألعاب والأداء العالي، بمعالج Intel Core i5-13420H من الجيل الثالث عشر بعدد 8 أنوية، وكارت شاشة NVIDIA GeForce RTX 3050 بسعة 6 جيجابايت، وذاكرة RAM 8 جيجابايت، مع تخزين SSD بسعة 512 جيجابايت، وشاشة 15.6 بوصة FHD بمعدل تحديث 144Hz، وكيبورد مضيئة، ونظام تشغيل Windows 11، باللون الأزرق.",
-    specifications: {
-        "الشاشة": "15.6 بوصة FHD (1920×1080) – 144Hz",
-        "المعالج": "Intel Core i5-13420H (الجيل 13 – 8 أنوية)",
-        "كارت الشاشة": "NVIDIA GeForce RTX 3050 6GB",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "512GB SSD",
-        "لوحة المفاتيح": "كيبورد مضيئة",
-        "نظام التشغيل": "Windows 11",
-        "اللون": "أزرق",
-        "الاستخدام": "Gaming – تصميم – مونتاج – برمجة"
-    }
-    },
-    {
-    id: 4,
-    name: "Dell G15 5530 Gaming",
-    description: "لابتوب ديل للألعاب بشاشة 15.6 بوصة، معالج Intel Core i5، كارت RTX 3050، رام 16GB، SSD 512GB",
-    price: 38999,
-    originalPrice: 40999,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044458/new4.1_hmskls.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044459/new4.2_m77jer.jpg",
-    details: "لاب توب Dell G15 5530 مخصص للألعاب والأداء العالي، بمعالج Intel Core i5-13450HX من الجيل الثالث عشر بعدد 10 أنوية وتردد يصل إلى 4.60 جيجاهرتز، وكارت شاشة NVIDIA GeForce RTX 3050 بسعة 6 جيجابايت GDDR6، وذاكرة RAM DDR5 سعة 16 جيجابايت، وشاشة 15.6 بوصة FHD بمعدل تحديث 120Hz، مناسب للألعاب الحديثة، التصميم، والمونتاج.",
-    specifications: {
-        "الشاشة": "15.6 بوصة FHD (1920x1080) – 120Hz",
-        "المعالج": "Intel Core i5-13450HX (الجيل 13 – 10 أنوية)",
-        "التردد": "حتى 4.60GHz",
-        "الذاكرة المؤقتة": "20MB Cache",
-        "كارت الشاشة": "NVIDIA GeForce RTX 3050 6GB GDDR6",
-        "الذاكرة": "16GB DDR5 4800MHz (1×16GB)",
-        "التخزين": "512GB SSD M.2 PCIe NVMe",
-        "البطارية": "3 خلايا – 56Wh",
-        "الشاحن": "240 وات",
-        "لوحة المفاتيح": "عربي / إنجليزي – RGB أربع مناطق + لوحة أرقام + مفتاح G",
-        "نظام التشغيل": "Ubuntu",
-        "اللون": "رمادي داكن مع رف حراري أسود"
-    }
-    },
-    {
-    id: 5,
-    name: "MacBook Air 2024 - M3",
-    description: "لابتوب ماك بوك اير بشاشة 13.6 بوصة Liquid Retina، شريحة Apple M3، رام 8GB، SSD 256GB",
-    price: 51500,
-    originalPrice: 53000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044473/new5.1_rqc8uw.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044471/new5.2_dulten.jpg",
-    details: "لابتوب MacBook Air 2024 مزود بشريحة Apple M3، شاشة Liquid Retina بحجم 13.6 بوصة، ذاكرة موحدة 8GB، تخزين SSD 256GB، كيبورد بإضاءة خلفية، كاميرا FaceTime HD 1080P، وميزة Touch ID للتعرف على البصمة، مناسب للعمل المكتبي، الدراسة، البرمجة، والاستخدام اليومي، باللون الرمادي.",
-    specifications: {
-        "الشاشة": "13.6 بوصة Liquid Retina، دقة عالية",
-        "المعالج": "Apple M3",
-        "الذاكرة": "8GB موحدة",
-        "التخزين": "256GB SSD",
-        "لوحة المفاتيح": "كيبورد بإضاءة خلفية",
-        "الكاميرا": "FaceTime HD 1080P",
-        "الأمان": "Touch ID",
-        "نظام التشغيل": "macOS",
-        "اللون": "رمادي"
-    },
-    },
-    {
-    id: 106,
-    name: "لابتوب ASUS TUF F16 [FX607VJB-RL165W]",
-    description: "لابتوب جيمينج قوي من أسوس بمعالج Intel Core 5-210H، وذاكرة DDR5 سعة 16 جيجا، وتخزين SSD سريع 512 جيجا، مع كارت شاشة NVIDIA RTX 3050 بسعة 6 جيجا لتجربة ألعاب وتصميم سلسة، وشاشة FHD+ بتردد 144 هرتز مع ويندوز 11.",
-    price: 40000,
-    originalPrice: 41999,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770226631/71BugMWK2qL._AC_SX679__ovt1zn.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770226674/71PhRkGSskL._AC_SX679__spcf6e.jpg",
-    image3: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770226663/713JV96VSmL._AC_SX679__qxylle.jpg",
-    details: "معالج Intel Core 5-210H قوي للألعاب والبرامج الثقيلة – رام DDR5 سعة 16 جيجا – تخزين SSD 512 جيجا سريع – كارت شاشة NVIDIA RTX 3050 6GB GDDR6 – شاشة FHD+ بتردد 144Hz لتجربة سلسة – تصميم TUF متين مناسب للاستخدام الشاق – ويندوز 11 مثبت",
-    specifications: {
-        "المعالج": "Intel Core 5-210H",
-        "الرام": "16GB DDR5",
-        "التخزين": "512GB SSD",
-        "كارت الشاشة": "NVIDIA RTX 3050 6GB GDDR6",
-        "الشاشة": "16 بوصة FHD+ (1920×1200) 144Hz",
-        "النظام": "Windows 11",
-        "الاستخدام": "ألعاب – تصميم – مونتاج – برمجة"
-    },
-},
-{
-    id: 107,
-    name: "لابتوب Lenovo LOQ 15IAX9[83DV012AED] - رمادي",
-    description: "لابتوب جيمينج قوي من لينوفو بمعالج Intel Core i5-13450HX، وذاكرة رام 16 جيجا، وتخزين SSD سريع 512 جيجا، مع كارت شاشة NVIDIA RTX 3050 بسعة 6 جيجا لتجربة ألعاب وأداء ممتاز، وشاشة 15.6 بوصة FHD بتردد 144 هرتز مع دعم G-Sync. يأتي بدون نظام تشغيل (DOS) ومع ماوس Lenovo LOQ M100 RGB هدية.",
-    price: 37999,
-    originalPrice: 38999,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770227181/61ZxvicMqDL._AC_SX679__hojjdm.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770227207/41RFuvPdUaL._AC_SL1000__dnfrn8.jpg",
-    image3: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770227193/416XVa-ZjTL._AC_SL1000__h0f2pq.jpg",
-    details: "معالج Intel Core i5-13450HX قوي للألعاب والمهام الثقيلة – رام 16GB – تخزين SSD 512GB – كارت شاشة NVIDIA RTX 3050 6GB – شاشة 15.6 بوصة FHD 144Hz مع G-Sync لتجربة لعب سلسة – تصميم قوي وعصري – يأتي بدون ويندوز (DOS) مع ماوس Lenovo LOQ M100 RGB هدية",
-    specifications: {
-        "المعالج": "Intel Core i5-13450HX",
-        "الرام": "16GB",
-        "التخزين": "512GB SSD",
-        "كارت الشاشة": "NVIDIA RTX 3050 6GB",
-        "الشاشة": "15.6 بوصة FHD 144Hz مع G-Sync",
-        "النظام": "DOS (بدون ويندوز)",
-        "اللون": "رمادي",
-        "الملحقات": "ماوس Lenovo LOQ M100 RGB (هدية)"
-    },
-},
-{
-    id: 108,
-    name: "لابتوب HP OmniBook 3 AI PC 15-fn0001ne - فضي",
-    description: "لابتوب أنيق من اتش بي بمعالج Ryzen AI 5 330 الجديد، وذاكرة رام 16 جيجا، وتخزين SSD سريع 512 جيجا، مع كارت شاشة AMD Radeon 820M مناسب للاستخدام اليومي والأعمال والدراسة. شاشة 15.6 بوصة FHD بسطوع 300 شمعة، كيبورد بإضاءة خلفية كاملة، ويأتي مع ويندوز 11 وبطاقة لعب مجانية لمدة 3 أشهر.",
-    price: 34999,
-    originalPrice: 36999,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770227369/51WMxJxM57L._AC_SX679__eytcvg.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770227386/51hGs54j-RL._AC_SX679__ppxzhy.jpg",
-    details: "معالج Ryzen AI 5 330 بمعالجة ذكية للمهام اليومية – رام 16GB لأداء سلس – تخزين SSD 512GB سريع – كارت شاشة AMD Radeon 820M – شاشة 15.6 بوصة FHD بسطوع 300 nits لعرض أوضح – كيبورد بإضاءة خلفية كاملة – تصميم فضي أنيق – ويندوز 11 أصلي + اشتراك ألعاب مجاني 3 أشهر",
-    specifications: {
-        "المعالج": "AMD Ryzen AI 5 330",
-        "الرام": "16GB",
-        "التخزين": "512GB SSD",
-        "كارت الشاشة": "AMD Radeon 820M",
-        "الشاشة": "15.6 بوصة FHD (1920×1080) – 300 شمعة",
-        "لوحة المفاتيح": "إضاءة خلفية كاملة",
-        "النظام": "Windows 11",
-        "العرض الإضافي": "بطاقة لعب مجانية لمدة 3 أشهر",
-        "اللون": "فضي"
-    },
-},
-{
-    id: 109,
-    name: "لابتوب ASUS ROG Strix G16 [G614FM-RV169W]",
-    description: "وحش ألعاب من أسوس ROG بمعالج AMD Ryzen 9 9955HX القوي جدًا، وذاكرة LPDDR5X سعة 16 جيجا، وتخزين SSD سريع 1 تيرابايت، مع كارت شاشة NVIDIA RTX 5060 بسعة 8 جيجا GDDR7 لتجربة جيمينج وأداء احترافي في الجرافيكس والمونتاج. يأتي مع ويندوز 11 مثبت وجاهز للاستخدام.",
-    price: 95999,
-    originalPrice: 100000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770227586/71v81G3mZ0L._AC_SX679__ylhj07.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770227598/71GrwFI0UyL._AC_SX679__zack99.jpg",
-    details: "معالج AMD Ryzen 9 9955HX لأقصى أداء في الألعاب والبرامج الثقيلة – رام LPDDR5X 16GB عالية السرعة – تخزين SSD 1TB سريع جدًا – كارت شاشة NVIDIA RTX 5060 8GB GDDR7 لتجربة ألعاب حديثة بجرافيكس قوي – تصميم ROG المميز مع إضاءة RGB – نظام ويندوز 11 مثبت",
-    specifications: {
-        "المعالج": "AMD Ryzen 9 9955HX",
-        "الرام": "16GB LPDDR5X",
-        "التخزين": "1TB SSD",
-        "كارت الشاشة": "NVIDIA RTX 5060 8GB GDDR7",
-        "النظام": "Windows 11",
-        "الفئة": "جيمينج – جرافيكس – مونتاج – تصميم احترافي"
-    },
-},
-{
-    id: 110,
-    name: "Apple MacBook Air 15-inch (2025) بشريحة M4 - Midnight",
-    description: "لابتوب أبل ماك بوك إير 2025 بشاشة 15.3 بوصة Liquid Retina، مزوّد بشريحة Apple M4 المصممة لدعم Apple Intelligence لأداء ذكي وسريع، مع ذاكرة موحدة 16 جيجا وتخزين SSD سعة 512 جيجا. يأتي بكاميرا Center Stage بدقة 12MP، ومعرف البصمة Touch ID، ولون Midnight الأنيق.",
-    price: 72999,
-    originalPrice: 75999,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770228094/71Ej6sIsNaL._AC_SL1500__pef4vl.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770228105/71Gwhs5uAxL._AC_SL1500__s73iky.jpg",
-    image3: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1770228120/61zUDjwTrTL._AC_SL1500__z9svrs.jpg",
-    details: "شاشة Liquid Retina مقاس 15.3 بوصة بألوان زاهية وسطوع ممتاز – شريحة Apple M4 القوية والمصممة لدعم Apple Intelligence – ذاكرة موحدة 16GB لأداء سلس – تخزين SSD 512GB سريع – كاميرا 12MP مع Center Stage لمكالمات فيديو أوضح – مستشعر بصمة Touch ID – تصميم نحيف وخفيف بلون Midnight – بطارية تدوم طوال اليوم – نظام macOS الأحدث",
-    specifications: {
-        "الشاشة": "15.3 بوصة Liquid Retina",
-        "المعالج": "Apple M4",
-        "الرام": "16GB ذاكرة موحدة",
-        "التخزين": "512GB SSD",
-        "الكاميرا": "12MP مع Center Stage",
-        "الأمان": "Touch ID",
-        "النظام": "macOS",
-        "اللون": "Midnight"
-    },
-},
-            ],
+
+                   ],
             'imported-laptops': [
                 {
     id: 1,
@@ -5717,1019 +5148,6 @@ img {
         "البطارية": "تدوم حتى 4 ساعات"
     }
                 },
-                {
-    id: 2,
-    name: "Dell Latitude E6420",
-    description: "لاب توب ديل لاتيتيود، معالج Intel Core i5-2520M، ذاكرة 4GB، قرص صلب 320GB.",
-    price: 4000,
-    originalPrice: 5000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044323/id2.1_drs2m4.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044323/id2.2_qw6rb7.jpg",
-    details: "لاب توب Dell Latitude E6420 للأعمال، شاشة 14.1 بوصة، معالج Intel Core i5-2520M، ذاكرة RAM 4GB، تخزين HDD 320GB، كارت شاشة Intel HD 3000.",
-    specifications: {
-        "الشاشة": "14.1 بوصة",
-        "المعالج": "Intel Core i5-2520M",
-        "الذاكرة": "4GB RAM",
-        "التخزين": "320GB HDD",
-        "كارت الشاشة": "Intel HD Graphics 3000",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 5 ساعات"
-    }
-                },
-                {
-    id: 3,
-    name: "Dell Latitude 6230",
-    description: "لاب توب ديل لاتيتيود محمول، معالج Intel Core i7-3320M، ذاكرة 8GB، قرص صلب 500GB.",
-    price: 5000,
-    originalPrice: 6500,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044323/id3.1_ao8tra.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044326/id3.2_gesxxy.jpg",
-    details: "لاب توب Dell Latitude 6230 صغير الحجم، شاشة 12.5 بوصة، معالج Intel Core i7-3320M، ذاكرة RAM 8GB، تخزين HDD 500GB، كارت شاشة Intel HD 4000.",
-    specifications: {
-        "الشاشة": "12.5 بوصة",
-        "المعالج": "Intel Core i7-3320M",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "500GB HDD",
-        "كارت الشاشة": "Intel HD Graphics 4000",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 6 ساعات"
-    }
-                },
-                {
-    id: 4,
-    name: "Dell Latitude E6520",
-    description: "لاب توب ديل لاتيتيود بشاشة كبيرة، معالج Intel Core i5-2520M، ذاكرة 8GB، قرص صلب 500GB، كارت شاشة NVIDIA.",
-    price: 5000,
-    originalPrice: 6500,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044326/id4.1_bgjwmp.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044326/id4.2_jdheqs.jpg",
-    details: "لاب توب Dell Latitude E6520 بشاشة 15.6 بوصة، معالج Intel Core i5-2520M، ذاكرة RAM 8GB، تخزين HDD 500GB، كارت شاشة NVIDIA NVS 4200M 1GB.",
-    specifications: {
-        "الشاشة": "15.6 بوصة",
-        "المعالج": "Intel Core i5-2520M",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "500GB HDD",
-        "كارت الشاشة": "NVIDIA NVS 4200M (1GB)",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 5 ساعات"
-    }
-                },
-                {
-    id: 5,
-    name: "HP ProBook 6570b",
-    description: "لاب توب إتش بي بروبوك للأعمال، معالج Intel Core i5-3520M، ذاكرة 8GB، قرص صلب 500GB.",
-    price: 6000,
-    originalPrice: 7500,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044327/id5.1_ty0hdb.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044331/id5.2_ax9bds.jpg",
-    details: "لاب توب HP ProBook 6570b للأعمال، شاشة 15.6 بوصة، معالج Intel Core i5-3520M، ذاكرة RAM 8GB، تخزين HDD 500GB، كارت شاشة Intel HD Graphics 4000.",
-    specifications: {
-        "الشاشة": "15.6 بوصة",
-        "المعالج": "Intel Core i5-3520M",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "500GB HDD",
-        "كارت الشاشة": "Intel HD Graphics 4000",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 6 ساعات"
-    }
-                },
-                {
-    id: 6,
-    name: "Dell Latitude E6540",
-    description: "لاب توب ديل لاتيتيود، معالج Intel Core i5-4200M، ذاكرة 8GB، قرص SSD 128GB.",
-    price: 6500,
-    originalPrice: 8000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044331/id6.1_inzzz0.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044333/id6.2_vx4was.jpg",
-    details: "لاب توب Dell Latitude E6540، شاشة 15.6 بوصة، معالج Intel Core i5-4200M، ذاكرة RAM 8GB، تخزين SSD 128GB، كارت شاشة Intel HD Graphics 4600.",
-    specifications: {
-        "الشاشة": "15.6 بوصة",
-        "المعالج": "Intel Core i5-4200M",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "128GB SSD",
-        "كارت الشاشة": "Intel HD Graphics 4600",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 7 ساعات"
-    }
-                },
-                {
-    id: 7,
-    name: "HP ProBook 650 G1",
-    description: "لاب توب إتش بي بروبوك، معالج Intel Core i5-4200U، ذاكرة 8GB، تخزين مزدوج (SSD+HDD).",
-    price: 6500,
-    originalPrice: 8500,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044338/id7.1_tz5kto.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044338/id7.2_rbagcg.jpg",
-    details: "لاب توب HP ProBook 650 G1، شاشة 15.6 بوصة، معالج Intel Core i5-4200U، ذاكرة RAM 8GB، تخزين 128GB SSD + 500GB HDD، كارت شاشة Intel HD Graphics 4400.",
-    specifications: {
-        "الشاشة": "15.6 بوصة",
-        "المعالج": "Intel Core i5-4200U",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "128GB SSD + 500GB HDD",
-        "كارت الشاشة": "Intel HD Graphics 4400",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 7 ساعات"
-    }
-                },
-                {
-    id: 8,
-    name: "Dell Inspiron 3781",
-    description: "لاب توب ديل انسبايرون بشاشة كبيرة 17.3 بوصة، معالج Intel Core i3-7020U، ذاكرة 8GB، قرص SSD 256GB.",
-    price: 7000,
-    originalPrice: 9000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044338/id8.1_l8pznx.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044339/id8.2_yugcnx.jpg",
-    details: "لاب توب Dell Inspiron 3781، شاشة 17.3 بوصة، معالج Intel Core i3-7020U، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة Intel HD Graphics 620.",
-    specifications: {
-        "الشاشة": "17.3 بوصة",
-        "المعالج": "Intel Core i3-7020U",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "Intel HD Graphics 620",
-        "نظام التشغيل": "Windows 10 Home",
-        "البطارية": "تدوم حتى 6 ساعات"
-    }
-                },
-                {
-    id: 9,
-    name: "Dell Latitude 7480",
-    description: "لاب توب ديل لاتيتيود أنيق وخفيف، معالج Intel Core i5-6200U، ذاكرة 4GB، قرص SSD 128GB.",
-    price: 8000,
-    originalPrice: 9500,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044339/id9.1_oyqk12.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044340/id9.2_dvsozg.jpg",
-    details: "لاب توب Dell Latitude 7480، شاشة 14.1 بوصة، معالج Intel Core i5-6200U، ذاكرة RAM 4GB، تخزين SSD 128GB، كارت شاشة Intel HD Graphics 520.",
-    specifications: {
-        "الشاشة": "14.1 بوصة",
-        "المعالج": "Intel Core i5-6200U",
-        "الذاكرة": "4GB RAM",
-        "التخزين": "128GB SSD",
-        "كارت الشاشة": "Intel HD Graphics 520",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 10 ساعات"
-    }
-                },
-                {
-    id: 10,
-    name: "Dell Latitude E6440",
-    description: "لاب توب ديل لاتيتيود قوي، معالج Intel Core i7-4600M، ذاكرة 8GB، قرص SSD 256GB.",
-    price: 7000,
-    originalPrice: 9000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044343/id10.1_hxjevb.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044344/id10.2_ivzvmj.jpg",
-    details: "لاب توب Dell Latitude E6440، شاشة 14.1 بوصة، معالج Intel Core i7-4600M، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة Intel HD Graphics 4600.",
-    specifications: {
-        "الشاشة": "14.1 بوصة",
-        "المعالج": "Intel Core i7-4600M",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "Intel HD Graphics 4600",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 7 ساعات"
-    }
-                },
-                {
-    id: 11,
-    name: "HP EliteBook 820 G3",
-    description: "لاب توب إتش بي إيليت بوك صغير الحجم، معالج Intel Core i7-6500U، ذاكرة 8GB، قرص SSD 256GB.",
-    price: 7500,
-    originalPrice: 10000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044344/id11.1_d3c6z1.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044344/id11.2_xh1qb8.jpg",
-    details: "لاب توب HP EliteBook 820 G3، شاشة 12.5 بوصة، معالج Intel Core i7-6500U، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة Intel HD Graphics 520.",
-    specifications: {
-        "الشاشة": "12.5 بوصة",
-        "المعالج": "Intel Core i7-6500U",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "Intel HD Graphics 520",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 10 ساعات"
-    }
-                },
-                {
-    id: 12,
-    name: "Dell Inspiron 5759",
-    description: "لاب توب ديل انسبايرون بشاشة كبيرة 17.3 بوصة، معالج Intel Core i5-6200U، ذاكرة 8GB، قرص SSD 256GB.",
-    price: 8000,
-    originalPrice: 10500,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044344/id12.1_wmqv5i.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044348/id12.2_f2nzxx.jpg",
-    details: "لاب توب Dell Inspiron 5759، شاشة 17.3 بوصة، معالج Intel Core i5-6200U، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة Intel HD Graphics 520.",
-    specifications: {
-        "الشاشة": "17.3 بوصة",
-        "المعالج": "Intel Core i5-6200U",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "Intel HD Graphics 520",
-        "نظام التشغيل": "Windows 10 Home",
-        "البطارية": "تدوم حتى 6 ساعات"
-    }
-                },
-                {
-    id: 13,
-    name: "HP ProBook 655 G3",
-    description: "لاب توب إتش بي بروبوك، معالج AMD A10-8730B، ذاكرة 8GB، قرص SSD 256GB.",
-    price: 8000,
-    originalPrice: 10000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044349/id13.1_pjn5sk.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044349/id13.2_rjuaff.jpg",
-    details: "لاب توب HP ProBook 655 G3، شاشة 15.6 بوصة، معالج AMD A10-8730B، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة AMD Radeon R5 Graphics.",
-    specifications: {
-        "الشاشة": "15.6 بوصة",
-        "المعالج": "AMD A10-8730B",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "AMD Radeon R5 Graphics",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 7 ساعات"
-    }
-                },
-                {
-    id: 14,
-    name: "Dell Latitude E6440",
-    description: "لاب توب ديل لاتيتيود، معالج Intel Core i7-4600M، ذاكرة 8GB، قرص SSD 256GB، كارت شاشة AMD.",
-    price: 8000,
-    originalPrice: 10000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044350/id14.1_izrydy.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044352/id14.2_ld6vnf.jpg",
-    details: "لاب توب Dell Latitude E6440، شاشة 14.1 بوصة، معالج Intel Core i7-4600M، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة AMD Radeon HD 8690M 2GB.",
-    specifications: {
-        "الشاشة": "14.1 بوصة",
-        "المعالج": "Intel Core i7-4600M",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "AMD Radeon HD 8690M (2GB)",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 6 ساعات"
-    }
-                },
-                {
-    id: 15,
-    name: "HP EliteBook 745 G4",
-    description: "لاب توب إتش بي إيليت بوك، معالج AMD A12-9700B، ذاكرة 8GB، قرص SSD 128GB.",
-    price: 8000,
-    originalPrice: 10000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044352/id14.2_ld6vnf.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044355/id15.2_tengqr.jpg",
-    details: "لاب توب HP EliteBook 745 G4، شاشة 14.1 بوصة، معالج AMD A12-9700B، ذاكرة RAM 8GB، تخزين SSD 128GB، كارت شاشة AMD Radeon R7 Graphics.",
-    specifications: {
-        "الشاشة": "14.1 بوصة",
-        "المعالج": "AMD A12-9700B",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "128GB SSD",
-        "كارت الشاشة": "AMD Radeon R7 Graphics",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 8 ساعات"
-    }
-                },
-                {
-    id: 16,
-    name: "Dell Inspiron 3559",
-    description: "لاب توب ديل انسبايرون، معالج Intel Core i5-6200U، ذاكرة 8GB، قرص SSD 256GB.",
-    price: 8000,
-    originalPrice: 10500,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044355/id16.1_zon4ri.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044356/id16.2_tgvb8k.jpg",
-    details: "لاب توب Dell Inspiron 3559، شاشة 15.6 بوصة، معالج Intel Core i5-6200U، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة Intel HD Graphics 520.",
-    specifications: {
-        "الشاشة": "15.6 بوصة",
-        "المعالج": "Intel Core i5-6200U",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "Intel HD Graphics 520",
-        "نظام التشغيل": "Windows 10 Home",
-        "البطارية": "تدوم حتى 6 ساعات"
-    }
-                },
-                {
-    id: 17,
-    name: "HP Notebook 17",
-    description: "لاب توب إتش بي بشاشة كبيرة 17.3 بوصة، معالج Intel Core i5-7200U، ذاكرة 8GB، قرص SSD 256GB.",
-    price: 8500,
-    originalPrice: 11000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044363/id17.1_nqidfb.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044363/id17.2_iq1qhl.jpg",
-    details: "لاب توب HP Notebook بشاشة 17.3 بوصة، معالج Intel Core i5-7200U، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة Intel HD Graphics 620.",
-    specifications: {
-        "الشاشة": "17.3 بوصة",
-        "المعالج": "Intel Core i5-7200U",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "Intel HD Graphics 620",
-        "نظام التشغيل": "Windows 10 Home",
-        "البطارية": "تدوم حتى 7 ساعات"
-    }
-                },
-                {
-    id: 18,
-    name: "Dell Latitude E6540",
-    description: "لاب توب ديل لاتيتيود، معالج Intel Core i7-4200M، ذاكرة 8GB، قرص SSD 256GB، كارت شاشة AMD.",
-    price: 8500,
-    originalPrice: 11000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044364/id18.1_hetqtq.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044364/id18.2_yi4zbf.jpg",
-    details: "لاب توب Dell Latitude E6540، شاشة 15.6 بوصة، معالج Intel Core i7-4200M، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة AMD Radeon HD 8790M 2GB.",
-    specifications: {
-        "الشاشة": "15.6 بوصة",
-        "المعالج": "Intel Core i7-4200M",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "AMD Radeon HD 8790M (2GB)",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 7 ساعات"
-    }
-                },
-                {
-    id: 19,
-    name: "Lenovo Yoga 11e",
-    description: "لاب توب لينوفو يوغا قابل للتحويل، معالج Intel Core i5-7200U، ذاكرة 8GB، قرص SSD 256GB، شاشة لمس.",
-    price: 9000,
-    originalPrice: 12000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044364/id19.1_xyiqse.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044368/id19.2_uo59gh.jpg",
-    details: "لاب توب Lenovo Yoga 11e، شاشة 11.6 بوصة قابلة للتحويل 360 درجة (2-in-1)، معالج Intel Core i5-7200U، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة Intel HD Graphics 520.",
-    specifications: {
-        "الشاشة": "11.6 بوصة لمس (2-in-1)",
-        "المعالج": "Intel Core i5-7200U",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "Intel HD Graphics 520",
-        "نظام التشغيل": "Windows 10 Home",
-        "البطارية": "تدوم حتى 8 ساعات"
-    }
-                },
-                {
-    id: 20,
-    name: "HP ZBook 15 G2",
-    description: "محطة عمل إتش بي زد بوك قوية، معالج Intel Core i7-4700MQ، ذاكرة 16GB، قرص SSD 256GB، كارت شاشة NVIDIA.",
-    price: 9000,
-    originalPrice: 15000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044369/id20.1_ijrzf2.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044369/id20.2_ptm90d.jpg",
-    details: "محطة عمل HP ZBook 15 G2، شاشة 15.6 بوصة، معالج Intel Core i7-4700MQ، ذاكرة RAM 16GB، تخزين SSD 256GB، كارت شاشة NVIDIA Quadro K610M 2GB.",
-    specifications: {
-        "الشاشة": "15.6 بوصة",
-        "المعالج": "Intel Core i7-4700MQ",
-        "الذاكرة": "16GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "NVIDIA Quadro K610M (2GB)",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 5 ساعات"
-    }
-                },
-                {
-    id: 21,
-    name: "HP ProBook 455 G5",
-    description: "لاب توب إتش بي بروبوك، معالج AMD A9-9420، ذاكرة 8GB، قرص SSD 256GB.",
-    price: 9000,
-    originalPrice: 11500,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044369/id21.1_bonrku.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044369/id21.2_l9wgwl.jpg",
-    details: "لاب توب HP ProBook 455 G5، شاشة 15.6 بوصة، معالج AMD A9-9420، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة AMD Radeon R5 Graphics.",
-    specifications: {
-        "الشاشة": "15.6 بوصة",
-        "المعالج": "AMD A9-9420",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "AMD Radeon R5 Graphics",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 8 ساعات"
-    }
-                },
-                {
-    id: 22,
-    name: "Dell Latitude 5490",
-    description: "لاب توب ديل لاتيتيود حديث، معالج Intel Core i5-8365U، ذاكرة 8GB، قرص SSD 256GB.",
-    price: 9500,
-    originalPrice: 13000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044370/id22.1_eikvrk.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044375/id22.2_gknkg4.jpg",
-    details: "لاب توب Dell Latitude 5490، شاشة 14.1 بوصة، معالج Intel Core i5-8365U، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة Intel UHD Graphics 620.",
-    specifications: {
-        "الشاشة": "14.1 بوصة",
-        "المعالج": "Intel Core i5-8365U",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "Intel UHD Graphics 620",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 12 ساعة"
-    }
-                },
-                {
-    id: 23,
-    name: "HP Notebook 17 Core i7",
-    description: "لاب توب إتش بي بشاشة كبيرة 17.3 بوصة، معالج Intel Core i7-7200U، ذاكرة 8GB، قرص SSD 256GB.",
-    price: 9500,
-    originalPrice: 12500,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044375/id23.1_azdgul.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044375/id23.2_zyetzw.jpg",
-    details: "لاب توب HP Notebook بشاشة 17.3 بوصة، معالج Intel Core i7-7200U، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة Intel HD Graphics 620.",
-    specifications: {
-        "الشاشة": "17.3 بوصة",
-        "المعالج": "Intel Core i7-7200U",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "Intel HD Graphics 620",
-        "نظام التشغيل": "Windows 10 Home",
-        "البطارية": "تدوم حتى 7 ساعات"
-    }
-                },
-                {
-    id: 24,
-    name: "Dell Latitude 5400",
-    description: "لاب توب ديل لاتيتيود حديث، معالج Intel Core i5-8365U، ذاكرة 8GB، قرص SSD 256GB.",
-    price: 9500,
-    originalPrice: 13000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044375/id24.1_ez6nxb.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044380/id24.2_hqyrjc.jpg",
-    details: "لاب توب Dell Latitude 5400، شاشة 14.1 بوصة، معالج Intel Core i5-8365U، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة Intel UHD Graphics 620.",
-    specifications: {
-        "الشاشة": "14.1 بوصة",
-        "المعالج": "Intel Core i5-8365U",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "Intel UHD Graphics 620",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 12 ساعة"
-    }
-                },
-                {
-    id: 25,
-    name: "Dell Latitude 7480 Core i7",
-    description: "لاب توب ديل لاتيتيود أنيق وخفيف، معالج Intel Core i7-7600U، ذاكرة 8GB، قرص SSD 256GB.",
-    price: 9500,
-    originalPrice: 13500,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044380/id25.1_pk8kba.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044380/id25.2_ez8woz.jpg",
-    details: "لاب توب Dell Latitude 7480، شاشة 14.1 بوصة، معالج Intel Core i7-7600U، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة Intel HD Graphics 620.",
-    specifications: {
-        "الشاشة": "14.1 بوصة",
-        "المعالج": "Intel Core i7-7600U",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "Intel HD Graphics 620",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 10 ساعات"
-    }
-                },
-                {
-    id: 26,
-    name: "HP ProBook 645 G4",
-    description: "لاب توب إتش بي بروبوك، معالج AMD Ryzen 5 2500U، ذاكرة 8GB، قرص SSD 256GB، كارت شاشة AMD Vega.",
-    price: 10000,
-    originalPrice: 13500,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044380/id26.1_r0xbtd.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044380/id26.2_zvnre1.jpg",
-    details: "لاب توب HP ProBook 645 G4، شاشة 14.1 بوصة، معالج AMD Ryzen 5 2500U، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة AMD Radeon Vega 8 Graphics.",
-    specifications: {
-        "الشاشة": "14.1 بوصة",
-        "المعالج": "AMD Ryzen 5 2500U",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "AMD Radeon Vega 8 Graphics",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 10 ساعات"
-    }
-                },
-                {
-    id: 27,
-    name: "Dell Latitude 7490",
-    description: "لاب توب ديل لاتيتيود بشاشة لمس، معالج Intel Core i5-8350U، ذاكرة 8GB، قرص SSD 256GB.",
-    price: 10000,
-    originalPrice: 14000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044380/id27.1_ramp8m.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044386/id27.2_z4l9zr.jpg",
-    details: "لاب توب Dell Latitude 7490، شاشة 14.1 بوصة لمس، معالج Intel Core i5-8350U، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة Intel UHD Graphics 620.",
-    specifications: {
-        "الشاشة": "14.1 بوصة لمس",
-        "المعالج": "Intel Core i5-8350U",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "Intel UHD Graphics 620",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 12 ساعة"
-    }
-                },
-                {
-    id: 28,
-    name: "Dell Latitude 5480",
-    description: "لاب توب ديل لاتيتيود، معالج Intel Core i7-7600U، ذاكرة 8GB، قرص SSD 256GB، كارت شاشة NVIDIA.",
-    price: 10000,
-    originalPrice: 14000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044386/id28.1_p6c4um.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044386/id28.2_jipvtp.jpg",
-    details: "لاب توب Dell Latitude 5480، شاشة 14.1 بوصة، معالج Intel Core i7-7600U، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة NVIDIA GeForce 930MX 2GB.",
-    specifications: {
-        "الشاشة": "14.1 بوصة",
-        "المعالج": "Intel Core i7-7600U",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "NVIDIA GeForce 930MX (2GB)",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 10 ساعات"
-    }
-                },
-                {
-    id: 29,
-    name: "Dell Latitude 5590",
-    description: "لاب توب ديل لاتيتيود بشاشة كبيرة، معالج Intel Core i5-8365U، ذاكرة 8GB، قرص SSD 256GB.",
-    price: 10000,
-    originalPrice: 14000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044386/id29.1_l8dalp.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044387/id29.2_qmeyvn.jpg",
-    details: "لاب توب Dell Latitude 5590، شاشة 15.6 بوصة، معالج Intel Core i5-8365U، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة Intel UHD Graphics 620.",
-    specifications: {
-        "الشاشة": "15.6 بوصة",
-        "المعالج": "Intel Core i5-8365U",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "Intel UHD Graphics 620",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 12 ساعة"
-    }
-                },
-                {
-    id: 30,
-    name: "Dell Latitude 5570",
-    description: "لاب توب ديل لاتيتيود، معالج Intel Core i7-6600U، ذاكرة 8GB، قرص SSD 256GB، كارت شاشة AMD.",
-    price: 10500,
-    originalPrice: 14500,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044387/id30.1_gjsddv.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044393/id30.2_v10yor.jpg",
-    details: "لاب توب Dell Latitude 5570، شاشة 15.6 بوصة، معالج Intel Core i7-6600U، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة AMD Radeon R5 M335 2GB.",
-    specifications: {
-        "الشاشة": "15.6 بوصة",
-        "المعالج": "Intel Core i7-6600U",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "AMD Radeon R5 M335 (2GB)",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 10 ساعات"
-    }
-                },
-                {
-    id: 31,
-    name: "HP EliteBook 840 G5",
-    description: "لاب توب إتش بي إيليت بوك راقٍ، معالج Intel Core i5-8365U، ذاكرة 8GB، قرص SSD 256GB.",
-    price: 11000,
-    originalPrice: 15500,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044393/id31.1_uatq7x.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044393/id31.2_lvdnjs.jpg",
-    details: "لاب توب HP EliteBook 840 G5، شاشة 14.1 بوصة، معالج Intel Core i5-8365U، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة Intel UHD Graphics 620.",
-    specifications: {
-        "الشاشة": "14.1 بوصة",
-        "المعالج": "Intel Core i5-8365U",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "Intel UHD Graphics 620",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 14 ساعة"
-    }
-                },
-                {
-    id: 32,
-    name: "HP ZBook 15 G3",
-    description: "محطة عمل إتش بي زد بوك، معالج Intel Core i7-6820HQ، ذاكرة 8GB، قرص SSD 256GB.",
-    price: 11000,
-    originalPrice: 16000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044394/id32.1_ql38ol.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044394/id32.2_zuakcx.jpg",
-    details: "محطة عمل HP ZBook 15 G3، شاشة 15.6 بوصة، معالج Intel Core i7-6820HQ، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة Intel HD Graphics 520.",
-    specifications: {
-        "الشاشة": "15.6 بوصة",
-        "المعالج": "Intel Core i7-6820HQ",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "Intel HD Graphics 520",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 10 ساعات"
-    }
-                },
-                {
-    id: 33,
-    name: "HP EliteBook 745 G6",
-    description: "لاب توب إتش بي إيليت بوك بشاشة لمس، معالج AMD Ryzen 5 3500U، ذاكرة 8GB، قرص SSD 256GB.",
-    price: 11000,
-    originalPrice: 15500,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044400/id33.1_iorpf0.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044400/id33.2_hvjszn.jpg",
-    details: "لاب توب HP EliteBook 745 G6، شاشة 14.1 بوصة لمس، معالج AMD Ryzen 5 3500U، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة AMD Radeon Vega 8 Graphics.",
-    specifications: {
-        "الشاشة": "14.1 بوصة لمس",
-        "المعالج": "AMD Ryzen 5 3500U",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "AMD Radeon Vega 8 Graphics",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 12 ساعة"
-    }
-                },
-                {
-    id: 34,
-    name: "Dell Latitude 7400 2-in-1",
-    description: "لاب توب ديل لاتيتيود قابل للتحويل، معالج Intel Core i7-8665U، ذاكرة 8GB، قرص SSD 256GB، شاشة لمس.",
-    price: 11000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044401/id34.1_qc6fp5.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044401/id34.2_ucxard.jpg",
-    details: "لاب توب Dell Latitude 7400 2-in-1 بشاشة لمس قابلة للتحويل 360 درجة، شاشة 14.1 بوصة، معالج Intel Core i7-8665U، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة Intel UHD Graphics 620.",
-    specifications: {
-        "الشاشة": "14.1 بوصة لمس (2-in-1)",
-        "المعالج": "Intel Core i7-8665U",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "Intel UHD Graphics 620",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 15 ساعة"
-    }
-                },
-                {
-    id: 35,
-    name: "Dell Precision 3520",
-    description: "محطة عمل ديل بريسيجن بشاشة لمس، معالج Intel Core i5-7440HQ، ذاكرة 8GB، قرص SSD 256GB، كارت شاشة NVIDIA.",
-    price: 11500,
-    originalPrice: 17500,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044406/id35.1_ahirsp.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044406/id35.2_lbdp4m.jpg",
-    details: "محطة عمل Dell Precision 3520، شاشة 15.6 بوصة لمس، معالج Intel Core i5-7440HQ، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة NVIDIA Quadro M620 2GB.",
-    specifications: {
-        "الشاشة": "15.6 بوصة لمس",
-        "المعالج": "Intel Core i5-7440HQ",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "NVIDIA Quadro M620 (2GB)",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 8 ساعات"
-    }
-                },
-                {
-    id: 36,
-    name: "HP EliteBook 850 G5",
-    description: "لاب توب إتش بي إيليت بوك بشاشة كبيرة، معالج Intel Core i5-8365U، ذاكرة 8GB، قرص SSD 256GB.",
-    price: 12000,
-    originalPrice: 17000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044406/id36.1_ejn0nb.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044407/id36.2_ld1oux.jpg",
-    details: "لاب توب HP EliteBook 850 G5، شاشة 15.6 بوصة، معالج Intel Core i5-8365U، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة Intel UHD Graphics 620.",
-    specifications: {
-        "الشاشة": "15.6 بوصة",
-        "المعالج": "Intel Core i5-8365U",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "Intel UHD Graphics 620",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 14 ساعة"
-    }
-                },
-                {
-    id: 37,
-    name: "HP EliteBook 840 G7",
-    description: "لاب توب إتش بي إيليت بوك حديث، معالج Intel Core i5 الجيل العاشر، ذاكرة 8GB، قرص SSD 256GB.",
-    price: 12500,
-    originalPrice: 18000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044407/id37.1_lowuxm.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044414/id37.2_smqtau.jpg",
-    details: "لاب توب HP EliteBook 840 G7، شاشة 14.1 بوصة، معالج Intel Core i5 الجيل العاشر، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة Intel UHD Graphics.",
-    specifications: {
-        "الشاشة": "14.1 بوصة",
-        "المعالج": "Intel Core i5 الجيل العاشر",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "Intel UHD Graphics",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 15 ساعة"
-    }
-                },
-                {
-    id: 38,
-    name: "HP ProBook 450 G7",
-    description: "لاب توب إتش بي بروبوك حديث، معالج Intel Core i5 الجيل العاشر، ذاكرة 8GB، قرص SSD 256GB.",
-    price: 13000,
-    originalPrice: 18500,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044414/id38.1_vzvzzw.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044414/id38.2_nnusaq.jpg",
-    details: "لاب توب HP ProBook 450 G7، شاشة 15.6 بوصة، معالج Intel Core i5 الجيل العاشر، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة Intel UHD Graphics.",
-    specifications: {
-        "الشاشة": "15.6 بوصة",
-        "المعالج": "Intel Core i5 الجيل العاشر",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "Intel UHD Graphics",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 12 ساعة"
-    }
-                },
-                {
-    id: 39,
-    name: "Dell Precision 3510",
-    description: "محطة عمل ديل بريسيجن، معالج Intel Core i7-6700HQ، ذاكرة 16GB، قرص SSD 256GB، كارت شاشة AMD.",
-    price: 13500,
-    originalPrice: 19500,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044414/id39.1_cinnge.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044415/id39.2_ybujzn.jpg",
-    details: "محطة عمل Dell Precision 3510، شاشة 15.6 بوصة، معالج Intel Core i7-6700HQ، ذاكرة RAM 16GB، تخزين SSD 256GB، كارت شاشة AMD Radeon R9 M360 2GB.",
-    specifications: {
-        "الشاشة": "15.6 بوصة",
-        "المعالج": "Intel Core i7-6700HQ",
-        "الذاكرة": "16GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "AMD Radeon R9 M360 (2GB)",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 8 ساعات"
-    }
-                },
-                {
-    id: 40,
-    name: "Dell Latitude 5411",
-    description: "لاب توب ديل لاتيتيود قوي، معالج Intel Core i7-10400H، ذاكرة 8GB، قرص SSD 256GB.",
-    price: 14500,
-    originalPrice: 21000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044415/id40.1_qdgv82.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044422/id40.2_eap8v6.jpg",
-    details: "لاب توب Dell Latitude 5411، شاشة 14.1 بوصة، معالج Intel Core i7-10400H، ذاكرة RAM 8GB، تخزين SSD 256GB، كارت شاشة Intel UHD Graphics.",
-    specifications: {
-        "الشاشة": "14.1 بوصة",
-        "المعالج": "Intel Core i7-10400H",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "Intel UHD Graphics",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 10 ساعات"
-    }
-                },
-                {
-    id: 41,
-    name: "Dell Latitude 5411 NVIDIA",
-    description: "لاب توب ديل لاتيتيود قوي، معالج Intel Core i5-10400H، ذاكرة 16GB، قرص SSD 512GB، كارت شاشة NVIDIA.",
-    price: 15500,
-    originalPrice: 22500,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044422/id40.2_eap8v6.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044415/id40.1_qdgv82.jpg",
-    details: "لاب توب Dell Latitude 5411، شاشة 14.1 بوصة، معالج Intel Core i5-10400H، ذاكرة RAM 16GB، تخزين SSD 512GB، كارت شاشة NVIDIA GeForce MX250 2GB.",
-    specifications: {
-        "الشاشة": "14.1 بوصة",
-        "المعالج": "Intel Core i5-10400H",
-        "الذاكرة": "16GB RAM",
-        "التخزين": "512GB SSD",
-        "كارت الشاشة": "NVIDIA GeForce MX250 (2GB)",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 10 ساعات"
-    }
-                },
-                {
-    id: 42,
-    name: "Dell Precision 7720",
-    description: "محطة عمل ديل بريسيجن بشاشة كبيرة 17.3 بوصة، معالج Intel Core i7-6820HQ، ذاكرة 16GB، قرص SSD 512GB، كارت شاشة NVIDIA.",
-    price: 16500,
-    originalPrice: 25000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044422/id42.1_yzbfhs.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044422/id42.2_cskxlu.jpg",
-    details: "محطة عمل Dell Precision 7720، شاشة 17.3 بوصة، معالج Intel Core i7-6820HQ، ذاكرة RAM 16GB، تخزين SSD 512GB، كارت شاشة NVIDIA Quadro M1200 4GB.",
-    specifications: {
-        "الشاشة": "17.3 بوصة",
-        "المعالج": "Intel Core i7-6820HQ",
-        "الذاكرة": "16GB RAM",
-        "التخزين": "512GB SSD",
-        "كارت الشاشة": "NVIDIA Quadro M1200 (4GB)",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 6 ساعات"
-    }
-                },
-                {
-    id: 43,
-    name: "Dell Latitude 5411 Core i7 NVIDIA",
-    description: "لاب توب ديل لاتيتيود قوي، معالج Intel Core i7-10400H، ذاكرة 16GB، قرص SSD 256GB، كارت شاشة NVIDIA.",
-    price: 17000,
-    originalPrice: 25000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044422/id43.1_ffgeiy.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044422/id43.2_qcxty3.jpg",
-    details: "لاب توب Dell Latitude 5411، شاشة 14.1 بوصة، معالج Intel Core i7-10400H، ذاكرة RAM 16GB، تخزين SSD 256GB، كارت شاشة NVIDIA GeForce MX250 2GB.",
-    specifications: {
-        "الشاشة": "14.1 بوصة",
-        "المعالج": "Intel Core i7-10400H",
-        "الذاكرة": "16GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "NVIDIA GeForce MX250 (2GB)",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 10 ساعات"
-    }
-                },
-                {
-    id: 44,
-    name: "HP ZBook 15 G6",
-    description: "محطة عمل إتش بي زد بوك قوية جداً، معالج Intel Core i7-9850HQ، ذاكرة 16GB، قرص SSD 512GB، كارت شاشة NVIDIA.",
-    price: 23000,
-    originalPrice: 35000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044423/id44.1_xqwov3.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044430/id44.2_zfogbs.jpg",
-    details: "محطة عمل HP ZBook 15 G6، شاشة 15.6 بوصة، معالج Intel Core i7-9850HQ، ذاكرة RAM 16GB، تخزين SSD 512GB، كارت شاشة NVIDIA Quadro T1000 4GB.",
-    specifications: {
-        "الشاشة": "15.6 بوصة",
-        "المعالج": "Intel Core i7-9850HQ",
-        "الذاكرة": "16GB RAM",
-        "التخزين": "512GB SSD",
-        "كارت الشاشة": "NVIDIA Quadro T1000 (4GB)",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 10 ساعات"
-    }
-                },
-                {
-    id: 45,
-    name: "Dell Precision 5540",
-    description: "محطة عمل ديل بريسيجن راقية، معالج Intel Core i7-9850HQ، ذاكرة 16GB، قرص SSD 512GB، كارت شاشة NVIDIA.",
-    price: 23500,
-    originalPrice: 36000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044430/id45.1_cdgeep.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044430/id45.2_qiw6t8.jpg",
-    details: "محطة عمل Dell Precision 5540، شاشة 15.6 بوصة، معالج Intel Core i7-9850HQ، ذاكرة RAM 16GB، تخزين SSD 512GB، كارت شاشة NVIDIA Quadro T1000 4GB.",
-    specifications: {
-        "الشاشة": "15.6 بوصة",
-        "المعالج": "Intel Core i7-9850HQ",
-        "الذاكرة": "16GB RAM",
-        "التخزين": "512GB SSD",
-        "كارت الشاشة": "NVIDIA Quadro T1000 (4GB)",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 10 ساعات"
-    }
-                },
-                {
-    id: 46,
-    name: "HP ZBook Firefly 15 G8",
-    description: "محطة عمل إتش بي زد بوك حديثة وخفيفة، معالج Intel Core i7-1185G7، ذاكرة 16GB، قرص SSD 512GB، كارت شاشة NVIDIA.",
-    price: 24500,
-    originalPrice: 38000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044431/id46.1_a2mf8p.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044430/id46.2_czl8ki.jpg",
-    details: "محطة عمل HP ZBook Firefly 15 G8، شاشة 15.6 بوصة، معالج Intel Core i7-1185G7، ذاكرة RAM 16GB، تخزين SSD 512GB، كارت شاشة NVIDIA Quadro T500 4GB.",
-    specifications: {
-        "الشاشة": "15.6 بوصة",
-        "المعالج": "Intel Core i7-1185G7",
-        "الذاكرة": "16GB RAM",
-        "التخزين": "512GB SSD",
-        "كارت الشاشة": "NVIDIA Quadro T500 (4GB)",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 12 ساعة"
-    }
-                },
-                 {
-    id: 47,
-    name: "HP ProBook 745 G5 - عرض خاص",
-    description: "لاب توب HP ProBook 745 G5 بشاشة 14 بوصة، معالج AMD Ryzen، 8GB RAM، 256GB SSD",
-    price: 9600,
-    originalPrice: 11500,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044431/id101.1_zgtfkg.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044431/id101.2_bx8x2v.jpg",
-    details: "لاب توب HP ProBook 745 G5 استيراد، بشاشة 14 بوصة بدقة FHD، معالج AMD Ryzen 5 Pro، ذاكرة RAM 8GB، تخزين 256GB SSD، كارت شاشة AMD Radeon Vega، نظام Windows 10 أو 11، مناسب للشغل والدراسة.",
-    specifications: {
-        "الشاشة": "14 بوصة، FHD (1920x1080)",
-        "المعالج": "AMD Ryzen 5 Pro 2500U",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "AMD Radeon Vega 8",
-        "نظام التشغيل": "Windows 10 / 11",
-        "البطارية": "تدوم حتى 7 ساعات",
-        "الأبعاد": "33.5 × 23.4 × 1.9 سم",
-        "الوزن": "1.6 كجم",
-        "الاتصال": "Wi-Fi، Bluetooth"
-    },
-    gifts: [
-        "شنطة لاب توب هدية",
-        "ماوس هدية",
-        "اسكرينة حماية . استيكر عربي انجليزي",
-        "تثبيت الويندوز والتعريفات مجاناً"
-    ]
-                },
-                {
-    id: 48,
-    name: "HP ProBook 640 G2 - عرض خاص",
-    description: "لاب توب HP ProBook 640 G2 بشاشة 14 بوصة، معالج Intel Core i5، 8GB RAM، 256GB SSD",
-    price: 6900,
-    originalPrice: 8900,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044447/id111.1_v5bh5c.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044447/id111.2_suo5ni.jpg",
-    details: "لاب توب HP ProBook 640 G2 استيراد، بشاشة 14 بوصة، معالج Intel Core i5 من الجيل السادس، ذاكرة RAM 8GB، تخزين 256GB SSD، كارت شاشة Intel HD Graphics، مناسب للشغل المكتبي والدراسة والاستخدام اليومي.",
-    specifications: {
-        "الشاشة": "14 بوصة، HD (1366x768)",
-        "المعالج": "Intel Core i5-6300U",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "Intel HD Graphics 520",
-        "نظام التشغيل": "Windows 10",
-        "البطارية": "تدوم حتى 6 ساعات تقريباً",
-        "الأبعاد": "34 × 23.7 × 2.7 سم",
-        "الوزن": "حوالي 1.95 كجم",
-        "الاتصال": "Wi-Fi، Bluetooth، LAN"
-    },
-    gifts: [
-        "شنطة لاب توب هدية",
-        "ماوس هدية",
-        "تنظيف وصيانة الجهاز مجاناً",
-        "تثبيت الويندوز والتعريفات مجاناً"
-    ]
-    },
-                {
-    id: 49,
-    name: "DELL Latitude 5580 - عرض خاص",
-    description: "لابتوب DELL Latitude 5580 بشاشة 15.6 بوصة، معالج Intel Core i5، 8GB RAM، 256GB SSD",
-    price: 15000,
-    originalPrice: 16999,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044432/id102.1_puex2o.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044432/id102.2_kdzqcu.jpg",
-    details: "لابتوب DELL Latitude 5580، بشاشة 15.6 بوصة بدقة FHD، معالج Intel Core i5 من الجيل السابع، ذاكرة RAM 8GB، تخزين 256GB SSD، كارت شاشة Intel HD، نظام التشغيل Windows 10 Pro، بطارية تدوم حتى 7 ساعات، مناسب للشغل والدراسة.",
-    specifications: {
-        "الشاشة": "15.6 بوصة، FHD (1920x1080)",
-        "المعالج": "Intel Core i5-7300U",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "Intel HD Graphics 620",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 7 ساعات",
-        "الأبعاد": "37.9 × 25.7 × 1.9 سم",
-        "الوزن": "1.85 كجم",
-        "الاتصال": "Wi-Fi 802.11ac، Bluetooth"
-    },
-    gifts: [
-        "حقيبة لابتوب مجانية",
-        "ماوس لاسلكي مجاني",
-        "اسكرينة حماية . استيكر عربي انجليزي",
-        "تثبيت نظام التشغيل مجاناً"
-    ]
-                },
-                {
-    id: 50,
-    name: "DELL Latitude 5540 - عرض خاص",
-    description: "لابتوب DELL Latitude 5540 بشاشة 15.6 بوصة، معالج Intel Core i5، 8GB RAM، 512GB SSD",
-    price: 7000,
-    originalPrice: 8000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044432/id103.1_dwboag.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044447/id103.2_qtfg0v.jpg",
-    details: "لاب توب DELL Latitude 5540 بنسخة قوية للشغل والدراسة، بشاشة 15.6 بوصة FHD، معالج Intel Core i5-1335U من الجيل 13، ذاكرة RAM 8GB، تخزين 512GB SSD، كارت شاشة Intel Iris Xe Graphics، نظام التشغيل Windows 10/11 (أو DOS حسب النسخة)، بطارية تدوم لساعات، ومنافذ Thunderbolt 4 وUSB وHDMI ومقبس Ethernet.",
-    specifications: {
-        "الشاشة": "15.6 بوصة، FHD (1920x1080)",
-        "المعالج": "Intel Core i5-1335U (الجيل 13)",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "512GB SSD",
-        "كارت الشاشة": "Intel Iris Xe Graphics",
-        "نظام التشغيل": "Windows 10/11 أو DOS",
-        "البطارية": "3 خلايا 54Wh مع دعم ExpressCharge",
-        "الأبعاد": "357.8 × 233.3 × 22.8 مم",
-        "الوزن": "حوالي 1.61 كجم",
-        "الاتصال": "Wi-Fi 6E، Bluetooth 5.x, Ethernet RJ-45"
-    },
-    gifts: [
-        "حقيبة لابتوب مجانية",
-        "ماوس لاسلكي مجاني",
-        "اسكرينة حماية . استيكر عربي انجليزي",
-        "تثبيت نظام التشغيل مجاناً"
-    ]
-                },
-                {
-    id: 51,
-    name: "DELL Latitude E6420 - عرض خاص",
-    description: "لابتوب DELL Latitude E6420 بشاشة 14 بوصة، معالج Intel Core i5، 8GB RAM، 256GB SSD",
-    price: 4500,
-    originalPrice: 5500,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044446/id104.1_js2fhl.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044447/id104.2_tduz7n.jpg",
-    details: "لاب توب DELL Latitude E6420 بشاشة 14 بوصة بدقة HD أو FHD اختياري حسب النسخة، معالج Intel Core i5 من الجيل الثاني، ذاكرة RAM 8GB، تخزين 256GB SSD، كارت شاشة Intel HD Graphics 3000، نظام التشغيل Windows 10، بطارية تدوم حتى 5 ساعات تقريباً، مناسب للشغل المكتبي والاستخدام اليومي الخفيف.",
-    specifications: {
-        "الشاشة": "14 بوصة، HD / FHD",
-        "المعالج": "Intel Core i5-2520M (الجيل 2)",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256GB SSD",
-        "كارت الشاشة": "Intel HD Graphics 3000",
-        "نظام التشغيل": "Windows 10",
-        "البطارية": "تدوم حتى ~5 ساعات",
-        "الأبعاد": "339 × 232 × 32 مم",
-        "الوزن": "حوالي 2.1 كجم",
-        "الاتصال": "Wi-Fi، Bluetooth"
-    },
-    gifts: [
-        "حقيبة لابتوب مجانية",
-        "ماوس لاسلكي مجاني",
-        "تنظيف الجهاز مجاناً",
-        "تثبيت نظام التشغيل مجاناً"
-    ]
-                },
-                {
-    id: 52,
-    name: "HP ZBook Fury 15 G7",
-    description: "محطة عمل إتش بي زد بوك فيوري قوية جداً، معالج Intel Core i7-10850H، ذاكرة 32GB، قرص SSD 512GB، كارت شاشة NVIDIA.",
-    price: 27500,
-    originalPrice: 42000,
-    image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044431/id47.1_djy6wa.jpg",
-    image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767044431/id47.2_lwqxho.jpg",
-    details: "محطة عمل HP ZBook Fury 15 G7، شاشة 15.6 بوصة، معالج Intel Core i7-10850H، ذاكرة RAM 32GB، تخزين SSD 512GB، كارت شاشة NVIDIA Quadro T1000 4GB.",
-    specifications: {
-        "الشاشة": "15.6 بوصة",
-        "المعالج": "Intel Core i7-10850H",
-        "الذاكرة": "32GB RAM",
-        "التخزين": "512GB SSD",
-        "كارت الشاشة": "NVIDIA Quadro T1000 (4GB)",
-        "نظام التشغيل": "Windows 10 Pro",
-        "البطارية": "تدوم حتى 10 ساعات"
-    }
-                }
             ],
             'used-phones': [
                 {
@@ -6807,205 +5225,12 @@ img {
             "الضمان": "سنة واحدة"
         }
     },
-    {
-        id: 1001,
-        name: "شاحن لاب توب 65 وات",
-        description: "شاحن عالمي 65 وات، متوافق مع معظم اللابات",
-        price: 500,
-        originalPrice: 1200,
-        image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767235231/61GMH2HXFeL._AC_UL480_FMwebp_QL65__bunuhj.webp",
-        image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767235231/61GMH2HXFeL._AC_UL480_FMwebp_QL65__bunuhj.webp",
-        details: "شاحن لاب توب عالمي بقوة 65 وات، متوافق مع معظم ماركات اللابات، كابل طويل 1.8 متر، آمن وسريع في الشحن.",
-        specifications: {
-            "القدرة": "65 وات",
-            "التوافق": "معظم ماركات اللابات",
-            "طول الكابل": "1.8 متر",
-            "المدخلات": "100-240V",
-            "المخرجات": "19.5V/3.33A",
-            "الضمان": "سنة واحدة"
-        }
-    },
-    {
-        id: 1002,
-        name: "بطارية آيفون أصلية",
-        description: "بطارية أصلية للآيفون، تناسب موديلات متعددة",
-        price: 799,
-        originalPrice: 1299,
-        image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767235273/51nnqkGZQFL._AC_UL480_FMwebp_QL65__qkfoyd.webp",
-        image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767235273/51nnqkGZQFL._AC_UL480_FMwebp_QL65__qkfoyd.webp",
-        details: "بطارية أصلية للآيفون، تناسب موديلات متعددة، عمر طويل، آمنة ومعتمدة، مثالية لتجديد عمر هاتفك.",
-        specifications: {
-            "النوع": "بطارية ليثيوم أيون",
-            "التوافق": "موديلات آيفون متعددة",
-            "الأصل": "أصلي",
-            "العمر": "500 دورة شحن",
-            "الضمان": "6 أشهر",
-            "التركيب": "تتطلب تركيب احترافي"
-        }
-    },
-    {
-        id: 1003,
-        name: "بطارية لابتوب اتش بي أصلية",
-        description: "بطارية أصلية لاتش بي، سعة 51Wh، تناسب موديلات متعددة",
-        price: 900,
-        originalPrice: 1599,
-        image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767234358/61IoaEPoLWL._AC_SL1500__lv516o.jpg",
-        image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767234387/613ZMzTwlKL._AC_SL1444__xc3nly.jpg",
-        details: "بطارية أصلية لابتوب اتش بي، نوع بوليمر ليثيوم أيون، 3 خلايا، سعة 51 وات/ساعة، جهد 11.4 فولت. متوافقة مع موديلات HP ProBook 640/645/650/655 G1/G2 وEliteBook. تدعم تقنية الشحن السريع مع استهلاك منخفض للطاقة.",
-        specifications: {
-            "السعة": "51Wh",
-            "الجهد": "11.4V",
-            "نوع البطارية": "بوليمر ليثيوم أيون",
-            "عدد الخلايا": "3 خلايا",
-            "التناسب": "موديلات اتش بي متعددة",
-            "الأصل": "أصلي من اتش بي",
-            "العمر الافتراضي": "1000 دورة شحن",
-            "الضمان": "سنة ونصف"
-        }
-    },
-    {
-        id: 1004,
-        name: "بطارية لابتوب اتش بي CS03XL",
-        description: "بطارية أصلية لاتش بي، تناسب EliteBook 745 G3/755",
-        price: 900,
-        originalPrice: 1999,
-        image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767234011/91wwnsON3wL._AC_UL480_FMwebp_QL65__cyrbt5.webp",
-        image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767234057/81rWUOCBtGL._AC_SX679__zrdfpm.jpg",
-        details: "بطارية لابتوب اتش بي موديل CS03XL، جهد 11.4 فولت ليثيوم، متوافقة مع أجهزة HP EliteBook 745 G3 و755 G3 و850 Z15u. أصلية من الشركة المصنعة.",
-        specifications: {
-            "الموديل": "CS03XL",
-            "الجهد": "11.4V",
-            "النوع": "ليثيوم أيون",
-            "التناسب": "EliteBook 745 G3/755 G3",
-            "الأصل": "أصلي من اتش بي",
-            "الضمان": "سنة واحدة"
-        }
-    },
-    {
-        id: 21,
-        name: "بطارية لاب توب ويجو M5Y1K لديل",
-        description: "بطارية بديلة من ويجو، تناسب Dell Inspiron متعدد",
-        price: 899,
-        originalPrice: 1299,
-        image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767234515/61VH4B-MfXL._AC_SL1492__jctbtm.jpg",
-        image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767234530/51l-WWAULXL._AC_SL1492__yq6zg8.jpg",
-        details: "بطارية لابتوب بديلة من ويجو، موديل M5Y1K، متوافقة مع سلسلة Dell Inspiron 3000 و5000 وVostro. سعة 40 وات/ساعة، جهد 14.8 فولت.",
-        specifications: {
-            "السعة": "40Wh",
-            "الجهد": "14.8V",
-            "الموديل": "M5Y1K",
-            "التناسب": "Dell Inspiron 3000/5000 series",
-            "الأصل": "بديل عالي الجودة",
-            "الضمان": "سنة واحدة"
-        }
-    },
-    {
-        id: 22,
-        name: "بطارية لاب توب نينجابات لـ HP",
-        description: "بطارية نينجابات 4 خلايا لـ HP 250 G5",
-        price: 850,
-        originalPrice: 1150,
-        image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767234634/71UtGgJHHSL._AC_SL1500__phwz7j.jpg",
-        image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767234634/71UtGgJHHSL._AC_SL1500__phwz7j.jpg",
-        details: "بطارية لابتوب من نينجابات، موديل HS04/HS03، 4 خلايا بسعة 33 وات/ساعة. متوافقة مع HP 250 G5 والعديد من الموديلات المشابهة.",
-        specifications: {
-            "السعة": "33Wh",
-            "عدد الخلايا": "4 خلايا",
-            "الجهد": "14.8V",
-            "التناسب": "HP 250 G5 وموديلات مشابهة",
-            "الموديل": "HS04/HS03",
-            "الضمان": "سنة واحدة"
-        }
-    },
-    {
-        id: 1005,
-        name: "بطارية لاب توب بي او دبليو اي بوي",
-        description: "بطارية متوافقة من بي او دبليو اي بوي لـ Dell",
-        price: 750,
-        originalPrice: 1100,
-        image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767234736/61ZZ3hGUFGL._AC_SL1200__y6m4hf.jpg",
-        image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767234755/61y7xc4QQNL._AC_SL1200__rwancb.jpg",
-        details: "بطارية لابتوب متوافقة موديل M5Y1K من بي او دبليو اي بوي، جهد 14.8 فولت، متوافقة مع سلسلة Dell Inspiron وVostro.",
-        specifications: {
-            "الموديل": "M5Y1K",
-            "الجهد": "14.8V",
-            "التناسب": "Dell Inspiron/Vostro series",
-            "النوع": "ليثيوم أيون",
-            "الضمان": "6 أشهر"
-        }
-    },
-    {
-        id: 1006,
-        name: "بطارية لاب توب اتش بي 740715-001",
-        description: "بطارية HP 4 خلايا لـ 250 G3/G2 و255 G3/G2",
-        price: 950,
-        originalPrice: 1350,
-        image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767235027/61uivbi6xML._AC_UL480_FMwebp_QL65__pzuw3b.webp",
-        image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767235027/61uivbi6xML._AC_UL480_FMwebp_QL65__pzuw3b.webp",
-        details: "بطارية HP موديل 740715-001، 4 خلايا، جهد 14.8 فولت، سعة 2600 مللي أمبير/ساعة لكل خلية. متوافقة مع سلسلة HP 250/255 G2/G3.",
-        specifications: {
-            "الموديل": "740715-001",
-            "الجهد": "14.8V",
-            "عدد الخلايا": "4 خلايا",
-            "التناسب": "HP 250/255 G2/G3",
-            "السعة": "2600mAh/خلية",
-            "الضمان": "سنة واحدة"
-        }
-    },
-    {
-        id: 1007,
-        name: "بطارية لاب توب اسونسيل لتوشيبا",
-        description: "بطارية اسونسيل لـ Toshiba Satellite C50/C55",
-        price: 1100,
-        originalPrice: 1600,
-        image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767234941/61W7NusOHJL._AC_UL480_FMwebp_QL65__vzjfjk.webp",
-        image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767234941/61W7NusOHJL._AC_UL480_FMwebp_QL65__vzjfjk.webp",
-        details: "بطارية لابتوب من اسونسيل، موديل PA5185U-1BRS، متوافقة مع سلسلة Toshiba Satellite C50 وC55.",
-        specifications: {
-            "الموديل": "PA5185U-1BRS",
-            "التناسب": "Toshiba Satellite C50/C55",
-            "العلامة التجارية": "اسونسيل",
-            "الضمان": "سنة واحدة"
-        }
-    },
-    {
-        id: 1008,
-        name: "بطارية لابتوب ويجو CC06XL لـ HP",
-        description: "بطارية ويجو 10.8V لسلسلة HP EliteBook",
-        price: 1250,
-        originalPrice: 1750,
-        image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767234941/61W7NusOHJL._AC_UL480_FMwebp_QL65__vzjfjk.webp",
-        image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767234941/61W7NusOHJL._AC_UL480_FMwebp_QL65__vzjfjk.webp",
-        details: "بطارية بديلة من ويجو، موديل CC06/CC06XL، جهد 10.8 فولت، سعة 5200 مللي أمبير/ساعة. متوافقة مع سلسلة HP EliteBook وProBook.",
-        specifications: {
-            "الموديل": "CC06/CC06XL",
-            "الجهد": "10.8V",
-            "السعة": "5200mAh",
-            "التناسب": "HP EliteBook/ProBook series",
-            "عدد الخلايا": "6 خلايا",
-            "الضمان": "سنة واحدة"
-        }
-    },
-    {
-        id: 1009,
-        name: "بطارية لابتوب ويجو لتوشيبا",
-        description: "بطارية ويجو 6 خلايا لـ Toshiba Satellite",
-        price: 1050,
-        originalPrice: 1550,
-        image1: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767234755/61y7xc4QQNL._AC_SL1200__rwancb.jpg",
-        image2: "https://res.cloudinary.com/dqfnkwp8d/image/upload/v1767235086/61EZknKelGL._AC_UL480_FMwebp_QL65__reuvai.webp",
-        details: "بطارية ويجو موديل PA5024U-1BRS، 6 خلايا، سعة 5200 مللي أمبير/ساعة، جهد 10.8 فولت. متوافقة مع سلسلة Toshiba Satellite C850/C855.",
-        specifications: {
-            "الموديل": "PA5024U-1BRS",
-            "الجهد": "10.8V",
-            "السعة": "5200mAh",
-            "عدد الخلايا": "6 خلايا",
-            "التناسب": "Toshiba Satellite C850/C855 series",
-            "الضمان": "سنة واحدة"
-        }
-    }
             ]
         };
+
+        // ✅ متغير لتتبع حالة التحميل
+        let isProductsLoaded = false;
+        let productsLoadingPromise = null;
 
         // Policy content (كما هي بدون تغيير)
         const policies = {
@@ -7224,6 +5449,141 @@ img {
         const importedNext = document.getElementById('imported-next');
         const importedIndicators = document.getElementById('imported-indicators');
 
+        // ✅ ===== دالة تحميل المنتجات من Supabase =====
+        async function loadProductsFromSupabase() {
+            try {
+                // ✅ 1. التحقق من وجود Supabase Client
+                if (!window.sb && !window.supabaseClient && !window.supabase) {
+                    console.log('Supabase client غير متوفر، استخدام النسخة المحلية');
+                    return false;
+                }
+                
+                const client = window.sb || window.supabaseClient || window.supabase;
+
+                // ✅ 2. جلب المنتجات من جدول products
+                const { data, error } = await client
+                    .from('products')
+                    .select('*')
+                    .order('product_id', { ascending: true });
+
+                if (error) throw error;
+                
+                if (!data || data.length === 0) {
+                    console.log('لا توجد منتجات في قاعدة البيانات');
+                    return false;
+                }
+
+                console.log(`✅ تم تحميل ${data.length} منتج من Supabase`);
+
+                // ✅ 3. تحويل البيانات إلى هيكل مشابه للنسخة المحلية
+                const grouped = {
+                    'offers': [],
+                    'new-laptops': [],
+                    'imported-laptops': [],
+                    'used-phones': [],
+                    'parts-accessories': []
+                };
+
+                data.forEach(p => {
+                    const category = p.category || 'offers';
+                    
+                    // ✅ التحويل الآمن للـ specifications
+                    let specifications = {};
+                    try {
+                        if (typeof p.specifications === 'string') {
+                            specifications = JSON.parse(p.specifications);
+                        } else if (typeof p.specifications === 'object' && p.specifications !== null) {
+                            specifications = p.specifications;
+                        }
+                    } catch (e) {
+                        console.warn('خطأ في تحويل specifications:', e);
+                    }
+
+                    // ✅ التحويل الآمن للـ gifts
+                    let gifts = [];
+                    try {
+                        if (typeof p.gifts === 'string') {
+                            gifts = JSON.parse(p.gifts);
+                        } else if (Array.isArray(p.gifts)) {
+                            gifts = p.gifts;
+                        }
+                    } catch (e) {
+                        console.warn('خطأ في تحويل gifts:', e);
+                    }
+
+                    // ✅ إنشاء كائن المنتج
+                    const product = {
+                        id: p.product_id || p.id,
+                        name: p.name || 'منتج بدون اسم',
+                        description: p.description || '',
+                        price: Number(p.price) || 0,
+                        originalPrice: p.original_price ? Number(p.original_price) : null,
+                        image1: p.image1 || '',
+                        image2: p.image2 || '',
+                        image3: p.image3 || '',
+                        image4: p.image4 || '',
+                        details: p.details || '',
+                        specifications: specifications,
+                        gifts: gifts
+                    };
+
+                    // ✅ إضافة المنتج للقسم المناسب
+                    if (grouped[category]) {
+                        grouped[category].push(product);
+                    } else {
+                        // ✅ إذا كان القسم غير موجود، نضيفه
+                        grouped[category] = [product];
+                    }
+                });
+
+                // ✅ 4. تحديث كائن المنتجات العام
+                products = grouped;
+                isProductsLoaded = true;
+                
+                return true;
+            } catch (e) {
+                console.error('❌ فشل تحميل المنتجات من Supabase:', e);
+                return false;
+            }
+        }
+
+        // ✅ ===== دالة للحصول على المنتجات بشكل آمن =====
+        async function getProducts() {
+            if (isProductsLoaded) {
+                return products;
+            }
+            
+            if (productsLoadingPromise) {
+                return productsLoadingPromise;
+            }
+            
+            productsLoadingPromise = (async () => {
+                showLoading();
+                
+                try {
+                    // ✅ محاولة تحميل المنتجات من Supabase
+                    const success = await loadProductsFromSupabase();
+                    
+                    if (!success) {
+                        console.log('استخدام النسخة المحلية كـ Fallback');
+                        products = JSON.parse(JSON.stringify(LOCAL_PRODUCTS_BACKUP));
+                    }
+                    
+                    isProductsLoaded = true;
+                    return products;
+                } catch (error) {
+                    console.error('خطأ في تحميل المنتجات:', error);
+                    products = JSON.parse(JSON.stringify(LOCAL_PRODUCTS_BACKUP));
+                    isProductsLoaded = true;
+                    return products;
+                } finally {
+                    setTimeout(hideLoading, 500);
+                }
+            })();
+            
+            return productsLoadingPromise;
+        }
+
         // ===== SHOWCASE MANAGER =====
         class ShowcaseManager {
             constructor(category, trackElement, prevBtn, nextBtn, indicatorsElement) {
@@ -7246,9 +5606,9 @@ img {
                 this.resizeTimeout = null;
             }
 
-            init() {
+            async init() {
                 this.updateSlidesPerView();
-                this.loadProducts();
+                await this.loadProducts();
                 this.setupEventListeners();
                 this.startAutoPlay();
             }
@@ -7263,7 +5623,12 @@ img {
                 }
             }
 
-            loadProducts() {
+            async loadProducts() {
+                // ✅ انتظار تحميل المنتجات أولاً
+                if (!isProductsLoaded) {
+                    await getProducts();
+                }
+                
                 let categoryProducts = products[this.category];
                 if (!categoryProducts || categoryProducts.length === 0) {
                     this.showNoProductsMessage();
@@ -7326,7 +5691,7 @@ img {
                 slide.innerHTML = `
                     ${discountBadge}
                     <div class="showcase-slide-img">
-                        <img src="${product.image1}" alt="${product.name}" loading="lazy">
+                        <img src="${product.image1}" alt="${product.name}" loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x300?text=No+Image';">
                     </div>
                     <div class="showcase-slide-content">
                         <h3 class="showcase-slide-title">${product.name}</h3>
@@ -7364,34 +5729,29 @@ img {
                 }
             }
 
-           updateSlidePositions() {
-    if (!this.slideElements || this.slideElements.length === 0) return;
+            // ✅ دالة updateSlidePositions المحسنة
+            updateSlidePositions() {
+                if (!this.slideElements || this.slideElements.length === 0) return;
 
-    // اقرأ الـ gap الحقيقي من CSS بدل رقم ثابت
-    const cs = getComputedStyle(this.trackElement);
-    const gap = parseFloat(cs.gap || cs.columnGap || cs.rowGap) || this.gap;
+                const cs = getComputedStyle(this.trackElement);
+                const gap = parseFloat(cs.gap || cs.columnGap || cs.rowGap) || this.gap;
 
-    // عرض السلايد الحقيقي
-    this.slideWidth = this.slideElements[0].getBoundingClientRect().width;
+                this.slideWidth = this.slideElements[0].getBoundingClientRect().width;
 
-    // عدد المجموعات (كل مجموعة = slidesPerView)
-    const totalGroups = Math.ceil(this.totalSlides / this.slidesPerView);
+                const totalGroups = Math.ceil(this.totalSlides / this.slidesPerView) || 1;
+                this.currentSlide = Math.max(0, Math.min(this.currentSlide, totalGroups - 1));
 
-    // تأمين: لو currentSlide خرج برا الحدود رجّعه
-    this.currentSlide = Math.max(0, Math.min(this.currentSlide, totalGroups - 1));
+                const step = (this.slideWidth + gap) * this.slidesPerView;
+                const move = this.currentSlide * step;
 
-    // المسافة اللي نتحركها كل مجموعة
-    const step = (this.slideWidth + gap) * this.slidesPerView;
-    const move = this.currentSlide * step;
+                const isRTL =
+                    document.dir === 'rtl' ||
+                    getComputedStyle(document.documentElement).direction === 'rtl';
 
-    // دعم RTL: في RTL التحريك غالبًا بالعكس
-    const isRTL = (document.dir === 'rtl') || (getComputedStyle(document.documentElement).direction === 'rtl');
+                this.trackElement.style.transform = `translateX(${isRTL ? move : -move}px)`;
 
-    this.trackElement.style.transform = `translateX(${isRTL ? move : -move}px)`;
-
-    this.updateIndicators();
-}
-
+                this.updateIndicators();
+            }
 
             updateIndicators() {
                 const indicators = this.indicatorsElement.querySelectorAll('.showcase-indicator');
@@ -7539,8 +5899,8 @@ img {
         let offersShowcase = null;
         let importedShowcase = null;
 
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
+        // ✅ تعديل Initialize the page
+        document.addEventListener('DOMContentLoaded', async function() {
             // Set current date for order confirmation
             const today = new Date();
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -7594,6 +5954,9 @@ img {
             // Initialize FAQ
             initFAQ();
             
+            // ✅ تحميل المنتجات أولاً ثم تهيئة السلايدرات
+            await getProducts();
+            
             // Initialize dynamic showcases
             initDynamicShowcases();
             
@@ -7602,6 +5965,9 @@ img {
             
             // Handle initial load
             handleRouting();
+            
+            console.log('✅ تم تحميل الموقع بنجاح');
+            console.log('📊 إجمالي المنتجات:', Object.keys(products).reduce((sum, key) => sum + (products[key]?.length || 0), 0));
         });
 
         // Initialize FAQ functionality
@@ -7647,33 +6013,27 @@ img {
             importedShowcase.init();
         }
 
-        // Handle search functionality
+        // ✅ دالة handleSearch المحسنة
         function handleSearch() {
             const searchTerm = searchInput.value.trim().toLowerCase();
-            
+
             if (searchTerm.length < 2) {
                 searchResults.classList.remove('active');
                 return;
             }
-            
-            // Collect all products from all categories
+
             let allProducts = [];
             for (const category in products) {
-                products[category].forEach(product => {
-                    allProducts.push({
-                        ...product,
-                        category: category
-                    });
+                (products[category] || []).forEach(product => {
+                    allProducts.push({ ...product, category });
                 });
             }
-            
-            // Filter products based on search term
+
             const filteredProducts = allProducts.filter(product => {
-                return product.name.toLowerCase().includes(searchTerm) ||
-                       product.description.toLowerCase().includes(searchTerm);
+                return (product.name || '').toLowerCase().includes(searchTerm) ||
+                       (product.description || '').toLowerCase().includes(searchTerm);
             });
-            
-            // Display results
+
             displaySearchResults(filteredProducts);
         }
 
@@ -7703,7 +6063,7 @@ img {
                     
                     resultItem.innerHTML = `
                         <div class="search-result-image">
-                            <img src="${product.image1}" alt="${product.name}">
+                            <img src="${product.image1}" alt="${product.name}" onerror="this.onerror=null; this.src='https://via.placeholder.com/100x100?text=No+Image';">
                         </div>
                         <div class="search-result-info">
                             <div class="search-result-name">${product.name}</div>
@@ -7833,6 +6193,11 @@ img {
             
             breadcrumbCategory.innerHTML = `<span class="active">${categoryNames[category]}</span>`;
             
+            // ✅ التحقق من وجود القسم
+            if (!products[category]) {
+                products[category] = [];
+            }
+            
             // Reset sort order
             currentSortOrder = 'default';
             document.querySelectorAll('.sort-btn').forEach(btn => {
@@ -7840,8 +6205,8 @@ img {
             });
             document.querySelector('.sort-btn[onclick*="default"]').classList.add('active');
             
-            // Render products
-            renderProducts(products[category]);
+            // ✅ تمرير المصفوفة بشكل آمن
+            renderProducts(products[category] || []);
             
             // Update active menu item
             updateActiveMenuItem(category);
@@ -7853,7 +6218,7 @@ img {
         }
 
         // Navigate to product page
-        function navigateToProductPage(productId, category) {
+        async function navigateToProductPage(productId, category) {
             showLoading();
             
             currentView = 'product';
@@ -7887,13 +6252,29 @@ img {
                 'parts-accessories': 'قطع غيار'
             };
             
-            const product = products[category].find(p => p.id === productId);
+            // ✅ التأكد من تحميل المنتجات أولاً
+            if (!isProductsLoaded) {
+                await getProducts();
+            }
+            
+            const product = (products[category] || []).find(p => p.id === productId);
             
             breadcrumbCategory.innerHTML = `<a href="#/category/${category}">${categoryNames[category]}</a>`;
-            breadcrumbProduct.innerHTML = `<span class="active">${product.name}</span>`;
+            breadcrumbProduct.innerHTML = `<span class="active">${product ? product.name : 'منتج غير موجود'}</span>`;
             
             // Render product detail
-            renderProductDetail(productId, category);
+            if (product) {
+                renderProductDetail(productId, category);
+            } else {
+                productDetailContainer.innerHTML = `
+                    <div style="text-align: center; padding: 40px;">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: #f44336; margin-bottom: 20px;"></i>
+                        <h3>المنتج غير موجود</h3>
+                        <p>عذراً، المنتج الذي تبحث عنه غير متوفر حالياً.</p>
+                        <a href="#/category/${category}" class="btn btn-primary" onclick="goBackToCategory(); return false;">العودة إلى القسم</a>
+                    </div>
+                `;
+            }
             
             // Update active menu item
             updateActiveMenuItem(category);
@@ -7951,7 +6332,7 @@ img {
             event.target.classList.add('active');
             
             // Get current category products
-            const categoryProducts = [...products[currentCategory]];
+            const categoryProducts = [...(products[currentCategory] || [])];
             
             // Sort based on order
             if (order === 'low-to-high') {
@@ -7997,10 +6378,10 @@ img {
                         ${discountBadge}
                     </div>
                     <div class="product-images">
-                        <img src="${product.image1}" alt="${product.name}">
-                        <img src="${product.image2}" alt="${product.name}">
-                        ${product.image3 ? `<img src="${product.image3}" alt="${product.name}">` : ''}
-                        ${product.image4 ? `<img src="${product.image4}" alt="${product.name}">` : ''}
+                        <img src="${product.image1}" alt="${product.name}" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x300?text=No+Image';">
+                        ${product.image2 ? `<img src="${product.image2}" alt="${product.name}" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x300?text=No+Image';">` : ''}
+                        ${product.image3 ? `<img src="${product.image3}" alt="${product.name}" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x300?text=No+Image';">` : ''}
+                        ${product.image4 ? `<img src="${product.image4}" alt="${product.name}" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x300?text=No+Image';">` : ''}
                     </div>
                     <div class="product-info">
                         <h3>${product.name}</h3>
@@ -8026,7 +6407,7 @@ img {
         // Render product detail
         function renderProductDetail(productId, category) {
             // Find the product
-            const product = products[category].find(p => p.id === productId);
+            const product = (products[category] || []).find(p => p.id === productId);
             
             if (!product) {
                 productDetailContainer.innerHTML = `
@@ -8051,7 +6432,7 @@ img {
             
             // Create specifications grid
             let specificationsHTML = '';
-            for (const [key, value] of Object.entries(product.specifications)) {
+            for (const [key, value] of Object.entries(product.specifications || {})) {
                 specificationsHTML += `
                     <div class="spec-item">
                         <span class="spec-label">${key}</span>
@@ -8096,28 +6477,28 @@ img {
             if (product.image1) {
                 thumbnailsHTML += `
                     <div class="thumbnail active" onclick="changeMainImage(this, '${product.image1}')">
-                        <img src="${product.image1}" alt="${product.name}">
+                        <img src="${product.image1}" alt="${product.name}" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x300?text=No+Image';">
                     </div>
                 `;
             }
             if (product.image2) {
                 thumbnailsHTML += `
                     <div class="thumbnail" onclick="changeMainImage(this, '${product.image2}')">
-                        <img src="${product.image2}" alt="${product.name}">
+                        <img src="${product.image2}" alt="${product.name}" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x300?text=No+Image';">
                     </div>
                 `;
             }
             if (product.image3) {
                 thumbnailsHTML += `
                     <div class="thumbnail" onclick="changeMainImage(this, '${product.image3}')">
-                        <img src="${product.image3}" alt="${product.name}">
+                        <img src="${product.image3}" alt="${product.name}" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x300?text=No+Image';">
                     </div>
                 `;
             }
             if (product.image4) {
                 thumbnailsHTML += `
                     <div class="thumbnail" onclick="changeMainImage(this, '${product.image4}')">
-                        <img src="${product.image4}" alt="${product.name}">
+                        <img src="${product.image4}" alt="${product.name}" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x300?text=No+Image';">
                     </div>
                 `;
             }
@@ -8130,7 +6511,7 @@ img {
                 <div class="product-detail-wrapper">
                     <div class="product-detail-images">
                         <div class="main-image-wrapper">
-                            <img src="${product.image1}" alt="${product.name}" class="main-image" id="main-product-image">
+                            <img src="${product.image1}" alt="${product.name}" class="main-image" id="main-product-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/500x500?text=No+Image';">
                             <button class="image-zoom" onclick="zoomImage('${product.image1}')">
                                 <i class="fas fa-search-plus"></i>
                             </button>
@@ -8173,7 +6554,7 @@ img {
                         
                         ${giftsHTML}
                         
-                        <p class="product-detail-description">${product.details}</p>
+                        <p class="product-detail-description">${product.details || product.description}</p>
                         
                         <div class="product-detail-specs">
                             <h3 class="specs-title">
@@ -8181,7 +6562,7 @@ img {
                                 المواصفات الفنية
                             </h3>
                             <div class="specs-grid">
-                                ${specificationsHTML}
+                                ${specificationsHTML || '<p>لا توجد مواصفات متاحة</p>'}
                             </div>
                         </div>
                         
@@ -8270,10 +6651,43 @@ img {
                         </style>
                     </head>
                     <body>
-                        <img src="${imageSrc}" alt="صورة مكبرة">
+                        <img src="${imageSrc}" alt="صورة مكبرة" onerror="this.onerror=null; this.src='https://via.placeholder.com/500x500?text=No+Image';">
                     </body>
                     </html>
                 `);
+            }
+        }
+
+        // ✅ دالة حفظ الطلب في Supabase (Dashboard)
+        async function saveOrderToSupabase(order) {
+            try {
+                if (!window.sb && !window.supabaseClient && !window.supabase) return { ok: false, reason: 'no-client' };
+                const client = window.sb || window.supabaseClient || window.supabase;
+
+                const payload = {
+                    order_number: order.orderNumber,
+                    customer_name: order.customerName,
+                    phone1: order.customerPhone,
+                    phone2: order.customerPhone2 !== 'لا يوجد' ? order.customerPhone2 : null,
+                    governorate: order.governorate,
+                    area: order.area,
+                    address: order.customerAddress,
+                    notes: order.notes || null,
+                    items: order.items,
+                    subtotal: order.subtotal,
+                    shipping: order.shippingCost,
+                    total: order.total,
+                    status: 'new'
+                };
+
+                const { error } = await client.from('orders').insert([payload]);
+                if (error) throw error;
+
+                console.log('✅ تم حفظ الطلب في Supabase:', order.orderNumber);
+                return { ok: true };
+            } catch (e) {
+                console.warn('❌ فشل حفظ الطلب في Supabase:', e);
+                return { ok: false, reason: e?.message || String(e) };
             }
         }
 
@@ -8381,7 +6795,13 @@ img {
 
         // Add to cart
         function addToCart(productId, category, quantity = 1) {
-            const product = products[category].find(p => p.id === productId);
+            // ✅ التأكد من وجود المنتج في products
+            const product = (products[category] || []).find(p => p.id === productId);
+            if (!product) {
+                showNotification('المنتج غير موجود', 'error');
+                return;
+            }
+            
             const existingItem = cart.find(item => item.id === product.id && item.category === category);
             
             if (existingItem) {
@@ -8400,7 +6820,7 @@ img {
 
         // Update cart count and display
         function updateCartCount() {
-            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            const totalItems = cart.reduce((total, item) => total + (item.quantity || 0), 0);
             floatingCartCount.textContent = totalItems;
             
             // Update cart items list
@@ -8421,22 +6841,22 @@ img {
                 const cartItem = document.createElement('div');
                 cartItem.className = 'cart-item';
                 
-                const itemTotal = item.price * item.quantity;
+                const itemTotal = (item.price || 0) * (item.quantity || 1);
                 subtotal += itemTotal;
                 
                 cartItem.innerHTML = `
                     <div class="cart-item-img">
-                        <img src="${item.image1}" alt="${item.name}">
+                        <img src="${item.image1 || ''}" alt="${item.name || 'منتج'}" onerror="this.onerror=null; this.src='https://via.placeholder.com/100x100?text=No+Image';">
                     </div>
                     <div class="cart-item-details">
-                        <h4 class="cart-item-title">${item.name}</h4>
+                        <h4 class="cart-item-title">${item.name || 'منتج'}</h4>
                         <p class="cart-item-category">${getCategoryName(item.category)}</p>
                         <div class="cart-item-price">ج.م${itemTotal.toLocaleString('ar-EG')}</div>
                         <div class="cart-item-actions">
                             <div class="cart-item-quantity">
-                                <button class="quantity-change" onclick="updateCartItem(${item.id}, '${item.category}', ${item.quantity - 1})">-</button>
-                                <span class="quantity-display">${item.quantity}</span>
-                                <button class="quantity-change" onclick="updateCartItem(${item.id}, '${item.category}', ${item.quantity + 1})">+</button>
+                                <button class="quantity-change" onclick="updateCartItem(${item.id}, '${item.category}', ${(item.quantity || 1) - 1})">-</button>
+                                <span class="quantity-display">${item.quantity || 1}</span>
+                                <button class="quantity-change" onclick="updateCartItem(${item.id}, '${item.category}', ${(item.quantity || 1) + 1})">+</button>
                             </div>
                             <button class="cart-item-remove" onclick="removeFromCart(${item.id}, '${item.category}')">
                                 <i class="fas fa-trash"></i> إزالة
@@ -8463,12 +6883,12 @@ img {
                 
                 summaryItem.innerHTML = `
                     <div class="summary-item-img">
-                        <img src="${item.image1}" alt="${item.name}">
+                        <img src="${item.image1 || ''}" alt="${item.name || 'منتج'}" onerror="this.onerror=null; this.src='https://via.placeholder.com/100x100?text=No+Image';">
                     </div>
                     <div class="summary-item-details">
-                        <h4>${item.name}</h4>
-                        <div class="summary-item-price">ج.م${item.price.toLocaleString('ar-EG')}</div>
-                        <div class="summary-item-quantity">الكمية: ${item.quantity}</div>
+                        <h4>${item.name || 'منتج'}</h4>
+                        <div class="summary-item-price">ج.م${(item.price || 0).toLocaleString('ar-EG')}</div>
+                        <div class="summary-item-quantity">الكمية: ${item.quantity || 1}</div>
                     </div>
                 `;
                 
@@ -8522,8 +6942,14 @@ img {
         // Buy now
         function buyNow(productId, category) {
             // Clear cart and add just this product
+            const product = (products[category] || []).find(p => p.id === productId);
+            if (!product) {
+                showNotification('المنتج غير موجود', 'error');
+                return;
+            }
+            
             cart = [{
-                ...products[category].find(p => p.id === productId),
+                ...product,
                 category,
                 quantity: 1
             }];
@@ -8569,8 +6995,8 @@ img {
             }, 100);
         }
 
-        // Submit order and send to WhatsApp
-        function submitOrder() {
+        // ✅ تعديل دالة submitOrder - حفظ الطلب في Supabase فقط
+        async function submitOrder() {
             const firstName = document.getElementById('first-name').value.trim();
             const lastName = document.getElementById('last-name').value.trim();
             const phone = document.getElementById('phone').value.trim();
@@ -8599,7 +7025,7 @@ img {
             showLoading();
             
             // Calculate order total
-            const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            const subtotal = cart.reduce((total, item) => total + ((item.price || 0) * (item.quantity || 1)), 0);
             const shipping = currentShippingCost;
             const total = subtotal + shipping;
             
@@ -8618,17 +7044,25 @@ img {
                 notes: notes,
                 shippingCost: shipping,
                 items: cart.map(item => ({
-                    name: item.name,
-                    quantity: item.quantity,
-                    price: item.price,
-                    total: item.price * item.quantity,
-                    category: item.category
+                    name: item.name || 'منتج',
+                    quantity: item.quantity || 1,
+                    price: item.price || 0,
+                    total: (item.price || 0) * (item.quantity || 1),
+                    category: item.category || 'unknown'
                 })),
                 subtotal: subtotal,
                 shipping: shipping,
                 total: total,
                 date: new Date().toLocaleDateString('ar-EG')
             };
+            
+            // ✅ حفظ الطلب في Supabase (Dashboard) - إلزامي
+            const saveResult = await saveOrderToSupabase(currentOrder);
+            if (!saveResult.ok) {
+                hideLoading();
+                showNotification('تعذر تسجيل الطلب في الداشبورد. حاول مرة أخرى.', 'error');
+                return;
+            }
             
             // Hide checkout section
             checkoutSection.style.display = 'none';
@@ -8652,9 +7086,6 @@ img {
             setTimeout(() => {
                 hideLoading();
                 orderConfirmationPopup.classList.add('active');
-                
-                // إرسال تلقائي بعد إظهار رسالة التأكيد
-                setTimeout(() => sendToWhatsApp(), 600);
             }, 500);
         }
 
@@ -8664,57 +7095,10 @@ img {
             navigateTo('/');
         }
 
-        // Send order to WhatsApp
+        // Send order to WhatsApp - DISABLED (orders saved to Supabase dashboard only)
         function sendToWhatsApp() {
-            if (!currentOrder) return;
-            
-            // تحديد رقم الواتساب المناسب بناءً على نوع المنتجات
-            const targetNumber = getWhatsAppNumberForOrder(currentOrder);
-            
-            // Create order summary message
-            let orderMessage = `*طلب جديد - Al Alamy Store - LAP ZONE*\n\n`;
-            orderMessage += `*📋 رقم الطلب:* ${currentOrder.orderNumber}\n`;
-            orderMessage += `*📅 التاريخ:* ${currentOrder.date}\n`;
-            orderMessage += `*👤 اسم العميل:* ${currentOrder.customerName}\n`;
-            orderMessage += `*📱 رقم الهاتف الأساسي:* ${currentOrder.customerPhone}\n`;
-            
-            if (currentOrder.customerPhone2 !== 'لا يوجد') {
-                orderMessage += `*📱 رقم الهاتف البديل:* ${currentOrder.customerPhone2}\n`;
-            }
-            
-            orderMessage += `*📍 المحافظة:* ${currentOrder.governorate}\n`;
-            orderMessage += `*🏙️ المنطقة/المدينة:* ${currentOrder.area}\n`;
-            orderMessage += `*🏠 العنوان التفصيلي:* ${currentOrder.customerAddress}\n`;
-            
-            if (currentOrder.notes) {
-                orderMessage += `*💬 ملاحظات إضافية:* ${currentOrder.notes}\n`;
-            }
-            
-            orderMessage += `\n*🛒 تفاصيل الطلب:*\n`;
-            currentOrder.items.forEach((item, index) => {
-                orderMessage += `${index + 1}. ${item.name} (${getCategoryName(item.category)}) × ${item.quantity} = ج.م${item.total.toLocaleString('ar-EG')}\n`;
-            });
-            
-            orderMessage += `\n*💰 المجموع الفرعي:* ج.م${currentOrder.subtotal.toLocaleString('ar-EG')}\n`;
-            orderMessage += `*🚚 تكلفة الشحن:* ج.م${currentOrder.shippingCost.toLocaleString('ar-EG')}\n`;
-            orderMessage += `*💵 المجموع الكلي:* ج.م${currentOrder.total.toLocaleString('ar-EG')}\n`;
-            
-            // إضافة ملاحظة حول نوع الطلب
-            const isLaptopOrder = getWhatsAppNumberForOrder(currentOrder) === whatsappNumbers.laptopsAndParts;
-            if (isLaptopOrder) {
-                orderMessage += `\n*📞 نوع الطلب:* لابات/قطع غيار`;
-            } else {
-                orderMessage += `\n*📞 نوع الطلب:* عروض/هواتف مستعملة`;
-            }
-            
-            // Encode message for URL
-            const encodedMessage = encodeURIComponent(orderMessage);
-            
-            // Create WhatsApp URL مع الرقم المناسب
-            const whatsappURL = `https://wa.me/${targetNumber}?text=${encodedMessage}`;
-            
-            // فتح رابط الواتساب في نافذة جديدة
-            window.open(whatsappURL, '_blank');
+            // Disabled: orders are saved to Supabase dashboard only.
+            return;
         }
 
         // Function to determine WhatsApp number based on order items
@@ -8749,229 +7133,6 @@ img {
         function continueShopping() {
             closeOrderConfirmation();
         }
-
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // إدارة القائمة المتنقلة
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const nav = document.querySelector('.nav');
-    
-    if (mobileMenuBtn && nav) {
-        mobileMenuBtn.addEventListener('click', function() {
-            nav.classList.toggle('active');
-            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
-        });
-        
-        // إغلاق القائمة عند النقر خارجها
-        document.addEventListener('click', function(event) {
-            if (!nav.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
-                nav.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-    }
-    
-    // إدارة البحث المتنقل
-    const mobileSearchBtn = document.querySelector('.mobile-search-btn');
-    const mobileSearchContainer = document.querySelector('.mobile-search-container');
-    
-    if (mobileSearchBtn && mobileSearchContainer) {
-        mobileSearchBtn.addEventListener('click', function() {
-            mobileSearchContainer.classList.toggle('active');
-        });
-        
-        // إغلاق البحث عند النقر خارجها
-        document.addEventListener('click', function(event) {
-            if (!mobileSearchContainer.contains(event.target) && 
-                !mobileSearchBtn.contains(event.target) &&
-                mobileSearchContainer.classList.contains('active')) {
-                mobileSearchContainer.classList.remove('active');
-            }
-        });
-    }
-    
-    // إدارة السلايدر
-    const sliders = document.querySelectorAll('.slider');
-    
-    sliders.forEach(slider => {
-        const track = slider.querySelector('.slider-track');
-        const slides = Array.from(track.children);
-        const prevBtn = slider.querySelector('.slider-btn.prev');
-        const nextBtn = slider.querySelector('.slider-btn.next');
-        
-        let currentIndex = 0;
-        const slideWidth = slides[0].getBoundingClientRect().width;
-        
-        // ترتيب الشرائح
-        slides.forEach((slide, index) => {
-            slide.style.left = slideWidth * index + 'px';
-        });
-        
-        // وظائف التحكم
-        function moveToSlide(index) {
-            if (index < 0 || index >= slides.length) return;
-            
-            track.style.transform = 'translateX(-' + (slideWidth * index) + 'px)';
-            currentIndex = index;
-        }
-        
-        if (prevBtn) {
-            prevBtn.addEventListener('click', function() {
-                moveToSlide(currentIndex - 1);
-            });
-        }
-        
-        if (nextBtn) {
-            nextBtn.addEventListener('click', function() {
-                moveToSlide(currentIndex + 1);
-            });
-        }
-        
-        // دعم اللمس للسلايدر
-        let startX = 0;
-        let currentX = 0;
-        
-        track.addEventListener('touchstart', function(e) {
-            startX = e.touches[0].clientX;
-        });
-        
-        track.addEventListener('touchmove', function(e) {
-            currentX = e.touches[0].clientX;
-        });
-        
-        track.addEventListener('touchend', function() {
-            const diff = startX - currentX;
-            
-            if (diff > 50) {
-                moveToSlide(currentIndex + 1);
-            } else if (diff < -50) {
-                moveToSlide(currentIndex - 1);
-            }
-        });
-    });
-    
-    // تحسين الأداء للصور
-    const images = document.querySelectorAll('img');
-    
-    images.forEach(img => {
-        if (img.complete) {
-            img.classList.add('loaded');
-        } else {
-            img.addEventListener('load', function() {
-                this.classList.add('loaded');
-            });
-        }
-    });
-    
-    // تحميل الصور البطيء (Lazy Loading)
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    const src = img.getAttribute('data-src');
-                    
-                    if (src) {
-                        img.src = src;
-                        img.removeAttribute('data-src');
-                    }
-                    
-                    img.classList.add('loaded');
-                    observer.unobserve(img);
-                }
-            });
-        });
-        
-        document.querySelectorAll('img[data-src]').forEach(img => {
-            imageObserver.observe(img);
-        });
-    }
-    
-    // إدارة الفوتر المتجاوب
-    function updateFooterLayout() {
-        const footer = document.querySelector('.footer-container');
-        if (!footer) return;
-        
-        if (window.innerWidth < 768) {
-            footer.style.gridTemplateColumns = '1fr';
-        } else if (window.innerWidth < 1024) {
-            footer.style.gridTemplateColumns = 'repeat(2, 1fr)';
-        } else {
-            footer.style.gridTemplateColumns = 'repeat(4, 1fr)';
-        }
-    }
-    
-    window.addEventListener('resize', updateFooterLayout);
-    updateFooterLayout();
-    
-    // تحسين أداء الشبكة
-    function updateGridLayout() {
-        const grids = document.querySelectorAll('.grid');
-        
-        grids.forEach(grid => {
-            if (window.innerWidth < 640) {
-                grid.style.gridTemplateColumns = '1fr';
-            } else if (window.innerWidth < 1024) {
-                grid.style.gridTemplateColumns = 'repeat(2, 1fr)';
-            } else if (window.innerWidth < 1280) {
-                grid.style.gridTemplateColumns = 'repeat(3, 1fr)';
-            } else {
-                grid.style.gridTemplateColumns = 'repeat(4, 1fr)';
-            }
-        });
-    }
-    
-    window.addEventListener('resize', updateGridLayout);
-    updateGridLayout();
-    
-    // تحسينات للوضع الأفقي
-    function handleOrientationChange() {
-        if (window.innerHeight < 500 && window.innerWidth > window.innerHeight) {
-            document.body.classList.add('landscape-mode');
-        } else {
-            document.body.classList.remove('landscape-mode');
-        }
-    }
-    
-    window.addEventListener('resize', handleOrientationChange);
-    window.addEventListener('orientationchange', handleOrientationChange);
-    handleOrientationChange();
-    
-});
-/* ==============================
-   Tap-to-swap product images (Mobile/Touch)
-   ============================== */
-(function initTapImageSwap(){
-  // Event delegation: يشتغل حتى للمنتجات اللي بتتولد ديناميكيًا
-  document.addEventListener('click', function(e){
-    const imagesBox = e.target.closest('.product-images');
-    if(!imagesBox) return;
-
-    const card = imagesBox.closest('.product-card');
-    if(!card) return;
-
-    // لو المنتج ماعندوش صورة ثانية خلاص
-    const imgs = imagesBox.querySelectorAll('img');
-    if(!imgs || imgs.length < 2) return;
-
-    // على الديسكتوب خلي الهفر هو اللي يتحكم (ما نعملش toggle بالضغط)
-    const isDesktopHover = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
-    if(isDesktopHover) return;
-
-    // امنع فتح صفحة التفاصيل لو الكارت كله قابل للنقر
-    e.preventDefault();
-    e.stopPropagation();
-
-    // بدّل
-    card.classList.toggle('is-image-swapped');
-
-    // رجّع للصورة الأولى بعد ثانيتين (اختياري)
-    clearTimeout(card.__swapTimer);
-    card.__swapTimer = setTimeout(() => {
-      card.classList.remove('is-image-swapped');
-    }, 2200);
-  }, { passive: false });
-})();
-    </script>
+</script>
 </body>
 </html>

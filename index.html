@@ -4362,7 +4362,70 @@ img {
   box-shadow: 0 0 30px rgba(0,0,0,.25) !important;
   border-right: 1px solid #eee;
 }
+    /* =========================================================
+   FIX: Search Results background white + dark text/images
+   (Desktop + Mobile + Dark/Light theme)
+   ========================================================= */
 
+/* صندوق نتائج البحث */
+.search-results{
+  background: #ffffff !important;          /* خلفية بيضا */
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 18px 60px rgba(0,0,0,.18) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* عنصر النتيجة */
+.search-result-item{
+  background: #ffffff !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+}
+
+/* Hover */
+.search-result-item:hover{
+  background: #f5f7fb !important;
+}
+
+/* النصوص */
+.search-result-name{
+  color: #111827 !important;   /* أسود داكن */
+}
+.search-result-category{
+  color: #374151 !important;   /* رمادي غامق */
+}
+.search-result-price{
+  color: #047857 !important;   /* أخضر غامق للسعر */
+}
+
+/* الحالة الفارغة */
+.search-empty,
+.search-empty p{
+  color: #374151 !important;
+}
+
+/* صور النتائج */
+.search-result-image{
+  background: #f3f4f6 !important;  /* خلفية فاتحة للصورة */
+  border: 1px solid #e5e7eb !important;
+}
+.search-result-image img{
+  filter: none !important;         /* إلغاء أي فلاتر كانت مغمّقة الصورة */
+}
+
+/* أي أيقونات داخل البحث */
+.search-results i,
+.search-results svg{
+  color: #111827 !important;
+  fill: currentColor !important;
+}
+
+/* على الموبايل (لو عندك دروب داون البحث) */
+@media (max-width: 768px){
+  .header-search-container.active .search-results{
+    background: #ffffff !important;
+  }
+}
 </style>
 
 </head>
@@ -7136,4 +7199,5 @@ img {
 </script>
 </body>
 </html>
+
 
